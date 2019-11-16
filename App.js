@@ -1,43 +1,46 @@
-import React, { Component } from 'react'
-import { Text, View, StyleSheet} from 'react-native'
-import { createAppContainer } from 'react-navigation'
-import { createStackNavigator } from 'react-navigation-stack'
-import store from './store'
+import React, { Component } from 'react';
+import { Text, View, StyleSheet, AppRegistry } from 'react-native';
+import { createAppContainer } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
+import { createStore, applyMiddleware } from 'redux';
+import { createLogger } from 'redux-logger';
+import rootReducer from './Reducers/index';
+import thunkMiddleware from 'redux-thunk';
 
-import { Provider } from 'react-redux'
+const logger = createLogger();
 
-import PuppetScreen from './Components/PuppetScreen'
-import SingleEventScreen from './Components/SingleEventScreen'
+const store = createStore(
+  rootReducer,
+  applyMiddleware(thunkMiddleware, logger)
+);
 
-const AppNavigator = createStackNavigator({
-  Puppet: {
-    screen: PuppetScreen,
+import { Provider } from 'react-redux';
+
+import CounterScreen from './containers/CounterScreen';
+import Home from './containers/Home';
+
+const AppNavigator = createStackNavigator(
+  {
+    Counter: {
+      screen: CounterScreen
+    },
+    Home: {
+      screen: Home
+    }
   },
-  Events: {
-    screen: SingleEventScreen,
-  },
-}, {
-    initialRouteName: 'Puppet',
-});
+  {
+    initialRouteName: 'Counter'
+  }
+);
 
 const AppContainer = createAppContainer(AppNavigator);
-export class App extends Component {
+
+export default class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <AppContainer />  
+        <AppContainer />
       </Provider>
-    )
+    );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#F5FCFF"
-  },
-})  
-
-export default App
