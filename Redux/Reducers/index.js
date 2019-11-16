@@ -1,7 +1,7 @@
-import {combineReducers} from 'redux'
+import { combineReducers } from 'redux';
 
 const reducer = combineReducers({
-    //All the reducers would be here. 
-})
+  //All the reducers would be here.
+});
 
-export default reducer
+export default reducer;
