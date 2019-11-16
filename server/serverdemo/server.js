@@ -35,7 +35,7 @@ client.connect(function(error){
 });
 
 app.get("/api/all", function(req,res){
-    client.query("SELECT * FROM test1", function(error,result){
+    client.query("SELECT * FROM puppets;", function(error,result){
         res.json(result);
     });
     // might need changes here
