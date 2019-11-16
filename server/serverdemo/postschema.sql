@@ -4,7 +4,7 @@ CREATE SEQUENCE puppets_seq;
 CREATE TABLE puppets (
 	puppetId INT CHECK (puppetId > 0) DEFAULT NEXTVAL ('puppets_seq') NOT NULL PRIMARY KEY,
     puppetName VARCHAR(255),
-	category VARCHAR(255),
+	category VARCHAR(255), -- finger, string, rod, glove
 	puppetYear INTEGER,
 	region VARCHAR(255),
 	description TEXT
