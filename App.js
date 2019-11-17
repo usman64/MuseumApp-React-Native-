@@ -29,15 +29,15 @@ import SingleEventScreen from './components/SingleEventScreen';
 
 const EventStack = createStackNavigator({
   Events: {
-    screen: EventsScreen, 
+    screen: EventsScreen,
     navigationOptions: {
-      header:null,
-    }   
+      header: null
+    }
   },
   SingleEvent: {
-    screen: SingleEventScreen,
+    screen: SingleEventScreen
   }
-})
+});
 
 const ExploreStack = createStackNavigator({
   Explore: {
@@ -52,7 +52,7 @@ const ExploreStack = createStackNavigator({
   Event: {
     screen: EventStack,
     navigationOptions: {
-      header:null
+      header: null
     }
   }
 });
@@ -71,14 +71,12 @@ const MoreStack = createStackNavigator(
     navigationOptions: ({ navigation }) => {
       const { routeName } = navigation.state.routes[navigation.state.index];
       return {
-        header:null,
+        header: null,
         headerTitle: routeName
       };
     }
   }
 );
-
-
 
 const AppTabNavigator = createBottomTabNavigator(
   {
@@ -139,7 +137,7 @@ const AppNavigator = createStackNavigator(
     },
     SplashScreen: {
       screen: SplashScreen
-    },
+    }
   },
   {
     initialRouteName: 'Main',

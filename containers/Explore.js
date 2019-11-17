@@ -30,15 +30,11 @@ const upEvents = [
   },
   {
     name: 'Qawali Night',
-<<<<<<< HEAD
     ImageUri: require('../assets//qawali.jpeg')
-=======
-    ImageUri: require('../assets/images.jpeg')
   },
   {
     name: 'More',
     ImageUri: require('../assets/images.jpeg')
->>>>>>> 32fc086f5e8d5418408bebf3850d61e04ceb27a1
   }
 ];
 
@@ -194,7 +190,7 @@ export class Explore extends Component {
             showsVerticalScrollIndicator={false}
           >
             <View style={{ flex: 1, backgroundColor: 'white', paddingTop: 20 }}>
-              <SubHeader headerName={'Explore By Type'} />
+              <SubHeader headerName={'Explore By Type'} type={' '} />
               <CategoryList data={typesOfPuppets} />
             </View>
 
@@ -206,7 +202,7 @@ export class Explore extends Component {
                 // paddingHorizontal: 20
               }}
             >
-              <SubHeader headerName={'Explore By Region'} />
+              <SubHeader headerName={'Explore By Region'} type={' '} />
 
               {/* <View
                                                                                               style={{
@@ -235,13 +231,12 @@ export class Explore extends Component {
             </View>
 
             <View style={{ flex: 1, backgroundColor: 'white', paddingTop: 20 }}>
-              <SubHeader headerName={'Upcoming Events'} />
-              <CategoryList data={upEvents} />
-              <TouchableOpacity
+              <SubHeader
+                headerName={'Upcoming Events'}
+                type={'Event'}
                 onPress={() => this.props.navigation.navigate('Event')}
-              >
-                <Text>Go To Event</Text>
-        </TouchableOpacity>
+              />
+              <CategoryList data={upEvents} />
             </View>
           </ScrollView>
         </View>
