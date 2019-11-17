@@ -30,7 +30,15 @@ const upEvents = [
   },
   {
     name: 'Qawali Night',
+<<<<<<< HEAD
     ImageUri: require('../assets//qawali.jpeg')
+=======
+    ImageUri: require('../assets/images.jpeg')
+  },
+  {
+    name: 'More',
+    ImageUri: require('../assets/images.jpeg')
+>>>>>>> 32fc086f5e8d5418408bebf3850d61e04ceb27a1
   }
 ];
 
@@ -229,6 +237,11 @@ export class Explore extends Component {
             <View style={{ flex: 1, backgroundColor: 'white', paddingTop: 20 }}>
               <SubHeader headerName={'Upcoming Events'} />
               <CategoryList data={upEvents} />
+              <TouchableOpacity
+                onPress={() => this.props.navigation.navigate('Event')}
+              >
+                <Text>Go To Event</Text>
+        </TouchableOpacity>
             </View>
           </ScrollView>
         </View>
