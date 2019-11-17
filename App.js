@@ -96,7 +96,7 @@ const AppTabNavigator = createBottomTabNavigator(
     //   };
     // }
     tabBarOptions: {
-      activeTintColor: 'red',
+      activeTintColor: 'maroon',
       inactiveTintColor: 'grey',
       style: {
         backgroundColor: 'white',

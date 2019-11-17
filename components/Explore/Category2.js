@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
-import { Text, View, ScrollView, ImageBackground } from 'react-native';
+import { Text, View, ScrollView, Alert, ImageBackground } from 'react-native';
+import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 
 export class Category extends Component {
   render() {
     return (
-      <View
+      <TouchableWithoutFeedback
+        onPress={() => Alert.alert(`${this.props.name} pressed!`)}
         style={{
           height: 150,
           width: 200,
@@ -13,7 +15,7 @@ export class Category extends Component {
           borderColor: '#ddd'
         }}
       >
-        <View style={{ flex: 1, borderRadius: 20 }}>
+        <View style={{ flex: 1 }}>
           <ImageBackground
             style={{
               flex: 1,
@@ -39,7 +41,7 @@ export class Category extends Component {
                 style={{
                   fontWeight: 'bold',
                   color: 'white',
-                  fontSize: 30,
+                  fontSize: 26,
                   paddingLeft: 10,
                   paddingBottom: 10
                 }}
@@ -51,7 +53,7 @@ export class Category extends Component {
         </View>
         {/* <View style={{ flex: 1, paddingLeft: 10, paddingTop: 10 }}>
         </View> */}
-      </View>
+      </TouchableWithoutFeedback>
     );
   }
 }
