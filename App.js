@@ -24,6 +24,20 @@ import MuseumMap from './containers/MuseumMap';
 import More from './containers/More';
 import About from './components/About';
 import SplashScreen from './components/SplashScreen';
+import EventsScreen from './containers/EventsScreen';
+import SingleEventScreen from './components/SingleEventScreen';
+
+const EventStack = createStackNavigator({
+  Events: {
+    screen: EventsScreen, 
+    navigationOptions: {
+      header:null,
+    }   
+  },
+  SingleEvent: {
+    screen: SingleEventScreen,
+  }
+})
 
 const ExploreStack = createStackNavigator({
   Explore: {
@@ -35,7 +49,12 @@ const ExploreStack = createStackNavigator({
   Search: { screen: CounterScreen },
   CategorizedPuppets: { screen: CounterScreen },
   RegionalPuppets: { screen: CounterScreen },
-  Events: { screen: CounterScreen }
+  Event: {
+    screen: EventStack,
+    navigationOptions: {
+      header:null
+    }
+  }
 });
 
 const MoreStack = createStackNavigator(
@@ -52,11 +71,14 @@ const MoreStack = createStackNavigator(
     navigationOptions: ({ navigation }) => {
       const { routeName } = navigation.state.routes[navigation.state.index];
       return {
+        header:null,
         headerTitle: routeName
       };
     }
   }
 );
+
+
 
 const AppTabNavigator = createBottomTabNavigator(
   {
@@ -117,7 +139,7 @@ const AppNavigator = createStackNavigator(
     },
     SplashScreen: {
       screen: SplashScreen
-    }
+    },
   },
   {
     initialRouteName: 'Main',

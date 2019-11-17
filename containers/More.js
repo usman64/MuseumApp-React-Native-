@@ -11,6 +11,8 @@ export class More extends Component {
         >
           <Text>Go To About</Text>
         </TouchableOpacity>
+
+      
       </View>
     );
   }
