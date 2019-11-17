@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet, AppRegistry } from 'react-native';
+import { Text, View, StyleSheet, AppRegistry, StatusBar } from 'react-native';
 import { createAppContainer } from 'react-navigation';
+import { createBottomTabNavigator } from 'react-navigation-tabs';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createStore, applyMiddleware } from 'redux';
 import { createLogger } from 'redux-logger';
@@ -18,24 +19,79 @@ import { Provider } from 'react-redux';
 
 import CounterScreen from './containers/CounterScreen';
 import Home from './containers/Home';
+import MuseumMap from './containers/MuseumMap';
+import More from './containers/More';
+import About from './components/About';
+import SplashScreen from './components/SplashScreen';
 
-const AppNavigator = createStackNavigator(
+const MoreStack = createStackNavigator(
   {
-    Counter: {
-      screen: CounterScreen
+    More: {
+      screen: More
     },
-    Home: {
-      screen: Home
+    About: {
+      screen: About
     }
   },
   {
-    initialRouteName: 'Counter'
+    navigationOptions: ({ navigation }) => {
+      const { routeName } = navigation.state.routes[navigation.state.index];
+      return {
+        headerTitle: routeName
+      };
+    }
   }
 );
+
+const AppTabNavigator = createBottomTabNavigator(
+  {
+    Home: {
+      screen: Home
+    },
+    Map: {
+      screen: MuseumMap
+    },
+    More: {
+      screen: MoreStack
+    }
+  },
+  {
+    navigationOptions: ({ navigation }) => {
+      const { routeName } = navigation.state.routes[navigation.state.index];
+      return {
+        headerTitle: routeName
+      };
+    }
+  }
+);
+
+const AppNavigator = createStackNavigator(
+  {
+    Main: {
+      screen: AppTabNavigator
+    },
+    SplashScreen: {
+      screen: SplashScreen
+    }
+  },
+  {
+    initialRouteName: 'Main',
+    defaultNavigationOptions: {
+      header: null
+    }
+  }
+);
+
+// const PuppetsStack = createStackNavigator()
+
+// const EventsStack = createStackNavigator()
 
 const AppContainer = createAppContainer(AppNavigator);
 
 export default class App extends Component {
+  componentDidMount() {
+    StatusBar.setHidden(true);
+  }
   render() {
     return (
       <Provider store={store}>
