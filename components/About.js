@@ -1,10 +1,11 @@
 import React from 'react';
 import { View, Text } from 'react-native';
+import  SinglePuppetScreen  from './SinglePuppetScreen'
 
 const About = () => {
   return (
     <View>
-      <Text>About</Text>
+      <SinglePuppetScreen />
     </View>
   );
 };

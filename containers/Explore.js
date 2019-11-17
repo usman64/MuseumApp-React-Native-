@@ -30,15 +30,12 @@ const upEvents = [
   },
   {
     name: 'Qawali Night',
-<<<<<<< HEAD
     ImageUri: require('../assets//qawali.jpeg')
-=======
-    ImageUri: require('../assets/images.jpeg')
   },
   {
     name: 'More',
     ImageUri: require('../assets/images.jpeg')
->>>>>>> 32fc086f5e8d5418408bebf3850d61e04ceb27a1
+
   }
 ];
 
