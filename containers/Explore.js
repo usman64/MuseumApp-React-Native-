@@ -22,22 +22,22 @@ import CategoryList from '../components/Explore/CategoryList';
 const upEvents = [
   {
     name: 'Puppet Show',
-    ImageUri: require('../assets/images.jpeg')
+    ImageUri: require('../assets/puppetShow.jpeg')
   },
   {
     name: 'Folk Festival',
-    ImageUri: require('../assets/images.jpeg')
+    ImageUri: require('../assets/folkFestival.jpg')
   },
   {
     name: 'Qawali Night',
-    ImageUri: require('../assets/images.jpeg')
+    ImageUri: require('../assets//qawali.jpeg')
   }
 ];
 
 const typesOfPuppets = [
   {
     name: 'String',
-    ImageUri: require('../assets/string.jpeg')
+    ImageUri: require('../assets/string.jpg')
   },
   {
     name: 'Glove',
@@ -49,7 +49,7 @@ const typesOfPuppets = [
   },
   {
     name: 'Finger',
-    ImageUri: require('../assets/images.jpeg')
+    ImageUri: require('../assets/finger.jpg')
   }
 ];
 
@@ -59,12 +59,12 @@ const Regions = [
     ImageUri: require('../assets/pak.jpg')
   },
   {
-    name: 'Burma',
-    ImageUri: require('../assets/burma.jpeg')
-  },
-  {
     name: 'India',
     ImageUri: require('../assets/india.jpg')
+  },
+  {
+    name: 'Burma',
+    ImageUri: require('../assets/burma.jpeg')
   },
   {
     name: 'Bangladesh',
@@ -94,16 +94,28 @@ export class Explore extends Component {
             }}
           >
             <View style={{ flexDirection: 'row' }}>
-              <Icon
-                style={{ paddingTop: 25, marginLeft: 20 }}
+              {/* <Icon
                 name='square'
+                style={{ paddingTop: 25, marginLeft: 20 }}
                 color='white'
                 size={30}
+              /> */}
+              <Image
+                source={require('../assets/RF_logo.png')}
+                style={{
+                  height: 35,
+                  width: 35,
+                  // tintColor: 'white',
+                  // backgroundColor: 'maroon',
+                  marginTop: 25,
+                  marginLeft: 20,
+                  borderRadius: 10
+                }}
               />
               <Text
                 style={{
-                  marginTop: 20,
-                  fontSize: 30,
+                  marginTop: 22,
+                  fontSize: 25,
                   fontWeight: '700',
                   marginLeft: 10,
                   color: 'white'

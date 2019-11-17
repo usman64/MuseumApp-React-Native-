@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Text, View, ScrollView, Alert, ImageBackground } from 'react-native';
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 
-export class Category extends Component {
+export class CategoryItem extends Component {
   render() {
     return (
       <TouchableWithoutFeedback
@@ -11,11 +11,20 @@ export class Category extends Component {
           height: 150,
           width: 200,
           marginLeft: 20,
-          borderWidth: 0.5,
-          borderColor: '#ddd'
+          backgroundColor: 'white',
+          shadowColor: 'black',
+          shadowOffset: { width: 5, height: 5 },
+          shadowOpacity: 0.8,
+          shadowRadius: 5,
+          elevation: 10,
+          borderRadius: 22
         }}
       >
-        <View style={{ flex: 1 }}>
+        <View
+          style={{
+            flex: 1
+          }}
+        >
           <ImageBackground
             style={{
               flex: 1,
@@ -23,6 +32,7 @@ export class Category extends Component {
               height: null,
               resizeMode: 'cover'
             }}
+            imageStyle={{ borderRadius: 22 }}
             source={this.props.ImageUri}
           >
             <View
@@ -34,7 +44,8 @@ export class Category extends Component {
                 bottom: 0,
                 justifyContent: 'flex-end',
                 alignItems: 'flex-start',
-                backgroundColor: 'rgba(0, 0, 0, 0.5)'
+                backgroundColor: 'rgba(0, 0, 0, 0.5)',
+                borderRadius: 22
               }}
             >
               <Text
@@ -42,8 +53,8 @@ export class Category extends Component {
                   fontWeight: 'bold',
                   color: 'white',
                   fontSize: 26,
-                  paddingLeft: 10,
-                  paddingBottom: 10
+                  paddingLeft: 15,
+                  paddingBottom: 15
                 }}
               >
                 {this.props.name}
@@ -58,4 +69,4 @@ export class Category extends Component {
   }
 }
 
-export default Category;
+export default CategoryItem;

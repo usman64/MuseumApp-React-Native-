@@ -5,7 +5,7 @@ const SubHeader = (props) => {
   return (
     <Text
       style={{
-        fontSize: 24,
+        fontSize: 17,
         fontWeight: '700',
         paddingHorizontal: 20,
         color: 'grey'
