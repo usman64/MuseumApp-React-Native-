@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Text, View, StyleSheet, AppRegistry, StatusBar } from 'react-native';
-import { createAppContainer } from 'react-navigation';
+import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createStore, applyMiddleware } from 'redux';
@@ -130,7 +130,7 @@ const AppTabNavigator = createBottomTabNavigator(
   }
 );
 
-const AppNavigator = createStackNavigator(
+const AppNavigator = createSwitchNavigator(
   {
     Main: {
       screen: AppTabNavigator
@@ -140,10 +140,10 @@ const AppNavigator = createStackNavigator(
     }
   },
   {
-    initialRouteName: 'Main',
-    defaultNavigationOptions: {
-      header: null
-    }
+    initialRouteName: 'Main'
+    // defaultNavigationOptions: {
+    //   header: null
+    // }
   }
 );
 
