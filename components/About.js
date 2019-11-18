@@ -7,12 +7,37 @@ const About = () => {
     //     <Header
     //   centerComponent={{ text: 'MY TITLE', style: { color: '#fff' } }}
     // />
-    <View style={styles.container}>
+    <View>
+      <View
+        style={{
+          height: 75,
+          backgroundColor: 'maroon',
+          borderBottomWidth: 1,
+          borderBottomColor: '#ddd',
+        }}
+      >
+        <View
+          style={{
+            flexDirection: 'row',
+          }}
+        >
+          <Text style={{
+            marginTop: 20,
+            fontSize: 30,
+            fontWeight: '700',
+            marginLeft: 10,
+            color: 'white'
+            }}>
+            About Us
+          </Text>
+        </View>
+      </View>
       <ScrollView showsVerticalScrollIndicator={false}>
+        <View style={styles.container}>
         <Text style={styles.item}>
           Rafi Peer Cultural Centre is one of the most culturally rich places in
           Pakistan. Since it's inception the centre has hosted many national and
-          continental events, such as The Asia Puppet Festival and the Literary
+          continental events, such as The Asia Puppet Festival and The Literary
           Festival.
           {'\n\n'}
           The centre also has a multitude of attractions including the Rafi Peer
@@ -21,6 +46,8 @@ const About = () => {
           puppet museum and is home to puppets from more than 40 different
           countries.
         </Text>
+        </View>
+          
       </ScrollView>
     </View>
   );

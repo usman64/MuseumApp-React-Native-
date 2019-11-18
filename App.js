@@ -60,10 +60,16 @@ const ExploreStack = createStackNavigator({
 const MoreStack = createStackNavigator(
   {
     More: {
-      screen: More
+      screen: More,
+      navigationOptions: {
+        header: null
+      }
     },
     About: {
-      screen: About
+      screen: About,
+      navigationOptions: {
+        header: null
+      }
     }
     //More screen here
   },
