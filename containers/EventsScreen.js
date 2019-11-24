@@ -13,7 +13,7 @@ import { TextInput } from 'react-native-gesture-handler';
 
 import SafeAreaView from 'react-native-safe-area-view';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import Category from '../components/Explore/Category';
+import CategoryItem from '../components/Explore/Category';
 import Category3 from '../components/Explore/Category3';
 
 
@@ -28,45 +28,26 @@ export class EventsScreen extends Component {
         }
     }
 
+    static navigationOptions = {
+      header:null,
+    }
+
     render() {
         return (
             <SafeAreaView style={{ flex: 1 }}>
             <View>
 
-              <View
-                style={{
-                    height: 75,
-                    backgroundColor: 'maroon',
-                    borderBottomWidth: 1,
-                    borderBottomColor: '#ddd',
-                }}
-              >
-                <View
-                  style={{
-                    flexDirection: 'row',
-                  }}
-                >
-                  <Text style={{
-                       marginTop: 20,
-                       fontSize: 30,
-                       fontWeight: '700',
-                       marginLeft: 10,
-                       color: 'white'
-                  }}>
-                        Events
-                 </Text>
-                </View>
-              </View>
               <ScrollView
                 scrollEventThrottle={16}
                 showsVerticalScrollIndicator={false}
               >
-                <View style={{ flex: 1, backgroundColor: 'white', paddingTop: 20 }}>
+                <View style={{ flex: 1, backgroundColor: 'white', paddingTop: 30 }}>
                   <Text
                     style={{
                       fontSize: 24,
                       fontWeight: '700',
-                      paddingHorizontal: 20
+                      paddingHorizontal: 20,
+                      color: 'grey'
                     }}
                   >
                     Weekly Events
@@ -76,21 +57,25 @@ export class EventsScreen extends Component {
                       horizontal={true}
                       showsHorizontalScrollIndicator={false}
                     >
-                      <Category
-                        ImageUri={require('../assets/images.jpeg')}
+                      <CategoryItem
+                        ImageUri={require('../assets/puppetShow.jpeg')}
                         name={'Weekly Puppet Show'}
+                        navigation={this.props.navigation}
                       />
-                      <Category
-                        ImageUri={require('../assets/images.jpeg')}
+                      <CategoryItem
+                        ImageUri={require('../assets/qawali.jpeg')}
                         name={'Dramafest'}
+                        navigation={this.props.navigation}
                       />
-                      <Category
-                        ImageUri={require('../assets/images.jpeg')}
+                      <CategoryItem
+                        ImageUri={require('../assets/folkFestival.jpg')}
                         name={'Food Street'}
+                        navigation={this.props.navigation}
                       />
-                      <Category
+                      <CategoryItem
                         ImageUri={require('../assets/images.jpeg')}
                         name={'Weekly Concert'}
+                        navigation={this.props.navigation}
                       />
                     </ScrollView>
                   </View>
@@ -100,7 +85,7 @@ export class EventsScreen extends Component {
                   style={{
                     flex: 1,
                     backgroundColor: 'white',
-                    paddingTop: 20
+                    paddingTop: 30
                     // paddingHorizontal: 20
                   }}
                 >
@@ -108,7 +93,8 @@ export class EventsScreen extends Component {
                     style={{
                       fontSize: 24,
                       fontWeight: '700',
-                      paddingHorizontal: 20
+                      paddingHorizontal: 20,
+                      color: 'grey'
                     }}
                   >
                     Upcoming Events
@@ -116,14 +102,16 @@ export class EventsScreen extends Component {
     
                   <View style={{ height: 280, marginTop: 20 }}>
                     <ScrollView
+                      horizontal={true}
+                      showsHorizontalScrollIndicator={false}
                     >
                       <Category3
-                        ImageUri={require('../assets/images.jpeg')}
+                        ImageUri={require('../assets/qawali.jpeg')}
                         name={'Rock Concert'}
                         navigation={this.props.navigation}
                       />
                       <Category3
-                        ImageUri={require('../assets/images.jpeg')}
+                        ImageUri={require('../assets/folkFestival.jpg')}
                         name={'International Film Festival'}
                         navigation={this.props.navigation}
                       />

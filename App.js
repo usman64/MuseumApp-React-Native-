@@ -30,12 +30,12 @@ import SingleEventScreen from './components/SingleEventScreen';
 const EventStack = createStackNavigator({
   Events: {
     screen: EventsScreen,
-    navigationOptions: {
-      header: null
-    }
   },
   SingleEvent: {
-    screen: SingleEventScreen
+    screen: SingleEventScreen,
+    navigationOptions: {
+      header:null,
+    }
   }
 });
 
@@ -52,7 +52,17 @@ const ExploreStack = createStackNavigator({
   Event: {
     screen: EventStack,
     navigationOptions: {
-      header: null
+      title: 'Events',
+      headerStyle: {
+        backgroundColor: 'maroon',
+      },
+
+      headerTitleStyle: {
+        fontWeight: '700',
+        fontSize: 25,
+        color: 'white'
+      },
+      headerTintColor: 'white'
     }
   }
 });

@@ -25,6 +25,8 @@
     ],
     "ios": {
       "supportsTablet": true
-    }
+    },
+    "description": "Mobile Application for Rafi Peer Theatre/Museum",
+    "githubUrl": "https://github.com/usman64/MuseumApp-React-Native-"
   }
 }
