@@ -24,6 +24,7 @@ export class EventsScreen extends Component {
     if (Platform.OS === 'android') {
       this.startHeaderHeight = 100 + StatusBar.currentHeight;
     }
+    console.log('Hello');
   }
 
   static navigationOptions = {
