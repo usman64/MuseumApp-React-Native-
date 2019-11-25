@@ -32,34 +32,7 @@ const About = () => {
     //   centerComponent={{ text: 'MY TITLE', style: { color: '#fff' } }}
     // />
     <View style={{ flex: 1 }}>
-      <View
-        style={{
-          flex: 1,
-          height: 75,
-          backgroundColor: 'maroon',
-          borderBottomWidth: 1,
-          borderBottomColor: '#ddd'
-        }}
-      >
-        <View
-          style={{
-            flexDirection: 'row'
-          }}
-        >
-          <Text
-            style={{
-              marginTop: 20,
-              fontSize: 30,
-              fontWeight: '700',
-              marginLeft: 10,
-              color: 'white'
-            }}
-          >
-            About Us
-          </Text>
-        </View>
-      </View>
-      <View style={{ flex: 7 }}>
+        <View style={{ flex: 7 }}>
         <AboutContent />
       </View>
     </View>

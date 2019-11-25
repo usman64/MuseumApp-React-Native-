@@ -78,7 +78,17 @@ const MoreStack = createStackNavigator(
     About: {
       screen: About,
       navigationOptions: {
-        header: null
+        title: 'About Us',
+        headerStyle: {
+          backgroundColor: 'maroon',
+        },
+
+        headerTitleStyle: {
+          fontWeight: '700',
+          fontSize: 25,
+          color: 'white'
+        },
+        headerTintColor: 'white'
       }
     }
     //More screen here
