@@ -22,19 +22,19 @@ import CounterScreen from './containers/CounterScreen';
 import Explore from './containers/Explore';
 import MuseumMap from './containers/MuseumMap';
 import More from './containers/More';
-import About from './components/About';
+import About from './components/More/About';
 import SplashScreen from './components/SplashScreen';
 import EventsScreen from './containers/EventsScreen';
 import SingleEventScreen from './components/SingleEventScreen';
 
 const EventStack = createStackNavigator({
   Events: {
-    screen: EventsScreen,
+    screen: EventsScreen
   },
   SingleEvent: {
     screen: SingleEventScreen,
     navigationOptions: {
-      header:null,
+      header: null
     }
   }
 });
@@ -54,7 +54,7 @@ const ExploreStack = createStackNavigator({
     navigationOptions: {
       title: 'Events',
       headerStyle: {
-        backgroundColor: 'maroon',
+        backgroundColor: 'maroon'
       },
 
       headerTitleStyle: {
@@ -80,7 +80,7 @@ const MoreStack = createStackNavigator(
       navigationOptions: {
         title: 'About Us',
         headerStyle: {
-          backgroundColor: 'maroon',
+          backgroundColor: 'maroon'
         },
 
         headerTitleStyle: {
