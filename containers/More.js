@@ -21,6 +21,9 @@ export class More extends Component {
     if (where === 'About') {
       this.props.navigation.navigate('About');
     }
+    if (where === 'Settings') {
+      this.props.navigation.navigate('Settings');
+    }
   }
   state = {
     isSwitchOn: false
