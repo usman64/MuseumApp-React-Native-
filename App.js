@@ -23,9 +23,9 @@ import Explore from './containers/Explore';
 import MuseumMap from './containers/MuseumMap';
 import More from './containers/More';
 import About from './components/More/About';
-import SplashScreen from './components/SplashScreen';
+// import SplashScreen from './components/layout/SplashScreen';
 import EventsScreen from './containers/EventsScreen';
-import SingleEventScreen from './components/SingleEventScreen';
+import SingleEventScreen from './components/Explore/events/SingleEventScreen';
 
 const EventStack = createStackNavigator({
   Events: {
@@ -160,10 +160,10 @@ const AppNavigator = createSwitchNavigator(
   {
     Main: {
       screen: AppTabNavigator
-    },
-    SplashScreen: {
-      screen: SplashScreen
     }
+    // SplashScreen: {
+    //   screen: SplashScreen
+    // }
   },
   {
     initialRouteName: 'Main'

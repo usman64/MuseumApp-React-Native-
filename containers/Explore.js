@@ -14,8 +14,8 @@ import { TextInput, TouchableOpacity } from 'react-native-gesture-handler';
 
 import SafeAreaView from 'react-native-safe-area-view';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import Category from '../components/Explore/Category2';
-import SubHeader from '../components/Explore/SubHeader';
+import Category from '../components/Explore/CategoryItem';
+import SubHeader from '../components/layout/SubHeader';
 import CategoryList from '../components/Explore/CategoryList';
 // import Category2 from '../components/Explore/Category2';
 

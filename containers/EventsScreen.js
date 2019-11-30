@@ -14,7 +14,7 @@ import { TextInput } from 'react-native-gesture-handler';
 import SafeAreaView from 'react-native-safe-area-view';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import CategoryItem from '../components/Explore/Category';
-import Category3 from '../components/Explore/Category3';
+import Category3 from '../components/Explore/events/Category3';
 
 const { height, width } = Dimensions.get('window');
 

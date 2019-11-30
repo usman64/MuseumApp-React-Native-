@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Text, View, ScrollView } from 'react-native';
-import CategoryItem from './Category2';
+import CategoryItem from './CategoryItem';
 
 export class CategoryList extends Component {
   render() {

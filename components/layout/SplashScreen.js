@@ -16,7 +16,7 @@ export class SplashScreen extends Component {
         style={{ flex: 1, justifyContent: 'center', backgroundColor: 'maroon' }}
       >
         <Image
-          source={require('../assets/RF_logo.png')}
+          source={require('../../assets/RF_logo.png')}
           style={{
             width: 150,
             height: 150,
