@@ -30,11 +30,11 @@ class SinglePuppetScreen extends Component {
     super(props);
     this.state = {
       puppetid: this.props.navigation.getParam('puppetData').puppetid,
-      puppetname: this.props.navigation.getParam('puppetData').puppetname,
-      category: this.props.navigation.getParam('puppetData').category,
-      puppetyear: this.props.navigation.getParam('puppetData').puppetyear,
-      region: this.props.navigation.getParam('puppetData').region,
-      images: [...this.props.navigation.getParam('puppetData').imagelink],
+      puppetname: '',
+      category: '',
+      puppetyear: '',
+      region: '',
+      images: ['../../../assets/string.jpeg'],
       description: ''
     };
   }
@@ -46,14 +46,10 @@ class SinglePuppetScreen extends Component {
     axios
       .all([
         axios.get(
-          `https://glacial-beyond-08798.herokuapp.com/puppetimage/${
-            this.props.navigation.getParam('puppetData').puppetid
-          }`
+          `https://glacial-beyond-08798.herokuapp.com/puppetimage/${this.state.puppetid}`
         ),
         axios.get(
-          `https://glacial-beyond-08798.herokuapp.com/puppets/${
-            this.props.navigation.getParam('puppetData').puppetid
-          }`
+          `https://glacial-beyond-08798.herokuapp.com/puppets/${this.state.puppetid}`
         )
       ])
       .then(
@@ -61,6 +57,10 @@ class SinglePuppetScreen extends Component {
           const imageLinks = ImagesRes.data.map((item) => item.imagelink);
           this.setState({
             images: imageLinks,
+            puppetname: DescriptionRes.data[0].puppetname,
+            category: DescriptionRes.data[0].category,
+            puppetyear: DescriptionRes.data[0].puppetyear,
+            region: DescriptionRes.data[0].region,
             description: DescriptionRes.data[0].description
           });
         })
@@ -85,7 +85,7 @@ class SinglePuppetScreen extends Component {
         <View style={{ flexDirection: 'row', paddingTop: 20, padding: 20 }}>
           <Text style={{ fontSize: 20, fontWeight: 'bold' }}>Year: </Text>
           <Text style={{ fontSize: 18, color: 'grey' }}>
-            {this.props.navigation.getParam('puppetData').puppetyear}
+            {this.state.puppetyear}
           </Text>
 
           <View
@@ -97,7 +97,7 @@ class SinglePuppetScreen extends Component {
           >
             <Text style={{ fontSize: 20, fontWeight: 'bold' }}>Region: </Text>
             <Text style={{ fontSize: 18, color: 'grey' }}>
-              {this.props.navigation.getParam('puppetData').region}
+              {this.state.region}
             </Text>
           </View>
         </View>

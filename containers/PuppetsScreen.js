@@ -17,12 +17,23 @@ import {
   TouchableOpacity,
   TouchableWithoutFeedback
 } from 'react-native-gesture-handler';
+import PuppetGridViewCard from '../components/Explore/puppets/PuppetGridViewCard';
 
 const ITEM_WIDTH = Dimensions.get('window').width;
 
 export class PuppetsScreen extends Component {
+  static navigationOptions = ({ navigation }) => {
+    return {
+      title:
+        navigation.getParam('filterType') === 'CategorizedPuppets'
+          ? `${navigation.getParam('filterOn')} Puppets`
+          : `${navigation.getParam('filterOn')}'s Puppets`
+    };
+  };
+
   state = {
     searchValue: '',
+    filteredData: [],
     data: [
       {
         puppetid: 1,
@@ -263,12 +274,21 @@ export class PuppetsScreen extends Component {
     }
   }
 
-  //   onChange = (text) => {
-  //     // console.warn(text);
-  //     this.setState((prevState) => ({
-  //       data: prevState.data.map((item) => item.puppetname.includes(text))
-  //     }));
-  //   };
+  onChange = (text) => {
+    this.setState((prevState) => ({
+      searchValue: text,
+      filteredData:
+        prevState.data.filter(
+          (item) =>
+            item.category.toLowerCase().includes(text.toLowerCase()) ||
+            item.puppetname.toLowerCase().includes(text.toLowerCase()) ||
+            item.puppetyear
+              .toString()
+              .toLowerCase()
+              .includes(text.toLowerCase())
+        ) || item.region.toLowerCase().includes(text.toLowerCase())
+    }));
+  };
 
   render() {
     return this.state.data.length === 0 ? (
@@ -311,8 +331,8 @@ export class PuppetsScreen extends Component {
             underlineColorAndroid='transparent'
             placeholder='Search'
             placeholderTextColor='grey'
-            // onChangeText={(text) => this.onChange(text)}
-            // value={this.state.searchValue}
+            onChangeText={(text) => this.onChange(text)}
+            value={this.state.searchValue}
             maxLength={20}
           />
           {/* </TouchableOpacity> */}
@@ -320,12 +340,19 @@ export class PuppetsScreen extends Component {
 
         <View style={{ flex: 10 }}>
           <FlatList
+            showsVerticalScrollIndicator={false}
             numColumns={2}
-            data={this.state.data}
-            //   ItemSeparatorComponent={() => (
-            //     <View style={{ width: 16, backgroundColor: 'pink' }} />
-            //   )}
+            data={
+              this.state.searchValue.length > 0
+                ? this.state.filteredData
+                : this.state.data
+            }
             renderItem={({ item }) => (
+              //   <PuppetGridViewCard
+              //     ITEM_WIDTH={ITEM_WIDTH}
+              //     item={item}
+              //     navigation={this.props.navigation}
+              //   />
               <TouchableWithoutFeedback
                 style={{
                   flex: 1,
@@ -356,7 +383,27 @@ export class PuppetsScreen extends Component {
                   />
                 </View>
                 <View style={{ flex: 1, paddingLeft: 10, paddingTop: 10 }}>
-                  <Text style={{ fontWeight: 'bold' }}>{item.puppetname}</Text>
+                  <Text style={{ fontSize: 17, fontWeight: 'bold' }}>
+                    {item.puppetname}
+                  </Text>
+                  <View style={{ flexDirection: 'row' }}>
+                    <Text style={{ fontSize: 12, color: 'grey' }}>
+                      {this.props.navigation.getParam('filterType') ===
+                      'CategorizedPuppets'
+                        ? item.region
+                        : item.category}
+                    </Text>
+                    <Text
+                      style={{
+                        marginLeft: 'auto',
+                        marginRight: 10,
+                        fontSize: 12,
+                        color: 'grey'
+                      }}
+                    >
+                      {item.puppetyear}
+                    </Text>
+                  </View>
                 </View>
               </TouchableWithoutFeedback>
             )}

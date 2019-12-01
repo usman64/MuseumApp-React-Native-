@@ -138,7 +138,7 @@ export class Explore extends Component {
                 style={{ marginLeft: 'auto', marginRight: 20, marginTop: 25 }}
               >
                 <TouchableOpacity
-                  onPress={() => Alert.alert('Qr Code Scanner')}
+                  onPress={() => this.props.navigation.navigate('QrScan')}
                 >
                   <Image
                     source={require('../assets/scan.png')}
@@ -158,7 +158,7 @@ export class Explore extends Component {
               </View>
             </View>
           </View>
-          <View
+          {/* <View
             style={{
               flexDirection: 'row',
               padding: 10,
@@ -179,23 +179,25 @@ export class Explore extends Component {
               name='search'
               size={20}
             />
-            {/* <TouchableOpacity
-              style={{ flex: 1 }}
-              onPress={() => this.props.navigation.navigate('Search')}
-            > */}
-            <TextInput
-              style={{
-                fontSize: 15,
-                flex: 1,
-                fontWeight: '700',
-                backgroundColor: 'white'
-              }}
-              underlineColorAndroid='transparent'
-              placeholder='Search'
-              placeholderTextColor='grey'
-            />
-            {/* </TouchableOpacity> */}
-          </View>
+            // <TouchableOpacity
+            //   onPress={() => this.props.navigation.navigate('Search')}
+            // >
+              <TextInput
+                style={{
+                  fontSize: 15,
+                  height: 30,
+                  flex: 1,
+                  fontWeight: '700',
+                  backgroundColor: 'white'
+                }}
+                onTouchStart={() => this.props.navigation.navigate('Search')}
+                editable={false}
+                underlineColorAndroid='transparent'
+                placeholder='Search'
+                placeholderTextColor='grey'
+              />
+            // </TouchableOpacity>
+          </View> */}
 
           <ScrollView
             scrollEventThrottle={16}

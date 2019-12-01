@@ -30,6 +30,7 @@ import SingleEventScreen from './components/Explore/events/SingleEventScreen';
 import PuppetsScreen from './containers/PuppetsScreen';
 import SearchScreen from './containers/SearchScreen';
 import SinglePuppetScreen from './components/Explore/puppets/SinglePuppetScreen';
+import QrCodeScreen from './containers/QrCodeScreen';
 
 const EventStack = createStackNavigator({
   Events: {
@@ -50,7 +51,24 @@ const ExploreStack = createStackNavigator({
       header: null
     }
   },
-  Search: { screen: CounterScreen },
+  QrScan: {
+    screen: QrCodeScreen
+  },
+  Search: {
+    screen: PuppetsScreen,
+    navigationOptions: {
+      headerStyle: {
+        backgroundColor: 'maroon'
+      },
+
+      headerTitleStyle: {
+        fontWeight: '700',
+        fontSize: 25,
+        color: 'white'
+      },
+      headerTintColor: 'white'
+    }
+  },
   SinglePuppet: {
     screen: SinglePuppetScreen,
     navigationOptions: {
@@ -69,7 +87,6 @@ const ExploreStack = createStackNavigator({
   CategorizedPuppets: {
     screen: PuppetsScreen,
     navigationOptions: {
-      title: 'Puppets',
       headerStyle: {
         backgroundColor: 'maroon'
       },
@@ -85,7 +102,6 @@ const ExploreStack = createStackNavigator({
   RegionalPuppets: {
     screen: PuppetsScreen,
     navigationOptions: {
-      title: 'Puppets',
       headerStyle: {
         backgroundColor: 'maroon'
       },
