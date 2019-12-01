@@ -19,6 +19,8 @@ import SubHeader from '../components/layout/SubHeader';
 import CategoryList from '../components/Explore/CategoryList';
 // import Category2 from '../components/Explore/Category2';
 
+import axios from 'axios';
+
 const upEvents = [
   {
     name: 'Puppet Show',
@@ -78,6 +80,17 @@ const Regions = [
 
 const { height, width } = Dimensions.get('window');
 export class Explore extends Component {
+  async componentDidMount() {
+    try {
+      const resp = await axios.get(
+        'https://glacial-beyond-08798.herokuapp.com/allpuppets'
+      );
+      console.warn(resp.data);
+    } catch (err) {
+      console.error(err.message);
+    }
+  }
+
   componentWillMount() {
     this.startHeaderHeight = 80;
     if (Platform.OS === 'android') {
