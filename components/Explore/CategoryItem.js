@@ -2,11 +2,26 @@ import React, { Component } from 'react';
 import { Text, View, ScrollView, Alert, ImageBackground } from 'react-native';
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 
-export class CategoryItem extends Component {
+class CategoryItem extends Component {
   render() {
+    const { type } = this.props;
     return (
       <TouchableWithoutFeedback
-        onPress={() => Alert.alert(`${this.props.name} pressed!`)}
+        onPress={() => {
+          if (type === 'CategorizedPuppets') {
+            this.props.navigation.navigate('CategorizedPuppets', {
+              filterOn: this.props.name,
+              filterType: type
+            });
+          } else if (type === 'RegionalPuppets') {
+            this.props.navigation.navigate('RegionalPuppets', {
+              filterOn: this.props.name,
+              filterType: type
+            });
+          } else {
+            this.props.navigation.navigate('SingleEvent');
+          }
+        }}
         style={{
           height: 150,
           width: 200,

@@ -23,10 +23,13 @@ import Explore from './containers/Explore';
 import MuseumMap from './containers/MuseumMap';
 import More from './containers/More';
 import About from './components/More/About';
-import Settings from './components/More/Settings'
+import Settings from './components/More/Settings';
 // import SplashScreen from './components/layout/SplashScreen';
 import EventsScreen from './containers/EventsScreen';
 import SingleEventScreen from './components/Explore/events/SingleEventScreen';
+import PuppetsScreen from './containers/PuppetsScreen';
+import SearchScreen from './containers/SearchScreen';
+import SinglePuppetScreen from './components/Explore/puppets/SinglePuppetScreen';
 
 const EventStack = createStackNavigator({
   Events: {
@@ -48,8 +51,53 @@ const ExploreStack = createStackNavigator({
     }
   },
   Search: { screen: CounterScreen },
-  CategorizedPuppets: { screen: CounterScreen },
-  RegionalPuppets: { screen: CounterScreen },
+  SinglePuppet: {
+    screen: SinglePuppetScreen,
+    navigationOptions: {
+      headerStyle: {
+        backgroundColor: 'maroon'
+      },
+
+      headerTitleStyle: {
+        fontWeight: '700',
+        fontSize: 25,
+        color: 'white'
+      },
+      headerTintColor: 'white'
+    }
+  },
+  CategorizedPuppets: {
+    screen: PuppetsScreen,
+    navigationOptions: {
+      title: 'Puppets',
+      headerStyle: {
+        backgroundColor: 'maroon'
+      },
+
+      headerTitleStyle: {
+        fontWeight: '700',
+        fontSize: 25,
+        color: 'white'
+      },
+      headerTintColor: 'white'
+    }
+  },
+  RegionalPuppets: {
+    screen: PuppetsScreen,
+    navigationOptions: {
+      title: 'Puppets',
+      headerStyle: {
+        backgroundColor: 'maroon'
+      },
+
+      headerTitleStyle: {
+        fontWeight: '700',
+        fontSize: 25,
+        color: 'white'
+      },
+      headerTintColor: 'white'
+    }
+  },
   Event: {
     screen: EventStack,
     navigationOptions: {
@@ -107,7 +155,7 @@ const MoreStack = createStackNavigator(
         },
         headerTintColor: 'white'
       }
-    },
+    }
     //More screen here
   },
   {

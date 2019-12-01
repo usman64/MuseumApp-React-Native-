@@ -14,10 +14,8 @@ import { TextInput, TouchableOpacity } from 'react-native-gesture-handler';
 
 import SafeAreaView from 'react-native-safe-area-view';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import Category from '../components/Explore/CategoryItem';
 import SubHeader from '../components/layout/SubHeader';
 import CategoryList from '../components/Explore/CategoryList';
-// import Category2 from '../components/Explore/Category2';
 
 import axios from 'axios';
 
@@ -33,10 +31,6 @@ const upEvents = [
   {
     name: 'Qawali Night',
     ImageUri: require('../assets//qawali.jpeg')
-  },
-  {
-    name: 'More',
-    ImageUri: require('../assets/images.jpeg')
   }
 ];
 
@@ -82,10 +76,10 @@ const { height, width } = Dimensions.get('window');
 export class Explore extends Component {
   async componentDidMount() {
     try {
-      const resp = await axios.get(
-        'https://glacial-beyond-08798.herokuapp.com/allpuppets'
-      );
-      console.warn(resp.data);
+      // const resp = await axios.get(
+      //   'https://glacial-beyond-08798.herokuapp.com/allpuppets'
+      // );
+      // console.warn(resp.data);
     } catch (err) {
       console.error(err.message);
     }
@@ -185,6 +179,10 @@ export class Explore extends Component {
               name='search'
               size={20}
             />
+            {/* <TouchableOpacity
+              style={{ flex: 1 }}
+              onPress={() => this.props.navigation.navigate('Search')}
+            > */}
             <TextInput
               style={{
                 fontSize: 15,
@@ -196,6 +194,7 @@ export class Explore extends Component {
               placeholder='Search'
               placeholderTextColor='grey'
             />
+            {/* </TouchableOpacity> */}
           </View>
 
           <ScrollView
@@ -204,7 +203,11 @@ export class Explore extends Component {
           >
             <View style={{ flex: 1, backgroundColor: 'white', paddingTop: 20 }}>
               <SubHeader headerName={'Explore By Type'} type={' '} />
-              <CategoryList data={typesOfPuppets} />
+              <CategoryList
+                data={typesOfPuppets}
+                type={'CategorizedPuppets'}
+                navigation={this.props.navigation}
+              />
             </View>
 
             <View
@@ -240,7 +243,11 @@ export class Explore extends Component {
                                                                                             </View>
 
                                                                                           <View> */}
-              <CategoryList data={Regions} />
+              <CategoryList
+                data={Regions}
+                type={'RegionalPuppets'}
+                navigation={this.props.navigation}
+              />
             </View>
 
             <View style={{ flex: 1, backgroundColor: 'white', paddingTop: 20 }}>
@@ -249,7 +256,11 @@ export class Explore extends Component {
                 type={'Event'}
                 onPress={() => this.props.navigation.navigate('Event')}
               />
-              <CategoryList data={upEvents} />
+              <CategoryList
+                data={upEvents}
+                type={'Event'}
+                navigation={this.props.navigation}
+              />
             </View>
           </ScrollView>
         </View>
