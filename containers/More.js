@@ -24,6 +24,9 @@ export class More extends Component {
     if (where === 'Settings') {
       this.props.navigation.navigate('Settings');
     }
+    if (where === 'Contact Us') {
+      this.props.navigation.navigate('ContactUs');
+    }
   }
   state = {
     isSwitchOn: false
@@ -39,43 +42,11 @@ export class More extends Component {
               data={[
                 { key: 'About' },
                 { key: 'Contact Us' },
-                { key: 'Find Us' },
-                { key: 'Language' },
                 { key: 'Settings' },
                 { key: 'Help' }
               ]}
               renderItem={({ item }) => {
-                if (item.key === 'Language') {
-                  return (
-                    <View 
-                      style={{
-                        flex: 1,
-                        flexDirection: 'row',
-                        justifyContent: 'space-between',
-                        height: 50,
-                        borderBottomWidth: 1,
-                        borderColor: 'rgba(214, 215, 218, 0.5)',
-                      }}
-                      onPress={() => this.navigator(item.key)}
-                    >
-                      <TouchableOpacity 
-                        >
-                        <Text style={styles.text}>{item.key}</Text>
-                      </TouchableOpacity>
-                      <View style={{ flexDirection: 'row', marginRight: 5 }}>
-                        <Text style={styles.languageOption}>EN</Text>
-                        <Switch
-                          // style={{justifyContent: 'flex-end',}}
-                          value={isSwitchOn}
-                          onValueChange={() => {
-                            this.setState({ isSwitchOn: !isSwitchOn });
-                          }}
-                        />
-                        <Text style={styles.languageOption}>UR</Text>
-                      </View>
-                    </View>
-                  );
-                } else {
+                
                   return (
                     <View>
                       <TouchableOpacity 
@@ -92,7 +63,6 @@ export class More extends Component {
                     </TouchableOpacity>
                     </View>
                   );
-                }
               }}
             />
           </View>
