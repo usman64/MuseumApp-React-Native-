@@ -10,7 +10,7 @@ export class Category3 extends Component {
                         {name: this.props.name, image: this.props.ImageUri})}
         style={{
           height: 200,
-          width: 300,
+          width: 320,
           marginLeft: 20,
           backgroundColor: 'white',
           shadowColor: 'black',
@@ -18,12 +18,12 @@ export class Category3 extends Component {
           shadowOpacity: 0.8,
           shadowRadius: 5,
           elevation: 10,
-          borderRadius: 22
+          borderRadius: 22,
         }}
       >
         <View
           style={{
-            flex: 1
+            flex: 1,
           }}
         >
           <ImageBackground

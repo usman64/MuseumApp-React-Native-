@@ -16,6 +16,7 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 import CategoryItem from '../components/Explore/Category';
 import Category3 from '../components/Explore/events/Category3';
 
+
 const { height, width } = Dimensions.get('window');
 
 export class EventsScreen extends Component {
@@ -33,12 +34,10 @@ export class EventsScreen extends Component {
 
   render() {
     return (
-      <SafeAreaView style={{ flex: 1 }}>
+      <ScrollView contentContainerStyle={{ paddingBottom: 650 }}> 
+      <View>
         <View>
-          <ScrollView
-            scrollEventThrottle={16}
-            showsVerticalScrollIndicator={false}
-          >
+          <View>
             <View style={{ flex: 1, backgroundColor: 'white', paddingTop: 30 }}>
               <Text
                 style={{
@@ -99,36 +98,44 @@ export class EventsScreen extends Component {
               </Text>
 
               <View style={{ height: 280, marginTop: 20 }}>
-                <ScrollView
-                  horizontal={true}
-                  showsHorizontalScrollIndicator={false}
+                <View
                 >
                   <Category3
                     ImageUri={require('../assets/qawali.jpeg')}
                     name={'Rock Concert'}
                     navigation={this.props.navigation}
                   />
+                </View>
+
+                <View style={{paddingTop: 30}}>  
                   <Category3
                     ImageUri={require('../assets/folkFestival.jpg')}
                     name={'International Film Festival'}
                     navigation={this.props.navigation}
                   />
+                </View> 
+
+                <View style={{paddingTop: 30}}> 
                   <Category3
                     ImageUri={require('../assets/images.jpeg')}
                     name={'Puppet Show 2k19'}
                     navigation={this.props.navigation}
                   />
+                </View>
+
+                <View style={{paddingTop: 30}}>  
                   <Category3
                     ImageUri={require('../assets/images.jpeg')}
                     name={'Atif Aslam Concert'}
                     navigation={this.props.navigation}
                   />
-                </ScrollView>
+                </View>
               </View>
             </View>
-          </ScrollView>
+          </View>
         </View>
-      </SafeAreaView>
+        </View>  
+      </ScrollView>
     );
   }
 }
