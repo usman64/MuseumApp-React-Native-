@@ -23,7 +23,16 @@ import Explore from './containers/Explore';
 import MuseumMap from './containers/MuseumMap';
 import More from './containers/More';
 import About from './components/More/About';
+<<<<<<< Updated upstream
 import Settings from './components/More/Settings';
+=======
+import Settings from './components/More/Settings'
+import ContactUs from './components/More/ContactUs'
+
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
 // import SplashScreen from './components/layout/SplashScreen';
 import EventsScreen from './containers/EventsScreen';
 import SingleEventScreen from './components/Explore/events/SingleEventScreen';
@@ -171,7 +180,46 @@ const MoreStack = createStackNavigator(
         },
         headerTintColor: 'white'
       }
+<<<<<<< Updated upstream
     }
+=======
+    },
+    ContactUs: {
+      screen: ContactUs,
+      navigationOptions: {
+        title: 'ContactUs',
+        headerStyle: {
+          backgroundColor: 'maroon'
+        },
+
+        headerTitleStyle: {
+          fontWeight: '700',
+          fontSize: 25,
+          color: 'white'
+        },
+        headerTintColor: 'white'
+      }
+    },
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
+    ContactUs: {
+      screen: ContactUs,
+      navigationOptions: {
+        title: 'ContactUs',
+        headerStyle: {
+          backgroundColor: 'maroon'
+        },
+
+        headerTitleStyle: {
+          fontWeight: '700',
+          fontSize: 25,
+          color: 'white'
+        },
+        headerTintColor: 'white'
+      }
+    },
+>>>>>>> Stashed changes
     //More screen here
   },
   {
