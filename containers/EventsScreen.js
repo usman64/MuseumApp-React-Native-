@@ -13,11 +13,49 @@ import { TextInput } from 'react-native-gesture-handler';
 
 import SafeAreaView from 'react-native-safe-area-view';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import CategoryItem from '../components/Explore/Category';
-import Category3 from '../components/Explore/events/Category3';
+import CategoryList from '../components/Explore/CategoryList'
+import CategoryList3 from '../components/Explore/events/CategoryList3'
 
 
 const { height, width } = Dimensions.get('window');
+
+const WeeklyEvents = [
+  {
+    name: 'Puppet Show',
+    ImageUri: require('../assets/puppetShow.jpeg')
+  },
+  {
+    name: 'Folk Festival',
+    ImageUri: require('../assets/folkFestival.jpg')
+  },
+  {
+    name: 'Qawali Night',
+    ImageUri: require('../assets//qawali.jpeg')
+  },
+  {
+    name: 'Qawali Night',
+    ImageUri: require('../assets//qawali.jpeg')
+  }
+];
+
+const UpcomingEvents = [
+  {
+    name: 'Puppet Show',
+    ImageUri: require('../assets/puppetShow.jpeg')
+  },
+  {
+    name: 'Folk Festival',
+    ImageUri: require('../assets/folkFestival.jpg')
+  },
+  {
+    name: 'Qawali Night',
+    ImageUri: require('../assets//qawali.jpeg')
+  },
+  {
+    name: 'Qawali Night',
+    ImageUri: require('../assets//qawali.jpeg')
+  }
+];
 
 export class EventsScreen extends Component {
   componentWillMount() {
@@ -49,33 +87,11 @@ export class EventsScreen extends Component {
               >
                 Weekly Events
               </Text>
-              <View style={{ height: 180, marginTop: 20 }}>
-                <ScrollView
-                  horizontal={true}
-                  showsHorizontalScrollIndicator={false}
-                >
-                  <CategoryItem
-                    ImageUri={require('../assets/puppetShow.jpeg')}
-                    name={'Weekly Puppet Show'}
-                    navigation={this.props.navigation}
-                  />
-                  <CategoryItem
-                    ImageUri={require('../assets/qawali.jpeg')}
-                    name={'Dramafest'}
-                    navigation={this.props.navigation}
-                  />
-                  <CategoryItem
-                    ImageUri={require('../assets/folkFestival.jpg')}
-                    name={'Food Street'}
-                    navigation={this.props.navigation}
-                  />
-                  <CategoryItem
-                    ImageUri={require('../assets/images.jpeg')}
-                    name={'Weekly Concert'}
-                    navigation={this.props.navigation}
-                  />
-                </ScrollView>
-              </View>
+              <CategoryList
+                data={WeeklyEvents}
+                type={''}
+                navigation={this.props.navigation}
+              />
             </View>
 
             <View
@@ -91,46 +107,18 @@ export class EventsScreen extends Component {
                   fontSize: 24,
                   fontWeight: '700',
                   paddingHorizontal: 20,
-                  color: 'grey'
+                  color: 'grey',
+                  paddingTop: 20,
                 }}
               >
                 Upcoming Events
               </Text>
+                <CategoryList3
+                  data={UpcomingEvents}
+                  type={''}
+                  navigation={this.props.navigation}
+                />
 
-              <View style={{ height: 280, marginTop: 20 }}>
-                <View
-                >
-                  <Category3
-                    ImageUri={require('../assets/qawali.jpeg')}
-                    name={'Rock Concert'}
-                    navigation={this.props.navigation}
-                  />
-                </View>
-
-                <View style={{paddingTop: 30}}>  
-                  <Category3
-                    ImageUri={require('../assets/folkFestival.jpg')}
-                    name={'International Film Festival'}
-                    navigation={this.props.navigation}
-                  />
-                </View> 
-
-                <View style={{paddingTop: 30}}> 
-                  <Category3
-                    ImageUri={require('../assets/images.jpeg')}
-                    name={'Puppet Show 2k19'}
-                    navigation={this.props.navigation}
-                  />
-                </View>
-
-                <View style={{paddingTop: 30}}>  
-                  <Category3
-                    ImageUri={require('../assets/images.jpeg')}
-                    name={'Atif Aslam Concert'}
-                    navigation={this.props.navigation}
-                  />
-                </View>
-              </View>
             </View>
           </View>
         </View>
