@@ -23,6 +23,7 @@ import Explore from './containers/Explore';
 import MuseumMap from './containers/MuseumMap';
 import More from './containers/More';
 import About from './components/More/About';
+import Settings from './components/More/Settings'
 // import SplashScreen from './components/layout/SplashScreen';
 import EventsScreen from './containers/EventsScreen';
 import SingleEventScreen from './components/Explore/events/SingleEventScreen';
@@ -90,7 +91,23 @@ const MoreStack = createStackNavigator(
         },
         headerTintColor: 'white'
       }
-    }
+    },
+    Settings: {
+      screen: Settings,
+      navigationOptions: {
+        title: 'Settings',
+        headerStyle: {
+          backgroundColor: 'maroon'
+        },
+
+        headerTitleStyle: {
+          fontWeight: '700',
+          fontSize: 25,
+          color: 'white'
+        },
+        headerTintColor: 'white'
+      }
+    },
     //More screen here
   },
   {
