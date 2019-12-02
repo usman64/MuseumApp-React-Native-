@@ -9,16 +9,16 @@ export class Category3 extends Component {
       onPress={() => this.props.navigation.navigate('SingleEvent',
                         {name: this.props.name, image: this.props.ImageUri})}
         style={{
-          height: 200,
+          height: 270,
           width: 320,
           marginLeft: 20,
           backgroundColor: 'white',
           shadowColor: 'black',
           shadowOffset: { width: 5, height: 5 },
           shadowOpacity: 0.8,
-          shadowRadius: 5,
+          //shadowRadius: 5,
           elevation: 10,
-          borderRadius: 22,
+          //borderRadius: 22,
         }}
       >
         <View
@@ -29,11 +29,11 @@ export class Category3 extends Component {
           <ImageBackground
             style={{
               flex: 1,
-              width: null,
-              height: null,
+              width: 320,
+              height: 180,
               resizeMode: 'cover'
             }}
-            imageStyle={{ borderRadius: 22 }}
+            // imageStyle={{ borderRadius: 22 }}
             source={this.props.ImageUri}
           >
             <View
@@ -45,21 +45,30 @@ export class Category3 extends Component {
                 bottom: 0,
                 justifyContent: 'flex-end',
                 alignItems: 'flex-start',
-                backgroundColor: 'rgba(0, 0, 0, 0.5)',
-                borderRadius: 22
+                backgroundColor: 'rgba(0, 0, 0, 0)',
+                // borderRadius: 22
               }}
             >
-              <Text
-                style={{
-                  fontWeight: 'bold',
-                  color: 'white',
-                  fontSize: 26,
-                  paddingLeft: 15,
-                  paddingBottom: 15
-                }}
-              >
-                {this.props.name}
-              </Text>
+              <View style={{flexDirection: 'row', paddingBottom: 30}}>
+                <View style={{paddingLeft: 20, alignItems: 'center',paddingTop: 3}}>
+                  <Text style={{color: 'red', fontSize: 15}}>
+                    {this.props.month}
+                  </Text>
+                  <Text style={{color: 'black', fontSize: 20}}>{this.props.day}</Text>
+                </View>
+                <View style={{paddingLeft: 25}}>
+                  <Text
+                    style={{
+                      fontWeight: 'bold',
+                      color: 'black',
+                      fontSize: 22,
+                    }}
+                  >
+                    {this.props.name}
+                  </Text>
+                  <Text style={{color: 'grey'}}>{this.props.time}</Text>
+                </View>
+              </View>
             </View>
           </ImageBackground>
         </View>

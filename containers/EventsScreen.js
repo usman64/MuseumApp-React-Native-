@@ -41,19 +41,31 @@ const WeeklyEvents = [
 const UpcomingEvents = [
   {
     name: 'Puppet Show',
-    ImageUri: require('../assets/puppetShow.jpeg')
+    ImageUri: require('../assets/puppetShow.jpeg'),
+    day: 14,
+    month: 'DEC',
+    time: '7:30 PM'
   },
   {
     name: 'Folk Festival',
-    ImageUri: require('../assets/folkFestival.jpg')
+    ImageUri: require('../assets/folkFestival.jpg'),
+    day: 14,
+    month: 'DEC',
+    time: '7:30 PM'
   },
   {
     name: 'Qawali Night',
-    ImageUri: require('../assets//qawali.jpeg')
+    ImageUri: require('../assets//qawali.jpeg'),
+    day: 12,
+    month: 'DEC',
+    time: '7:30 PM'
   },
   {
     name: 'Qawali Night',
-    ImageUri: require('../assets//qawali.jpeg')
+    ImageUri: require('../assets//qawali.jpeg'),
+    day: 11,
+    month: 'DEC',
+    time: '7:30 PM'
   }
 ];
 
@@ -72,7 +84,7 @@ export class EventsScreen extends Component {
 
   render() {
     return (
-      <ScrollView contentContainerStyle={{ paddingBottom: 650 }}> 
+      <ScrollView contentContainerStyle={{ paddingBottom: 1200 }}> 
       <View>
         <View>
           <View>
@@ -108,7 +120,8 @@ export class EventsScreen extends Component {
                   fontWeight: '700',
                   paddingHorizontal: 20,
                   color: 'grey',
-                  paddingTop: 20,
+                  paddingTop
+                  : 20,
                 }}
               >
                 Upcoming Events
