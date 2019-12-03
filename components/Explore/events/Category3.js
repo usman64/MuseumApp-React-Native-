@@ -1,5 +1,12 @@
 import React, { Component } from 'react';
-import { Text, View, ScrollView, Alert, ImageBackground, Dimensions } from 'react-native';
+import {
+  Text,
+  View,
+  ScrollView,
+  Alert,
+  ImageBackground,
+  Dimensions
+} from 'react-native';
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 
 const ITEM_WIDTH = Dimensions.get('window').width;
@@ -7,30 +14,34 @@ export class Category3 extends Component {
   render() {
     return (
       <TouchableWithoutFeedback
-      onPress={() => this.props.navigation.navigate('SingleEvent',
-                        {name: this.props.name, image: this.props.ImageUri})}
+        onPress={() =>
+          this.props.navigation.navigate('SingleEvent', {
+            name: this.props.name,
+            image: this.props.ImageUri
+          })
+        }
         style={{
           height: 270,
-          width: ITEM_WIDTH-40,
+          width: ITEM_WIDTH - 40,
           marginLeft: 20,
           backgroundColor: 'white',
           shadowColor: 'black',
           shadowOffset: { width: 5, height: 5 },
           shadowOpacity: 0.8,
           //shadowRadius: 5,
-          elevation: 10,
+          elevation: 10
           //borderRadius: 22,
         }}
       >
         <View
           style={{
-            flex: 1,
+            flex: 1
           }}
         >
           <ImageBackground
             style={{
               flex: 1,
-              width: 320,
+              width: ITEM_WIDTH - 40,
               height: 180,
               resizeMode: 'cover'
             }}
@@ -46,28 +57,42 @@ export class Category3 extends Component {
                 bottom: 0,
                 justifyContent: 'flex-end',
                 alignItems: 'flex-start',
-                backgroundColor: 'rgba(0, 0, 0, 0)',
+                backgroundColor: 'rgba(0, 0, 0, 0)'
                 // borderRadius: 22
               }}
             >
-              <View style={{flexDirection: 'row', paddingBottom: 30}}>
-                <View style={{paddingLeft: 20, alignItems: 'center',paddingTop: 3}}>
-                  <Text style={{color: 'red', fontSize: 15}}>
+              <View
+                style={{
+                  flexDirection: 'row',
+                  paddingBottom: 30,
+                  paddingTop: 20
+                }}
+              >
+                <View
+                  style={{
+                    paddingLeft: 20,
+                    alignItems: 'center',
+                    paddingTop: 3
+                  }}
+                >
+                  <Text style={{ color: 'red', fontSize: 15 }}>
                     {this.props.month}
                   </Text>
-                  <Text style={{color: 'black', fontSize: 20}}>{this.props.day}</Text>
+                  <Text style={{ color: 'black', fontSize: 20 }}>
+                    {this.props.day}
+                  </Text>
                 </View>
-                <View style={{paddingLeft: 25}}>
+                <View style={{ paddingLeft: 25 }}>
                   <Text
                     style={{
                       fontWeight: 'bold',
                       color: 'black',
-                      fontSize: 22,
+                      fontSize: 22
                     }}
                   >
                     {this.props.name}
                   </Text>
-                  <Text style={{color: 'grey'}}>{this.props.time}</Text>
+                  <Text style={{ color: 'grey' }}>{this.props.time}</Text>
                 </View>
               </View>
             </View>
