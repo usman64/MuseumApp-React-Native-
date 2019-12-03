@@ -15,7 +15,7 @@ import {
   import * as Location from 'expo-location';
   import getDirections from 'react-native-google-maps-directions'
 
-  // const API_KEY = 'AIzaSyAPQHMQjQ6y4iy7rAI6YcIRQoXSA9FaEiY'
+  // const API_KEY = API_KEY
 
 
 
