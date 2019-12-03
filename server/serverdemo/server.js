@@ -46,15 +46,16 @@ app.get("/puppets/:id", function(req,res){
 app.get("/allpuppets", function (req, res) {
     var query = 
     `SELECT
-    a.puppetId puppetId,
+    DISTINCT ON (a.puppetId) a.puppetId,
+    -- COUNT(puppetID) as cp,
     a.puppetName puppetName,
     a.category category,
     a.puppetYear puppetYear,
     a.region region,
     b.imageLink imageLink
-    FROM
-    puppets a
-    INNER JOIN puppetImage b ON a.puppetId = b.puppetId`;
+FROM
+    puppets a, puppetImage b
+WHERE a.puppetId = b.puppetId;`;
     client.query(query, function (error, result) {
         res.json(result.rows);
     });
@@ -74,7 +75,7 @@ app.get("/events/:id", function (req, res) {
 });
 // ALL EVENTS
 app.get("/allevents", function (req, res) {
-    var query = "SELECT * FROM puppets";
+    var query = "SELECT * FROM events";
     client.query(query, function (error, result) {
         res.json(result.rows);
     });
