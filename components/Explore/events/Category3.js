@@ -4,9 +4,6 @@ import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 
 const ITEM_WIDTH = Dimensions.get('window').width;
 export class Category3 extends Component {
-  componentDidMount() {
-    console.log(ITEM_WIDTH)
-  }
   render() {
     return (
       <TouchableWithoutFeedback

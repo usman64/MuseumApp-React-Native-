@@ -15,6 +15,7 @@ import SafeAreaView from 'react-native-safe-area-view';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import CategoryList from '../components/Explore/CategoryList'
 import CategoryList3 from '../components/Explore/events/CategoryList3'
+import axios from 'axios'
 
 
 const { height, width } = Dimensions.get('window');
@@ -70,12 +71,17 @@ const UpcomingEvents = [
 ];
 
 export class EventsScreen extends Component {
-  componentWillMount() {
+  async componentWillMount() {
     this.startHeaderHeight = 80;
     if (Platform.OS === 'android') {
       this.startHeaderHeight = 100 + StatusBar.currentHeight;
     }
-    console.log('Hello');
+
+    const data = await axios.get(
+      `https://glacial-beyond-08798.herokuapp.com/events/2`
+      )
+
+      console.log(data)
   }
 
   render() {

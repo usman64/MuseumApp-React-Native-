@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, Slider, Switch } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
+import FindUs from './FindUs'
 
 export default class ContactUs extends Component {
     constructor() {
@@ -15,10 +16,9 @@ export default class ContactUs extends Component {
             <ScrollView>
                 <View style={{ flex: 1 }}>
                     <View style={{ flex: 7 }}>
-                        
-                       <Text>
-                           Find Us (Map)
-                       </Text>
+                    
+                        <FindUs />
+                       
                         <Text>
                             Social Media, Email, Phone
                        </Text>

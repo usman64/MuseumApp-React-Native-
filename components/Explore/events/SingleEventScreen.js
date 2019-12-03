@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { View, Text, StyleSheet, Image } from 'react-native'
+import axios from 'axios';
 
 export class SingleEventScreen extends Component {
     constructor(props) {
@@ -11,6 +12,15 @@ export class SingleEventScreen extends Component {
             relatedImages: []
         }        
     }
+
+    async componentDidMount() {
+       const data = await axios.get(
+        `https://glacial-beyond-08798.herokuapp.com/events/2`
+        )
+
+        console.log(data)
+    }
+
     render() {
         
         return (
