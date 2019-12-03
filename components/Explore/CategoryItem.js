@@ -19,7 +19,7 @@ class CategoryItem extends Component {
               filterType: type
             });
           } else {
-            this.props.navigation.navigate('SingleEvent');
+            this.props.navigation.navigate('SingleEvent',{name: this.props.name, image: this.props.ImageUri});
           }
         }}
         style={{

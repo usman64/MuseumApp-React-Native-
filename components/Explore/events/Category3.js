@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
-import { Text, View, ScrollView, Alert, ImageBackground } from 'react-native';
+import { Text, View, ScrollView, Alert, ImageBackground, Dimensions } from 'react-native';
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 
+const ITEM_WIDTH = Dimensions.get('window').width;
 export class Category3 extends Component {
+  componentDidMount() {
+    console.log(ITEM_WIDTH)
+  }
   render() {
     return (
       <TouchableWithoutFeedback
@@ -10,7 +14,7 @@ export class Category3 extends Component {
                         {name: this.props.name, image: this.props.ImageUri})}
         style={{
           height: 270,
-          width: 320,
+          width: ITEM_WIDTH-40,
           marginLeft: 20,
           backgroundColor: 'white',
           shadowColor: 'black',

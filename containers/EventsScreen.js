@@ -78,10 +78,6 @@ export class EventsScreen extends Component {
     console.log('Hello');
   }
 
-  static navigationOptions = {
-    header: null
-  };
-
   render() {
     return (
       <ScrollView contentContainerStyle={{ paddingBottom: 1200 }}> 
