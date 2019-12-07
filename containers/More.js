@@ -136,7 +136,8 @@ export class More extends Component {
           <View style={styles.line}></View>
 
           {/* Report a Problem */}
-          <View style={styles.item}><Text style={styles.text}>Report a Problem</Text></View>
+          <TouchableOpacity style={styles.item} onPress={() => this.props.navigation.navigate('ReportProblem')}>
+          <Text style={styles.text}>Report a Problem</Text></TouchableOpacity>
           <View style={styles.line}></View>
           
           {/* Privacy Policy */}
@@ -170,7 +171,7 @@ const styles = StyleSheet.create({
     // paddingTop: 20
   },
   headingText:{
-    fontSize: 0.06*width,
+    fontSize: 0.055*width,
     color: 'maroon',
     fontWeight: '500',
     marginLeft: 0.04 * width,
@@ -218,7 +219,7 @@ const styles = StyleSheet.create({
   },
   languageOption: {
     color: 'grey',
-    fontSize: 0.03 * width,
+    fontSize: 0.025*width,
   },
   version:{
     color: 'grey',

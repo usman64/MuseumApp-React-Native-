@@ -25,6 +25,7 @@ import More from './containers/More';
 import About from './components/More/About';
 import Settings from './components/More/Settings';
 import ContactUs from './components/More/ContactUs';
+import ReportProblem from './components/More/ReportProblem';
 // import SplashScreen from './components/layout/SplashScreen';
 import EventsScreen from './containers/EventsScreen';
 import SingleEventScreen from './components/Explore/events/SingleEventScreen';
@@ -193,7 +194,23 @@ const MoreStack = createStackNavigator(
         },
         headerTintColor: 'white'
       }
+    },
+    ReportProblem: {
+      screen: ReportProblem,
+      navigationOptions: {
+      title: 'Report',
+      headerStyle: {
+        backgroundColor: 'maroon'
+      },
+
+      headerTitleStyle: {
+        fontWeight: '700',
+        fontSize: 25,
+        color: 'white'
+      },
+      headerTintColor: 'white'
     }
+  },
     //More screen here
   },
   {

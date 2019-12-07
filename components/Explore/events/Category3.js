@@ -41,7 +41,7 @@ export class Category3 extends Component {
           <ImageBackground
             style={{
               flex: 1,
-              width: ITEM_WIDTH - 40,
+              width: null,
               height: 180,
               resizeMode: 'cover'
             }}
