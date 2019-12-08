@@ -54,6 +54,7 @@ class Category1 extends Component {
                 borderRadius: 22
               }}
             >
+              
               <Text
                 style={{
                   fontWeight: 'bold',

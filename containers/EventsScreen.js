@@ -7,7 +7,8 @@ import {
   StatusBar,
   ScrollView,
   Image,
-  Dimensions
+  Dimensions,
+  ActivityIndicator
 } from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
 
@@ -19,25 +20,6 @@ import axios from 'axios'
 
 
 const { height, width } = Dimensions.get('window');
-
-const WeeklyEvents = [
-  {
-    name: 'Puppet Show',
-    ImageUri: require('../assets/puppetShow.jpeg')
-  },
-  {
-    name: 'Folk Festival',
-    ImageUri: require('../assets/folkFestival.jpg')
-  },
-  {
-    name: 'Qawali Night',
-    ImageUri: require('../assets//qawali.jpeg')
-  },
-  {
-    name: 'Qawali Night',
-    ImageUri: require('../assets//qawali.jpeg')
-  }
-];
 
 export class EventsScreen extends Component {
 
