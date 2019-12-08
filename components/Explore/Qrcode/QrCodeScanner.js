@@ -28,8 +28,10 @@ export default class QrCodeScanner extends Component {
         puppetname: ''
       };
       this.props.navigation.navigate('SinglePuppet', { puppetData: item });
+      this.setState({ scanned: false });
     } else if (data.toString().includes('E')) {
       this.props.navigation.navigate('Event');
+      this.setState({ scanned: false });
     }
   };
 
@@ -55,12 +57,12 @@ export default class QrCodeScanner extends Component {
           style={StyleSheet.absoluteFillObject}
         />
 
-        {scanned && (
+        {/* {scanned && (
           <Button
             title={'Tap to Scan Again'}
             onPress={() => this.setState({ scanned: false })}
           />
-        )}
+        )} */}
       </View>
     );
   }

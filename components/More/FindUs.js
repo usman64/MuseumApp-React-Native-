@@ -1,122 +1,119 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import {
-    Text,
-    View,
-    StyleSheet,
-    Image,
-    Dimensions,
-    Alert,
-    Button
-  } from 'react-native';
+  Text,
+  View,
+  StyleSheet,
+  Image,
+  Dimensions,
+  Alert,
+  Button
+} from 'react-native';
 
-  import MapView, {AnimatedRegion, Animated, Marker} from 'react-native-maps'
-  import MapViewDirections from 'react-native-maps-directions'
-  import * as Permissions from 'expo-permissions';
-  import * as Location from 'expo-location';
-  import getDirections from 'react-native-google-maps-directions'
+import MapView, { AnimatedRegion, Animated, Marker } from 'react-native-maps';
+import MapViewDirections from 'react-native-maps-directions';
+import * as Permissions from 'expo-permissions';
+import * as Location from 'expo-location';
+import getDirections from 'react-native-google-maps-directions';
 
-  // const API_KEY = API_KEY
-
-
+// const API_KEY = API_KEY
 
 export class FindUs extends Component {
+  state = {
+    location: {},
+    errorMessage: null,
+    coordinate: {},
+    rafipeerCoordinates: {
+      lat: 31.411805,
+      long: 74.232693
+    }
+  };
 
-    state = {
-        location: {},
-        errorMessage: null,
-        coordinate: {},
-        rafipeerCoordinates: {
-          lat:31.411805,
-          long: 74.232693,
+  componentDidMount() {
+    this._getLocationAsync();
+  }
+
+  handleGetDirections = () => {
+    const data = {
+      source: {
+        latitude: this.state.coordinate.latitude,
+        longitude: this.state.coordinate.longitude
+      },
+
+      destination: {
+        latitude: this.state.rafipeerCoordinates.lat,
+        longitude: this.state.rafipeerCoordinates.long
+      },
+
+      params: [
+        {
+          key: 'travelmode',
+          value: 'driving' // may be "walking", "bicycling" or "transit" as well
+        },
+        {
+          key: 'dir_action',
+          value: 'navigate' // this instantly initializes navigation using the given travel mode
         }
-      };
+      ]
+    };
 
-      componentDidMount() {
-          this._getLocationAsync()
-      }
+    getDirections(data);
+  };
 
-      handleGetDirections = () => {
-        const data = {
-          source : {
-            latitude: this.state.coordinate.latitude,
-            longitude: this.state.coordinate.longitude
-          },
+  _getLocationAsync = async () => {
+    let coord = {};
+    let region = {};
+    let { status } = await Permissions.askAsync(Permissions.LOCATION);
+    if (status !== 'granted') {
+      this.setState({
+        errorMessage: 'Permission to access location was denied'
+      });
+    }
 
-          destination: {
-            latitude: this.state.rafipeerCoordinates.lat,
-            longitude: this.state.rafipeerCoordinates.long
-          },
+    Location.getCurrentPositionAsync({}).then((location) => {
+      this.setState({ location }, () => {
+        coord.latitude = location.coords.latitude;
+        region.latitude = location.coords.latitude;
+        coord.longitude = location.coords.longitude;
+        this.setState({ coordinate: coord });
+      });
+    });
+  };
 
-          params : [
-            {
-              key: "travelmode",
-              value: "driving"        // may be "walking", "bicycling" or "transit" as well
-            },
-            {
-              key: "dir_action",
-              value: "navigate"       // this instantly initializes navigation using the given travel mode
-            }
-          ],
+  render() {
+    const { latitude, longitude } = this.state.coordinate;
+    const latitudeDelta = 0.122;
+    const longitudeDelta = 0.122;
 
-        }
+    console.log(latitude, longitude);
+    console.log(latitudeDelta, longitudeDelta);
+    return (
+      <View style={styles.container}>
+        <MapView
+          region={{
+            latitude: latitude ? latitude : 0,
+            longitude: longitude ? longitude : 0,
+            latitudeDelta: latitudeDelta ? latitudeDelta : 0,
+            longitudeDelta: longitudeDelta ? longitudeDelta : 0
+          }}
+          style={styles.mapStyle}
+        >
+          <Marker
+            coordinate={{
+              longitude: longitude ? longitude : 0,
+              latitude: latitude ? latitude : 0
+            }}
+            onCalloutPress={() => Alert.alert('This is where you belong')}
+          />
 
-        getDirections(data);
-      }
+          <Marker
+            coordinate={{
+              longitude: this.state.rafipeerCoordinates.long,
+              latitude: this.state.rafipeerCoordinates.lat
+            }}
+            onCalloutPress={() => Alert.alert('This is Rafi peer')}
+          />
 
-      _getLocationAsync = async () => {
-        let coord = {}
-        let region = {}
-        let { status } = await Permissions.askAsync(Permissions.LOCATION);
-        if (status !== 'granted') {
-          this.setState({
-            errorMessage: 'Permission to access location was denied',
-          });
-        }
-    
-        Location.getCurrentPositionAsync({})
-        .then(location => {
-          this.setState({ location }, ()=> {
-            coord.latitude=location.coords.latitude
-            region.latitude=location.coords.latitude
-            coord.longitude = location.coords.longitude
-            this.setState({coordinate: coord});
-          });
-        })
-        
-      };
-
-    render() {
-        const { latitude, longitude } = this.state.coordinate
-        const latitudeDelta= 0.122
-        const longitudeDelta= 0.122
-
-        console.log(latitude, longitude)
-        console.log(latitudeDelta, longitudeDelta)
-        return (
-          <View style={styles.container}>
-                <MapView 
-                    region={{latitude: latitude ? latitude : 0,
-                             longitude: longitude ? longitude : 0,
-                             latitudeDelta: latitudeDelta ? latitudeDelta : 0,
-                             longitudeDelta: longitudeDelta ? longitudeDelta : 0 }}
-                    
-                    style={styles.mapStyle}    
-                >
-                    <Marker coordinate={{
-                        longitude: longitude ? longitude : 0,
-                        latitude: latitude ? latitude : 0
-                       }}
-                           onCalloutPress={()=> Alert.alert('This is where you belong')} 
-                    />
-
-                    <Marker coordinate={{
-                        longitude: this.state.rafipeerCoordinates.long,
-                        latitude: this.state.rafipeerCoordinates.lat
-                      }}
-                            onCalloutPress={()=> Alert.alert('This is Rafi peer')} 
-                    />
-
-                    {/* <MapViewDirections 
+          {/* <MapViewDirections 
                       origin={{latitude: latitude, longitude:longitude}}
                       destination={{latitude: this.state.rafipeerCoordinates.lat,
                                     longitude: this.state.rafipeerCoordinates.long}}
@@ -124,27 +121,34 @@ export class FindUs extends Component {
                       strokeWidth={2}
                       strokeColor='hotpink'
                     /> */}
-                </MapView>
+        </MapView>
 
-                <Button title='Get Directions' onPress={()=> this.handleGetDirections()}/>
-          </View>
-        );
-      }
+        <View style={{ margin: 20 }}>
+          <Button
+            style={{ borderRadius: 10 }}
+            title='Get Directions'
+            color='maroon'
+            onPress={() => this.handleGetDirections()}
+          />
+        </View>
+      </View>
+    );
+  }
 }
 
 const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      backgroundColor: '#fff',
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
-    mapStyle: {
-      // width: Dimensions.get('window').width,
-      // height: Dimensions.get('window').height,
-      width: 500,
-      height: 500,
-    },
-  });
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  mapStyle: {
+    width: Dimensions.get('window').width,
+    height: Dimensions.get('window').height / 2
+    // width: 50,
+    // height: 500,
+  }
+});
 
-export default FindUs
+export default FindUs;

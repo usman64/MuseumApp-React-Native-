@@ -21,7 +21,7 @@ class PuppetGridViewCard extends Component {
           })
         }
       >
-        <View style={{ flex: 2 }}>
+        <View style={{ flex: 3 }}>
           <Image
             style={{
               // borderTopLeftRadius: 10,

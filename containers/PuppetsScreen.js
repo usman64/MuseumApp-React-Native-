@@ -42,16 +42,16 @@ export class PuppetsScreen extends Component {
         puppetyear: 1975,
         region: 'India',
         imagelink:
-          'https://drive.google.com/uc?id=1w8hS5bCYZWqHwnVRhJTRDzN173z4jGGP'
+          'https://drive.google.com/uc?id=1FbW4zBUELwd7jSIqlVJ-e7IIyvjiMtzK'
       },
       {
         puppetid: 2,
-        puppetname: 'Batman',
+        puppetname: 'PakistanMan',
         category: 'string',
         puppetyear: 1999,
         region: 'Pakistan',
         imagelink:
-          'https://drive.google.com/uc?id=1bHVPiN7IH96t4sFQ8gUW_xVW2W7vI7dK'
+          'https://drive.google.com/uc?id=1DIekhwRywvAVyB5vkKsveGtj5Xzk3BxM'
       },
       {
         puppetid: 3,
@@ -64,12 +64,12 @@ export class PuppetsScreen extends Component {
       },
       {
         puppetid: 4,
-        puppetname: 'Stickman',
+        puppetname: 'IndiaMan',
         category: 'string',
         puppetyear: 1975,
         region: 'India',
         imagelink:
-          'https://drive.google.com/uc?id=1w8hS5bCYZWqHwnVRhJTRDzN173z4jGGP'
+          'https://drive.google.com/uc?id=1rqgEtBPxHUwI7ywzHpFl85_PWjnEXm-b'
       },
       {
         puppetid: 5,
@@ -78,16 +78,16 @@ export class PuppetsScreen extends Component {
         puppetyear: 1999,
         region: 'Pakistan',
         imagelink:
-          'https://drive.google.com/uc?id=1bHVPiN7IH96t4sFQ8gUW_xVW2W7vI7dK'
+          'https://drive.google.com/uc?id=1TESD71Io5yA-4nwn8FQXvLLSjkphjvOg'
       },
       {
         puppetid: 6,
-        puppetname: 'Jack',
+        puppetname: 'Jill',
         category: 'string',
         puppetyear: 2003,
         region: 'Pakistan',
         imagelink:
-          'https://drive.google.com/uc?id=1Rdlxol-hX0-uK-6cuUC-KqT0ozWKEHBz'
+          'https://drive.google.com/uc?id=1uI1iG2fxtPBa4XPnrw7QibOcjh6vRlaw'
       },
       {
         puppetid: 7,
@@ -96,7 +96,7 @@ export class PuppetsScreen extends Component {
         puppetyear: 2012,
         region: 'Pakistan',
         imagelink:
-          'https://drive.google.com/uc?id=1w8hS5bCYZWqHwnVRhJTRDzN173z4jGGP'
+          'https://drive.google.com/uc?id=12TYE_kNvS_4wpgiTVWYr1CfpH5KN264E'
       },
       {
         puppetid: 8,
@@ -105,7 +105,7 @@ export class PuppetsScreen extends Component {
         puppetyear: 2000,
         region: 'Uzbekistan',
         imagelink:
-          'https://drive.google.com/uc?id=1bHVPiN7IH96t4sFQ8gUW_xVW2W7vI7dK'
+          'https://drive.google.com/uc?id=1c564nIddr0Axfivh-OfreJjL6tPd2UGY'
       },
       {
         puppetid: 9,
@@ -114,61 +114,61 @@ export class PuppetsScreen extends Component {
         puppetyear: 2012,
         region: 'Pakistan',
         imagelink:
-          'https://drive.google.com/uc?id=1Rdlxol-hX0-uK-6cuUC-KqT0ozWKEHBz'
+          'https://drive.google.com/uc?id=1hVBNz67k7TF4Wj-S_hr_OCdmCehYt3sM'
       },
       {
         puppetid: 10,
-        puppetname: 'Bapuman',
+        puppetname: 'Shajie',
         category: 'rod',
         puppetyear: 2000,
         region: 'Uzbekistan',
         imagelink:
-          'https://drive.google.com/uc?id=1w8hS5bCYZWqHwnVRhJTRDzN173z4jGGP'
+          'https://drive.google.com/uc?id=1iSp62n1dQnlT__mg0e_GyEd4HeEWmqzn'
       },
       {
         puppetid: 11,
-        puppetname: 'Flash',
+        puppetname: 'Seemu',
         category: 'rod',
         puppetyear: 2019,
         region: 'China',
         imagelink:
-          'https://drive.google.com/uc?id=1bHVPiN7IH96t4sFQ8gUW_xVW2W7vI7dK'
+          'https://drive.google.com/uc?id=14AnvMSuyH0ASejoDLzfTR9giiN_aOea7'
       },
       {
         puppetid: 12,
-        puppetname: 'Reverse ',
+        puppetname: 'Reverse',
         category: 'rod',
         puppetyear: 2019,
         region: 'China',
         imagelink:
-          'https://drive.google.com/uc?id=1Rdlxol-hX0-uK-6cuUC-KqT0ozWKEHBz'
+          'https://drive.google.com/uc?id=1XIBW1LqoU_S83Ciq0ZjozBsBmTm6QCqk'
       },
       {
         puppetid: 13,
-        puppetname: 'Bablu',
+        puppetname: 'Golu',
         category: 'glove',
         puppetyear: 2010,
         region: 'China',
         imagelink:
-          'https://drive.google.com/uc?id=1w8hS5bCYZWqHwnVRhJTRDzN173z4jGGP'
+          'https://drive.google.com/uc?id=1CsaRk9QH74dEBhzffmDv_PnbI8MvQpeW'
       },
       {
         puppetid: 14,
-        puppetname: 'Sarmu',
+        puppetname: 'Doraemon',
         category: 'glove',
         puppetyear: 2005,
         region: 'Pakistan',
         imagelink:
-          'https://drive.google.com/uc?id=1bHVPiN7IH96t4sFQ8gUW_xVW2W7vI7dK'
+          'https://drive.google.com/uc?id=1EINqxrJLWcL4wI4u_zSU9OcbLfyUV7Sy'
       },
       {
         puppetid: 15,
-        puppetname: 'Flash',
+        puppetname: 'Killer',
         category: 'glove',
         puppetyear: 2019,
         region: 'China',
         imagelink:
-          'https://drive.google.com/uc?id=1Rdlxol-hX0-uK-6cuUC-KqT0ozWKEHBz'
+          'https://drive.google.com/uc?id=1OrOQ5ds88GG75dqRg6_x6fab9wQ-g0Vy'
       },
       {
         puppetid: 16,
@@ -177,7 +177,7 @@ export class PuppetsScreen extends Component {
         puppetyear: 2010,
         region: 'China',
         imagelink:
-          'https://drive.google.com/uc?id=1w8hS5bCYZWqHwnVRhJTRDzN173z4jGGP'
+          'https://drive.google.com/uc?id=1OrOQ5ds88GG75dqRg6_x6fab9wQ-g0Vy'
       },
       {
         puppetid: 17,
@@ -186,7 +186,7 @@ export class PuppetsScreen extends Component {
         puppetyear: 2005,
         region: 'Pakistan',
         imagelink:
-          'https://drive.google.com/uc?id=1bHVPiN7IH96t4sFQ8gUW_xVW2W7vI7dK'
+          'https://drive.google.com/uc?id=1TESD71Io5yA-4nwn8FQXvLLSjkphjvOg'
       },
       {
         puppetid: 18,
@@ -195,7 +195,7 @@ export class PuppetsScreen extends Component {
         puppetyear: 2019,
         region: 'China',
         imagelink:
-          'https://drive.google.com/uc?id=1Rdlxol-hX0-uK-6cuUC-KqT0ozWKEHBz'
+          'https://drive.google.com/uc?id=1S3nVoHNRx7gIX8s7gvhoAVi6_Pwv0Q3_'
       },
       {
         puppetid: 19,
@@ -204,7 +204,7 @@ export class PuppetsScreen extends Component {
         puppetyear: 2019,
         region: 'China',
         imagelink:
-          'https://drive.google.com/uc?id=1Rdlxol-hX0-uK-6cuUC-KqT0ozWKEHBz'
+          'https://drive.google.com/uc?id=1Kobk6jaCsR_QZAxt3R8c9CqJ6ZldTZtv'
       },
       {
         puppetid: 20,
@@ -213,7 +213,7 @@ export class PuppetsScreen extends Component {
         puppetyear: 2019,
         region: 'India',
         imagelink:
-          'https://drive.google.com/uc?id=1w8hS5bCYZWqHwnVRhJTRDzN173z4jGGP'
+          'https://drive.google.com/uc?id=14AnvMSuyH0ASejoDLzfTR9giiN_aOea7'
       },
       {
         puppetid: 21,
@@ -222,7 +222,7 @@ export class PuppetsScreen extends Component {
         puppetyear: 2019,
         region: 'Pakistan',
         imagelink:
-          'https://drive.google.com/uc?id=1bHVPiN7IH96t4sFQ8gUW_xVW2W7vI7dK'
+          'https://drive.google.com/uc?id=1H92IQapruR2Ufv_vmVgWBmDQhDE3Zljz'
       },
       {
         puppetid: 22,
@@ -231,7 +231,7 @@ export class PuppetsScreen extends Component {
         puppetyear: 2019,
         region: 'China',
         imagelink:
-          'https://drive.google.com/uc?id=1Rdlxol-hX0-uK-6cuUC-KqT0ozWKEHBz'
+          'https://drive.google.com/uc?id=1H1tcXezPxaT-bYaQ-jQgwxmYVtYYeaxF'
       },
       {
         puppetid: 23,
@@ -240,7 +240,7 @@ export class PuppetsScreen extends Component {
         puppetyear: 2019,
         region: 'India',
         imagelink:
-          'https://drive.google.com/uc?id=1w8hS5bCYZWqHwnVRhJTRDzN173z4jGGP'
+          'https://drive.google.com/uc?id=1H1tcXezPxaT-bYaQ-jQgwxmYVtYYeaxF'
       },
       {
         puppetid: 24,
@@ -249,19 +249,23 @@ export class PuppetsScreen extends Component {
         puppetyear: 2019,
         region: 'Pakistan',
         imagelink:
-          'https://drive.google.com/uc?id=1bHVPiN7IH96t4sFQ8gUW_xVW2W7vI7dK'
+          'https://drive.google.com/uc?id=1c564nIddr0Axfivh-OfreJjL6tPd2UGY'
       }
     ]
   };
 
   componentWillMount() {
     if (this.props.navigation.getParam('filterType') === 'CategorizedPuppets') {
-      const filteredData = this.state.data.filter(
-        (item) =>
-          item.category.toLowerCase() ===
-          this.props.navigation.getParam('filterOn').toLowerCase()
-      );
-      this.setState({ data: filteredData });
+      if (
+        this.props.navigation.getParam('filterOn').toLowerCase() !== 'view all'
+      ) {
+        const filteredData = this.state.data.filter(
+          (item) =>
+            item.category.toLowerCase() ===
+            this.props.navigation.getParam('filterOn').toLowerCase()
+        );
+        this.setState({ data: filteredData });
+      }
     } else if (
       this.props.navigation.getParam('filterType') === 'RegionalPuppets'
     ) {

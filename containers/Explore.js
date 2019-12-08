@@ -50,6 +50,10 @@ const typesOfPuppets = [
   {
     name: 'Finger',
     ImageUri: require('../assets/finger.jpg')
+  },
+  {
+    name: 'View All',
+    ImageUri: require('../assets/string.jpeg')
   }
 ];
 

@@ -67,6 +67,7 @@ class SinglePuppetScreen extends Component {
       )
       .catch((err) => {
         console.error(err);
+        alert('Network Error!');
       });
   }
 
