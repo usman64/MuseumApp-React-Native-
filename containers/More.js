@@ -49,7 +49,7 @@ export class More extends Component {
     const { langUrdu } = this.state;
     return (
       <SafeAreaView style={{ flex: 1 }}>
-        <TouchableOpacity style={styles.topmostcontainer}>
+        <View style={styles.topmostcontainer}>
           {/* GENERAL */}
           <View style={styles.headingItem}>
             <Text style={styles.headingText}>GENERAL</Text>
@@ -154,7 +154,8 @@ export class More extends Component {
             <Text style={styles.text}>App Version</Text>
             <Text style={styles.version}>0.1.6</Text>
           </View>
-          <View style={styles.line}></View>
+          <View styl
+        e={styles.line}></View>
 
           {/* Report a Problem */}
           <TouchableOpacity
@@ -182,7 +183,7 @@ export class More extends Component {
           <View style={styles.item}>
             <Text style={styles.text}>Rate Us</Text>
           </View>
-        </TouchableOpacity>
+        </View>
       </SafeAreaView>
     );
   }
@@ -202,7 +203,7 @@ const styles = StyleSheet.create({
     // paddingTop: 20
   },
   headingText: {
-    fontSize: 0.055 * width,
+    fontSize: 0.05 * width,
     color: 'maroon',
     fontWeight: '500',
     marginLeft: 0.04 * width,
