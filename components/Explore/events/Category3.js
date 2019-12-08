@@ -16,8 +16,9 @@ export class Category3 extends Component {
       <TouchableWithoutFeedback
         onPress={() =>
           this.props.navigation.navigate('SingleEvent', {
-            name: this.props.name,
-            image: this.props.ImageUri
+                 name: this.props.name, image: this.props.ImageUri, 
+                 date: this.props.date, description: this.props.description,
+                 time: this.props.time
           })
         }
         style={{
@@ -46,7 +47,7 @@ export class Category3 extends Component {
               resizeMode: 'cover'
             }}
             // imageStyle={{ borderRadius: 22 }}
-            source={this.props.ImageUri}
+            source={{uri: this.props.ImageUri}}
           >
             <View
               style={{

@@ -13,7 +13,7 @@ import { TextInput } from 'react-native-gesture-handler';
 
 import SafeAreaView from 'react-native-safe-area-view';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import CategoryList from '../components/Explore/CategoryList'
+import CategoryList1 from '../components/Explore/events/CategoryList1'
 import CategoryList3 from '../components/Explore/events/CategoryList3'
 import axios from 'axios'
 
@@ -39,38 +39,33 @@ const WeeklyEvents = [
   }
 ];
 
-const UpcomingEvents = [
-  {
-    name: 'Puppet Show',
-    ImageUri: require('../assets/puppetShow.jpeg'),
-    day: 14,
-    month: 'DEC',
-    time: '7:30 PM'
-  },
-  {
-    name: 'Folk Festival',
-    ImageUri: require('../assets/folkFestival.jpg'),
-    day: 14,
-    month: 'DEC',
-    time: '7:30 PM'
-  },
-  {
-    name: 'Qawali Night',
-    ImageUri: require('../assets//qawali.jpeg'),
-    day: 12,
-    month: 'DEC',
-    time: '7:30 PM'
-  },
-  {
-    name: 'Qawali Night',
-    ImageUri: require('../assets//qawali.jpeg'),
-    day: 11,
-    month: 'DEC',
-    time: '7:30 PM'
-  }
-];
-
 export class EventsScreen extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      Weekly: [],
+      Upcoming: []
+    }
+  }
+
+  handleData = (data) => {
+    let Weekly = []
+    let Upcoming = []
+    data.forEach(item => {
+      if(item.eventcategory === "regular") {
+        Weekly.push(item);
+      }
+
+      else if(item.eventcategory === "special") {
+        Upcoming.push(item)
+      }
+    });
+
+    this.setState({ Weekly, Upcoming });
+
+  }
+
   async componentWillMount() {
     this.startHeaderHeight = 80;
     if (Platform.OS === 'android') {
@@ -78,15 +73,16 @@ export class EventsScreen extends Component {
     }
 
     const data = await axios.get(
-      `https://glacial-beyond-08798.herokuapp.com/events/2`
+      `https://glacial-beyond-08798.herokuapp.com/allevents`
       )
 
-      console.log(data)
+    this.handleData(data.data);
+    console.log(this.state.Upcoming.length);
   }
 
   render() {
     return (
-      <ScrollView contentContainerStyle={{ paddingBottom: 1200 }}> 
+      <ScrollView contentContainerStyle={{ paddingBottom: this.state.Upcoming.length * 280 }}> 
       <View>
         <View>
           <View>
@@ -101,8 +97,8 @@ export class EventsScreen extends Component {
               >
                 Weekly Events
               </Text>
-              <CategoryList
-                data={WeeklyEvents}
+              <CategoryList1
+                data={this.state.Weekly}
                 type={''}
                 navigation={this.props.navigation}
               />
@@ -129,7 +125,7 @@ export class EventsScreen extends Component {
                 Upcoming Events
               </Text>
                 <CategoryList3
-                  data={UpcomingEvents}
+                  data={this.state.Upcoming}
                   type={''}
                   navigation={this.props.navigation}
                 />

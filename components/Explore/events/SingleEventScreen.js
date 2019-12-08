@@ -6,9 +6,9 @@ export class SingleEventScreen extends Component {
     constructor(props) {
         super(props);
         this.state={
-            time: '7:00 PM',
-            date: '11/12/19',
-            description: 'This event is a great event because it is a beautiful event',
+            time: this.props.navigation.getParam('time'),
+            date: this.props.navigation.getParam('date'),
+            description: this.props.navigation.getParam('description'),
             relatedImages: []
         }        
     }
@@ -43,7 +43,7 @@ export class SingleEventScreen extends Component {
                 }}>
                     <Image 
                         style={{width: 300, height: 200}}
-                        source={this.props.navigation.getParam('image')}>
+                        source={{uri: this.props.navigation.getParam('image')}}>
                     </Image>
 
                 </View>
