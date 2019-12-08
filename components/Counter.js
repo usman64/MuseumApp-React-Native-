@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Text, View, TouchableOpacity } from 'react-native';
 
-export class Counter extends Component {
+class Counter extends Component {
   render() {
     return (
       <View>
