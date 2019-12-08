@@ -27,7 +27,7 @@ export class More extends Component {
   fontchanger(value) {
     this.setState({ font: value });
   }
-  greyScaler(temp) {}
+  greyScaler(temp) { }
   // navigator(where) {
   //   if (where === 'About') {
   //     this.props.navigation.navigate('About');
@@ -68,6 +68,7 @@ export class More extends Component {
             {/* </View> */}
           </TouchableOpacity>
           <View style={styles.line}></View>
+
           {/* Contact Us */}
           <TouchableOpacity
             style={styles.item}
@@ -75,10 +76,12 @@ export class More extends Component {
           >
             <Text style={styles.text}>Contact Us</Text>
           </TouchableOpacity>
+
           {/*SETTINGS & ACCESSIBILITY*/}
           <View style={styles.headingItem}>
             <Text style={styles.headingText}>SETTINGS & ACCESSIBILITY</Text>
           </View>
+
           {/* Language */}
           <View style={styles.item}>
             <View>
@@ -100,6 +103,7 @@ export class More extends Component {
               </Text>
             </View>
           </View>
+
           {/* Font Size */}
           <View style={styles.line}></View>
           <View style={styles.item}>
@@ -114,6 +118,7 @@ export class More extends Component {
             />
           </View>
           <View style={styles.line}></View>
+
           {/* Grey Scale Mode */}
           <View style={styles.item}>
             <Text style={styles.text}>Greyscale Mode</Text>
@@ -125,35 +130,58 @@ export class More extends Component {
             />
           </View>
           <View style={styles.line}></View>
+
+          {/* Push Notifications */}
+          <View style={styles.item}>
+            <Text style={styles.text}>Push Notifications</Text>
+            <Switch
+              // style={{ paddingRight: '14'}}
+
+              onValueChange={() => {
+                this.setState({ pushNotification: !pushNotification });
+              }}
+              value={this.state.pushNotification}
+            />
+          </View>
+
+          {/* HELP AND SUPPORT */}
+          <View style={styles.headingItem}>
+            <Text style={styles.headingText}>HELP AND SUPPORT</Text>
+          </View>
+
           {/* App Version */}
           <View style={styles.item}>
             <Text style={styles.text}>App Version</Text>
             <Text style={styles.version}>0.1.6</Text>
           </View>
-          <View styl e={styles.line}></View>
-          onValueChange=
-          {() => {
-            this.setState({ pushNotification: !pushNotification });
-          }}
-          value={this.state.pushNotification}
-          />
-        </View>
+          <View style={styles.line}></View>
 
-        {/* HELP AND SUPPORT */}
-        <View style={styles.headingItem}>
-          <Text style={styles.headingText}>HELP AND SUPPORT</Text>
-        </View>
+          {/* Report a Problem */}
+          <TouchableOpacity
+            style={styles.item}
+            onPress={() => this.props.navigation.navigate('ReportProblem')}
+          >
+            <Text style={styles.text}>Report a Problem</Text>
+          </TouchableOpacity>
+          <View style={styles.line}></View>
 
-        {/* App Version */}
-        <View style={styles.item}>
-          <Text style={styles.text}>App Version</Text>
-          <Text style={styles.version}>0.1.6</Text>
-        </View>
-        <View style={styles.line}></View>
+          {/* Privacy Policy */}
+          <View style={styles.item}>
+            <Text style={styles.text}>Privacy Policy</Text>
+          </View>
+          <View style={styles.line}></View>
 
-        {/* Rate Us */}
-        <View style={styles.item}>
-          <Text style={styles.text}>Rate Us</Text>
+          {/* Terms Of Service */}
+          <View style={styles.item}>
+            <Text style={styles.text}>Terms of Service</Text>
+          </View>
+          {/* data providers software liscences */}
+          <View style={styles.line}></View>
+
+          {/* Rate Us */}
+          <View style={styles.item}>
+            <Text style={styles.text}>Rate Us</Text>
+          </View>
         </View>
       </SafeAreaView>
     );

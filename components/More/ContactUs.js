@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, Slider, Switch } from 'react-native';
+import { View, Text, StyleSheet, Slider, Switch, Image, Dimensions } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import FindUs from './FindUs'
-
+const { height, width } = Dimensions.get('window');
 export default class ContactUs extends Component {
     constructor() {
         super();
@@ -13,22 +13,50 @@ export default class ContactUs extends Component {
         const { greyScale } = this.state;
         const { pushNotification } = this.state;
         return (
-            <ScrollView>
-                <View style={{ flex: 1 }}>
-                    <View style={{ flex: 7 }}>
-                    
-                        <FindUs />
-                       
-                        <Text>
-                            Social Media, Email, Phone
-                       </Text>
-                        <Text>
-                            Anonymous
-                       </Text>
+          <ScrollView>
+            <View style={{ flex: 1 }}>
+              <FindUs />
 
-                    </View>
+              <View style={{ 
+                  flexDirection: "row",
+               marginLeft: 20, }}>
+                {/* <View style={{ padding: 10, width: 100, height: 100 }}>
+                  <Image
+                    source={require("../../assets/facebook.png")}
+                    style={{
+                      flex: 1,
+                      width: null,
+                      height: null,
+                      borderRadius: 10,
+                      resizeMode: "cover"
+                    }}
+                  />
+                </View> */}
+                <View
+                  style={{
+                    marginTop: 20,
+                    marginRight: "auto",
+                    marginLeft: "auto"
+                  }}
+                >
+                  <Text
+                  //   style={{ fontSize: 20 }}
+                  >
+                    Email: rafipeer@gmail.com
+                  </Text>
+                  <Text
+                  //    style={{ fontSize: 20 }}
+                  >
+                    Phone: +92 333 4797423
+                  </Text>
+                  <Text>
+                  Address: 1 Green Acres Main Rd, 
+                  Green Acres Housing Society, Lahore, Punjab
+                  </Text>
                 </View>
-            </ScrollView>
+              </View>
+            </View>
+          </ScrollView>
         );
     }
 }
