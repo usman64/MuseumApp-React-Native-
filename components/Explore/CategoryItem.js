@@ -4,6 +4,7 @@ import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 
 class CategoryItem extends Component {
   render() {
+    // console.log(this.props.ImageUri)
     const { type } = this.props;
     return (
       <TouchableWithoutFeedback
@@ -19,7 +20,10 @@ class CategoryItem extends Component {
               filterType: type
             });
           } else {
-            this.props.navigation.navigate('SingleEvent',{name: this.props.name, image: this.props.ImageUri});
+            this.props.navigation.navigate('SingleEvent',
+                {name: this.props.name, image: this.props.ImageUri, 
+                 date: this.props.date, description: this.props.description,
+                 time: this.props.time});
           }
         }}
         style={{
@@ -48,7 +52,7 @@ class CategoryItem extends Component {
               resizeMode: 'cover'
             }}
             imageStyle={{ borderRadius: 22 }}
-            source={this.props.ImageUri}
+            source={ typeof(this.props.ImageUri)==='number' ? this.props.ImageUri: {uri: this.props.ImageUri}}
           >
             <View
               style={{

@@ -13,14 +13,6 @@ export class SingleEventScreen extends Component {
         }        
     }
 
-    async componentDidMount() {
-       const data = await axios.get(
-        `https://glacial-beyond-08798.herokuapp.com/events/2`
-        )
-
-        console.log(data)
-    }
-
     render() {
         
         return (

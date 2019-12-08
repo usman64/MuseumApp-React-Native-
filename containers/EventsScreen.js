@@ -59,7 +59,6 @@ export class EventsScreen extends Component {
       )
 
     this.handleData(data.data);
-    console.log(this.state.Upcoming.length);
   }
 
   render() {
@@ -79,11 +78,14 @@ export class EventsScreen extends Component {
               >
                 Weekly Events
               </Text>
-              <CategoryList1
+              {this.state.Weekly.length ? (
+                <CategoryList1
                 data={this.state.Weekly}
                 type={''}
                 navigation={this.props.navigation}
               />
+              ) : (<ActivityIndicator size='large' color='#ddd' />)}
+              
             </View>
 
             <View
@@ -106,11 +108,13 @@ export class EventsScreen extends Component {
               >
                 Upcoming Events
               </Text>
-                <CategoryList3
-                  data={this.state.Upcoming}
-                  type={''}
-                  navigation={this.props.navigation}
+                {this.state.Weekly.length ? (
+                  <CategoryList3
+                    data={this.state.Upcoming}
+                    type={''}
+                    navigation={this.props.navigation}
                 />
+                ) : (<ActivityIndicator size='large' color='#ddd' />)}
 
             </View>
           </View>

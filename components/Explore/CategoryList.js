@@ -12,6 +12,9 @@ class CategoryList extends Component {
               type={this.props.type}
               ImageUri={item.ImageUri}
               name={item.name}
+              time= {item.time}
+              description = {item.description}
+              date={item.date}
               key={key}
               navigation={this.props.navigation}
             />

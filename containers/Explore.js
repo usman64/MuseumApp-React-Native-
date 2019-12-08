@@ -22,16 +22,25 @@ import axios from 'axios';
 const upEvents = [
   {
     name: 'Puppet Show',
-    ImageUri: require('../assets/puppetShow.jpeg')
+    ImageUri: 'https://drive.google.com/uc?id=1reZVUDgpRa0n5U_7LnJ9bEjZkZFKUuN9',
+    time: '7:30 PM',
+    description: 'This is the best event!',
+    date: '15/12/2019'
   },
   {
     name: 'Folk Festival',
-    ImageUri: require('../assets/folkFestival.jpg')
+    ImageUri: 'https://drive.google.com/uc?id=1reZVUDgpRa0n5U_7LnJ9bEjZkZFKUuN9',
+    time: '7:30 PM',
+    description: 'This is the best event!',
+    date: '15/12/2019'
   },
   {
     name: 'Qawali Night',
-    ImageUri: require('../assets//qawali.jpeg')
-  }
+    ImageUri: 'https://drive.google.com/uc?id=1reZVUDgpRa0n5U_7LnJ9bEjZkZFKUuN9',
+    time: '7:30 PM',
+    description: 'This is the best event!',
+    date: '15/12/2019'
+  },
 ];
 
 const typesOfPuppets = [
@@ -227,28 +236,28 @@ export class Explore extends Component {
               <SubHeader headerName={'Explore By Region'} type={' '} />
 
               {/* <View
-                                                                                              style={{
-                                                                                                width: width - 40,
-                                                                                                height: 200,
-                                                                                                marginTop: 20
-                                                                                              }}
-                                                                                            >
-                                                                                              <Image
-                                                                                                style={{
-                                                                                                  flex: 1,
-                                                                                                  height: null,
-                                                                                                  width: null,
-                                                                                                  resizeMode: 'cover',
-                                                                                                  borderRadius: 5,
-                                                                                                  borderWidth: 1,
-                                                                                                  borderColor: 'grey'
-                                                                                                }}
-                                                                                                source={require('../assets/global.jpg')}
-                                                                                              />
-                                                                                            </View> 
-                                                                                            </View>
+                  style={{
+                    width: width - 40,
+                    height: 200,
+                    marginTop: 20
+                  }}
+                >
+                  <Image
+                    style={{
+                      flex: 1,
+                      height: null,
+                      width: null,
+                      resizeMode: 'cover',
+                      borderRadius: 5,
+                      borderWidth: 1,
+                      borderColor: 'grey'
+                    }}
+                    source={require('../assets/global.jpg')}
+                  />
+                </View> 
+                </View>
 
-                                                                                          <View> */}
+              <View> */}
               <CategoryList
                 data={Regions}
                 type={'RegionalPuppets'}
