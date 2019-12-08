@@ -49,98 +49,93 @@ export class More extends Component {
     const { langUrdu } = this.state;
     return (
       <SafeAreaView style={{ flex: 1 }}>
-        {/* <TouchableOpacity style={styles.topmostcontainer}> */}
-        {/* GENERAL */}
-        <View style={styles.headingItem}>
-          <Text style={styles.headingText}>GENERAL</Text>
-        </View>
-        <TouchableOpacity
-          style={styles.item}
-          onPress={() => this.props.navigation.navigate('About')}
-        >
-          {/* <View style={{ flexDirection: 'row' }}> */}
-          {/* <Icon
+        <View style={styles.topmostcontainer}>
+          {/* GENERAL */}
+          <View style={styles.headingItem}>
+            <Text style={styles.headingText}>GENERAL</Text>
+          </View>
+          <TouchableOpacity
+            style={styles.item}
+            onPress={() => this.props.navigation.navigate('About')}
+          >
+            {/* <View style={{ flexDirection: 'row' }}> */}
+            {/* <Icon
                 style={{ marginRight: 10 }}
                 name={'info-circle'}
                 size={25}
               /> */}
-          <Text style={styles.text}>About</Text>
-          {/* </View> */}
-        </TouchableOpacity>
-        <View style={styles.line}></View>
-
-        {/* Contact Us */}
-        <TouchableOpacity
-          style={styles.item}
-          onPress={() => this.props.navigation.navigate('ContactUs')}
-        >
-          <Text style={styles.text}>Contact Us</Text>
-        </TouchableOpacity>
-
-        {/*SETTINGS & ACCESSIBILITY*/}
-        <View style={styles.headingItem}>
-          <Text style={styles.headingText}>SETTINGS & ACCESSIBILITY</Text>
-        </View>
-
-        {/* Language */}
-        <View style={styles.item}>
-          <View>
-            <Text style={styles.text}>Language</Text>
+            <Text style={styles.text}>About</Text>
+            {/* </View> */}
+          </TouchableOpacity>
+          <View style={styles.line}></View>
+          {/* Contact Us */}
+          <TouchableOpacity
+            style={styles.item}
+            onPress={() => this.props.navigation.navigate('ContactUs')}
+          >
+            <Text style={styles.text}>Contact Us</Text>
+          </TouchableOpacity>
+          {/*SETTINGS & ACCESSIBILITY*/}
+          <View style={styles.headingItem}>
+            <Text style={styles.headingText}>SETTINGS & ACCESSIBILITY</Text>
           </View>
-          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-            <Text style={styles.languageOption}>EN </Text>
-            <Switch
-              value={langUrdu}
-              onValueChange={() => {
-                this.setState({ langUrdu: !langUrdu });
-              }}
+          {/* Language */}
+          <View style={styles.item}>
+            <View>
+              <Text style={styles.text}>Language</Text>
+            </View>
+            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+              <Text style={styles.languageOption}>EN </Text>
+              <Switch
+                value={langUrdu}
+                onValueChange={() => {
+                  this.setState({ langUrdu: !langUrdu });
+                }}
+              />
+              <Text
+                style={styles.languageOption}
+                onLayout={(value) => this.urdusize(value)}
+              >
+                UR
+              </Text>
+            </View>
+          </View>
+          {/* Font Size */}
+          <View style={styles.line}></View>
+          <View style={styles.item}>
+            <Text style={styles.text}>Font Size</Text>
+            <Slider
+              style={{ width: 150 }}
+              minimumValue={1}
+              maximumValue={10}
+              minimumTrackTintColor='#adad85'
+              maximumTrackTintColor='#000000'
+              onSlidingComplete={(value) => this.fontchanger(value)}
             />
-            <Text
-              style={styles.languageOption}
-              onLayout={(value) => this.urdusize(value)}
-            >
-              UR
-            </Text>
           </View>
-        </View>
-
-        {/* Font Size */}
-        <View style={styles.line}></View>
-        <View style={styles.item}>
-          <Text style={styles.text}>Font Size</Text>
-          <Slider
-            style={{ width: 150 }}
-            minimumValue={1}
-            maximumValue={10}
-            minimumTrackTintColor='#adad85'
-            maximumTrackTintColor='#000000'
-            onSlidingComplete={(value) => this.fontchanger(value)}
-          />
-        </View>
-        <View style={styles.line}></View>
-
-        {/* Grey Scale Mode */}
-        <View style={styles.item}>
-          <Text style={styles.text}>Greyscale Mode</Text>
-          <Switch
-            onValueChange={() => {
-              this.setState({ greyScale: !greyScale });
-            }}
-            value={this.state.greyScale}
-          />
-        </View>
-        <View style={styles.line}></View>
-
-        {/* Push Notifications */}
-        <View style={styles.item}>
-          <Text style={styles.text}>Push Notifications</Text>
-          <Switch
-            // style={{ paddingRight: '14'}}
-
-            onValueChange={() => {
-              this.setState({ pushNotification: !pushNotification });
-            }}
-            value={this.state.pushNotification}
+          <View style={styles.line}></View>
+          {/* Grey Scale Mode */}
+          <View style={styles.item}>
+            <Text style={styles.text}>Greyscale Mode</Text>
+            <Switch
+              onValueChange={() => {
+                this.setState({ greyScale: !greyScale });
+              }}
+              value={this.state.greyScale}
+            />
+          </View>
+          <View style={styles.line}></View>
+          {/* App Version */}
+          <View style={styles.item}>
+            <Text style={styles.text}>App Version</Text>
+            <Text style={styles.version}>0.1.6</Text>
+          </View>
+          <View styl e={styles.line}></View>
+          onValueChange=
+          {() => {
+            this.setState({ pushNotification: !pushNotification });
+          }}
+          value={this.state.pushNotification}
           />
         </View>
 
@@ -156,33 +151,10 @@ export class More extends Component {
         </View>
         <View style={styles.line}></View>
 
-        {/* Report a Problem */}
-        <TouchableOpacity
-          style={styles.item}
-          onPress={() => this.props.navigation.navigate('ReportProblem')}
-        >
-          <Text style={styles.text}>Report a Problem</Text>
-        </TouchableOpacity>
-        <View style={styles.line}></View>
-
-        {/* Privacy Policy */}
-        <View style={styles.item}>
-          <Text style={styles.text}>Privacy Policy</Text>
-        </View>
-        <View style={styles.line}></View>
-
-        {/* Terms Of Service */}
-        <View style={styles.item}>
-          <Text style={styles.text}>Terms of Service</Text>
-        </View>
-        {/* data providers software liscences */}
-        <View style={styles.line}></View>
-
         {/* Rate Us */}
         <View style={styles.item}>
           <Text style={styles.text}>Rate Us</Text>
         </View>
-        {/* </TouchableOpacity> */}
       </SafeAreaView>
     );
   }
@@ -202,7 +174,7 @@ const styles = StyleSheet.create({
     // paddingTop: 20
   },
   headingText: {
-    fontSize: 0.055 * width,
+    fontSize: 0.05 * width,
     color: 'maroon',
     fontWeight: '500',
     marginLeft: 0.04 * width,

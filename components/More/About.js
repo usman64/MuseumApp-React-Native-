@@ -9,16 +9,22 @@ const AboutContent = () => {
       showsVerticalScrollIndicator={false}
     >
       <View style={styles.container}>
+        <View style={{
+          flex: 1,
+          width: Dimensions.get('window').width,
+          height: Dimensions.get('window').height/3,
+          marginBottom: 20,
+        }}>
         <Image
           source={require('../../assets/rafifestival.jpg')}
           style={{
             flex: 1,
-            width: Dimensions.get('window').width,
-            height: Dimensions.get('window').height/3,
-            borderRadius: 2,
-            resizeMode: 'contain',
+            width: null,
+            height: null,
+            resizeMode: 'cover',
           }}
-        />
+          />
+        </View>
         <View style={{
           flex: 6
         }}
@@ -63,7 +69,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingLeft: .03*width,
     paddingRight: .03*width,
-    paddingTop: .02*height,
+    // paddingTop: .02*height,
     paddingBottom: .03*height,
   },
   item: {
