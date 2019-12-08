@@ -1,7 +1,7 @@
 import React from 'react';
-import { View, Text, StyleSheet, Header } from 'react-native';
+import { View, Text, StyleSheet, Header, Dimensions, Image } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
-
+const { height, width } = Dimensions.get('window');
 const AboutContent = () => {
   return (
     <ScrollView
@@ -9,6 +9,21 @@ const AboutContent = () => {
       showsVerticalScrollIndicator={false}
     >
       <View style={styles.container}>
+        <Image
+          source={require('../../assets/rafifestival.jpg')}
+          style={{
+            flex: 1,
+            width: Dimensions.get('window').width,
+            height: Dimensions.get('window').height/3,
+            borderRadius: 2,
+            resizeMode: 'contain',
+          }}
+        />
+        <View style={{
+          flex: 6
+        }}
+          >
+
         <Text style={styles.item}>
           Rafi Peer Cultural Centre is one of the most culturally rich places in
           Pakistan. Since it's inception the centre has hosted many national and
@@ -21,6 +36,7 @@ const AboutContent = () => {
           puppet museum and is home to puppets from more than 40 different
           countries.
         </Text>
+        </View>
       </View>
     </ScrollView>
   );
@@ -32,6 +48,7 @@ const About = () => {
     //   centerComponent={{ text: 'MY TITLE', style: { color: '#fff' } }}
     // />
     <View style={{ flex: 1 }}>
+   
         <View style={{ flex: 7 }}>
         <AboutContent />
       </View>
@@ -42,10 +59,15 @@ const About = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 20
+    flexDirection: 'column',
+    alignItems: 'center',
+    paddingLeft: .03*width,
+    paddingRight: .03*width,
+    paddingTop: .02*height,
+    paddingBottom: .03*height,
   },
   item: {
-    fontSize: 20,
+    fontSize: 0.05*width,
     textAlign: 'center',
     lineHeight: 35
     // letterSpacing: 1
