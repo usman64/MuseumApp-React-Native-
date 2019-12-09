@@ -23,8 +23,8 @@ export class FindUs extends Component {
     errorMessage: null,
     coordinate: {},
     rafipeerCoordinates: {
-      lat: 31.411805,
-      long: 74.232693
+      latitude: 31.411805,
+      longitude: 74.232693
     }
   };
 
@@ -40,8 +40,8 @@ export class FindUs extends Component {
       },
 
       destination: {
-        latitude: this.state.rafipeerCoordinates.lat,
-        longitude: this.state.rafipeerCoordinates.long
+        latitude: this.state.rafipeerCoordinates.latitude,
+        longitude: this.state.rafipeerCoordinates.longitude
       },
 
       params: [
@@ -72,7 +72,6 @@ export class FindUs extends Component {
     Location.getCurrentPositionAsync({}).then((location) => {
       this.setState({ location }, () => {
         coord.latitude = location.coords.latitude;
-        region.latitude = location.coords.latitude;
         coord.longitude = location.coords.longitude;
         this.setState({ coordinate: coord });
       });
@@ -80,11 +79,11 @@ export class FindUs extends Component {
   };
 
   render() {
-    const { latitude, longitude } = this.state.coordinate;
-    const latitudeDelta = 0.122;
-    const longitudeDelta = 0.122;
+    const { latitude, longitude } = this.state.rafipeerCoordinates;
+    const latitudeDelta = 0.012;
+    const longitudeDelta = 0.012;
 
-    console.log(latitude, longitude);
+    console.log(this.state.coordinate.latitude, this.state.coordinate.longitude);
     console.log(latitudeDelta, longitudeDelta);
     return (
       <View style={styles.container}>
@@ -99,18 +98,19 @@ export class FindUs extends Component {
         >
           <Marker
             coordinate={{
-              longitude: longitude ? longitude : 0,
-              latitude: latitude ? latitude : 0
+              longitude: this.state.coordinate.longitude ? this.state.coordinate.longitude : 0,
+              latitude: this.state.coordinate.latitude ? this.state.coordinate.latitude : 0,
+              
             }}
-            onCalloutPress={() => Alert.alert('This is where you belong')}
+            onPress={() => Alert.alert('This is where you belong')}
           />
 
           <Marker
             coordinate={{
-              longitude: this.state.rafipeerCoordinates.long,
-              latitude: this.state.rafipeerCoordinates.lat
+              longitude: longitude,
+              latitude: latitude
             }}
-            onCalloutPress={() => Alert.alert('This is Rafi peer')}
+            onPress={() => Alert.alert('This is Rafi peer')}
           />
 
           {/* <MapViewDirections 
