@@ -12,6 +12,10 @@ import {
 } from 'react-native';
 import SafeAreaView from 'react-native-safe-area-view';
 import Icon from 'react-native-vector-icons/FontAwesome5';
+
+import { Notifications } from 'expo'
+import * as Permissions from 'expo-permissions';
+
 const { height, width } = Dimensions.get('window');
 
 export class More extends Component {
