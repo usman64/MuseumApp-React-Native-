@@ -17,30 +17,50 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 import SubHeader from '../components/layout/SubHeader';
 import CategoryList from '../components/Explore/CategoryList';
 
+import { connect } from 'react-redux';
+import { requestAllPuppets } from '../Actions/puppetActions';
+
 import axios from 'axios';
+
+const mapStateToProps = (state) => {
+  return {
+    puppets: state.requestAllPuppets.puppets,
+    isPending: state.requestAllPuppets.isPending,
+    error: state.requestAllPuppets.error
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onRequestPuppets: () => dispatch(requestAllPuppets())
+  };
+};
 
 const upEvents = [
   {
     name: 'Puppet Show',
-    ImageUri: 'https://drive.google.com/uc?id=1reZVUDgpRa0n5U_7LnJ9bEjZkZFKUuN9',
+    ImageUri:
+      'https://drive.google.com/uc?id=1reZVUDgpRa0n5U_7LnJ9bEjZkZFKUuN9',
     time: '7:30 PM',
     description: 'This is the best event!',
     date: '15/12/2019'
   },
   {
     name: 'Folk Festival',
-    ImageUri: 'https://drive.google.com/uc?id=1reZVUDgpRa0n5U_7LnJ9bEjZkZFKUuN9',
+    ImageUri:
+      'https://drive.google.com/uc?id=1reZVUDgpRa0n5U_7LnJ9bEjZkZFKUuN9',
     time: '7:30 PM',
     description: 'This is the best event!',
     date: '15/12/2019'
   },
   {
     name: 'Qawali Night',
-    ImageUri: 'https://drive.google.com/uc?id=1reZVUDgpRa0n5U_7LnJ9bEjZkZFKUuN9',
+    ImageUri:
+      'https://drive.google.com/uc?id=1reZVUDgpRa0n5U_7LnJ9bEjZkZFKUuN9',
     time: '7:30 PM',
     description: 'This is the best event!',
     date: '15/12/2019'
-  },
+  }
 ];
 
 const typesOfPuppets = [
@@ -86,19 +106,24 @@ const Regions = [
 ];
 
 const { height, width } = Dimensions.get('window');
-export class Explore extends Component {
-  async componentDidMount() {
-    try {
-      // const resp = await axios.get(
-      //   'https://glacial-beyond-08798.herokuapp.com/allpuppets'
-      // );
-      // console.warn(resp.data);
-    } catch (err) {
-      console.error(err.message);
-    }
+class Explore extends Component {
+  componentDidMount() {
+    // try {
+    // axios
+    //   .get('https://glacial-beyond-08798.herokuapp.com/allpuppets')
+    //   .then((resp) => console.log(resp.data))
+    //   .catch((err) => console.log(err));
+    // const resp = await axios.get(
+    //   'https://glacial-beyond-08798.herokuapp.com/allpuppets'
+    // );
+    // console.warn(resp.data);
+    // } catch (err) {
+    // console.error(err.message);
+    // }
   }
 
   componentWillMount() {
+    this.props.onRequestPuppets();
     this.startHeaderHeight = 80;
     if (Platform.OS === 'android') {
       this.startHeaderHeight = 100 + StatusBar.currentHeight;
@@ -284,7 +309,8 @@ export class Explore extends Component {
   }
 }
 
-export default Explore;
+export default connect(mapStateToProps, mapDispatchToProps)(Explore);
+// export default Explore;
 
 const styles = StyleSheet.create({
   horizontallyCenter: {

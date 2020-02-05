@@ -12,7 +12,9 @@ import {
 } from 'react-native';
 import SafeAreaView from 'react-native-safe-area-view';
 import Icon from 'react-native-vector-icons/FontAwesome5';
+import { changeFontScale } from '../Actions/changeFontScale';
 const { height, width } = Dimensions.get('window');
+import { connect } from 'react-redux';
 
 export class More extends Component {
   constructor() {
@@ -25,9 +27,10 @@ export class More extends Component {
     };
   }
   fontchanger(value) {
-    this.setState({ font: value });
+    this.props.dispatch(changeFontScale(value));
+    console.log(this.props.fontSizeScale);
   }
-  greyScaler(temp) { }
+  greyScaler(temp) {}
   // navigator(where) {
   //   if (where === 'About') {
   //     this.props.navigation.navigate('About');
@@ -47,6 +50,77 @@ export class More extends Component {
     const { greyScale } = this.state;
     const { pushNotification } = this.state;
     const { langUrdu } = this.state;
+    const styles = StyleSheet.create({
+      topmostcontainer: {
+        flex: 1,
+        flexDirection: 'column',
+        justifyContent: 'space-between',
+        paddingTop: 0.05 * height,
+
+        paddingBottom: 0.07 * width
+      },
+      container: {
+        flex: 1
+        // paddingTop: 20
+      },
+      headingText: {
+        fontSize: this.props.fontSizeScale * 20,
+        color: 'maroon',
+        fontWeight: '500',
+        marginLeft: 0.04 * width,
+        marginRight: 0.04 * width
+        // borderBottomWidth: 1,
+        // borderBottomColor: 'rgba(64, 64, 64, 0.1)',
+        //  alignItems: 'center',
+      },
+      headingItem: {
+        flexDirection: 'column',
+        justifyContent: 'center',
+        // alignItems: 'center',
+
+        flexGrow: 4
+        // borderTopWidth: 1,
+        // borderTopColor: 'maroon',
+        // borderBottomWidth: 3,
+
+        // borderBottomColor: 'maroon',
+      },
+      item: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        // justifyContent: 'center',
+        flexGrow: 3,
+        marginLeft: 0.06 * width,
+        marginRight: 0.06 * width
+        // borderTopWidth: 1,
+        // borderTopColor: 'rgba(64, 64, 64, 0.1)',
+
+        // height = 10,
+      },
+      line: {
+        flex: 0,
+        borderTopWidth: 1,
+        marginLeft: 0.06 * width,
+        marginRight: 0.06 * width,
+        borderTopColor: 'rgba(64, 64, 64, 0.1)'
+      },
+      text: {
+        fontSize: this.props.fontSizeScale * 20
+        // marginLeft: 10,
+        // padding: 10,
+        // height: 50,
+      },
+      languageOption: {
+        color: 'grey',
+        fontSize: 0.025 * width
+      },
+      version: {
+        color: 'grey',
+        alignItems: 'flex-end',
+        fontSize: 0.05 * width
+      }
+    });
     return (
       <SafeAreaView style={{ flex: 1 }}>
         <View style={styles.topmostcontainer}>
@@ -99,7 +173,7 @@ export class More extends Component {
                 style={styles.languageOption}
                 onLayout={(value) => this.urdusize(value)}
               >
-                UR
+                اردو
               </Text>
             </View>
           </View>
@@ -109,24 +183,13 @@ export class More extends Component {
           <View style={styles.item}>
             <Text style={styles.text}>Font Size</Text>
             <Slider
+              value={this.props.fontSizeScale}
               style={{ width: 150 }}
-              minimumValue={1}
-              maximumValue={10}
+              minimumValue={0.8}
+              maximumValue={1.5}
               minimumTrackTintColor='#adad85'
               maximumTrackTintColor='#000000'
               onSlidingComplete={(value) => this.fontchanger(value)}
-            />
-          </View>
-          <View style={styles.line}></View>
-
-          {/* Grey Scale Mode */}
-          <View style={styles.item}>
-            <Text style={styles.text}>Greyscale Mode</Text>
-            <Switch
-              onValueChange={() => {
-                this.setState({ greyScale: !greyScale });
-              }}
-              value={this.state.greyScale}
             />
           </View>
           <View style={styles.line}></View>
@@ -165,12 +228,6 @@ export class More extends Component {
           </TouchableOpacity>
           <View style={styles.line}></View>
 
-          {/* Privacy Policy */}
-          <View style={styles.item}>
-            <Text style={styles.text}>Privacy Policy</Text>
-          </View>
-          <View style={styles.line}></View>
-
           {/* Terms Of Service */}
           <View style={styles.item}>
             <Text style={styles.text}>Terms of Service</Text>
@@ -188,76 +245,10 @@ export class More extends Component {
   }
 }
 
-const styles = StyleSheet.create({
-  topmostcontainer: {
-    flex: 1,
-    flexDirection: 'column',
-    justifyContent: 'space-between',
-    paddingTop: 0.05 * height,
+const mapStateToProps = (state) => {
+  return {
+    fontSizeScale: state.changeFont
+  };
+};
 
-    paddingBottom: 0.07 * width
-  },
-  container: {
-    flex: 1
-    // paddingTop: 20
-  },
-  headingText: {
-    fontSize: 0.05 * width,
-    color: 'maroon',
-    fontWeight: '500',
-    marginLeft: 0.04 * width,
-    marginRight: 0.04 * width
-    // borderBottomWidth: 1,
-    // borderBottomColor: 'rgba(64, 64, 64, 0.1)',
-    //  alignItems: 'center',
-  },
-  headingItem: {
-    flexDirection: 'column',
-    justifyContent: 'center',
-    // alignItems: 'center',
-
-    flexGrow: 4
-    // borderTopWidth: 1,
-    // borderTopColor: 'maroon',
-    // borderBottomWidth: 3,
-
-    // borderBottomColor: 'maroon',
-  },
-  item: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    // justifyContent: 'center',
-    flexGrow: 3,
-    marginLeft: 0.06 * width,
-    marginRight: 0.06 * width
-    // borderTopWidth: 1,
-    // borderTopColor: 'rgba(64, 64, 64, 0.1)',
-
-    // height = 10,
-  },
-  line: {
-    flex: 0,
-    borderTopWidth: 1,
-    marginLeft: 0.06 * width,
-    marginRight: 0.06 * width,
-    borderTopColor: 'rgba(64, 64, 64, 0.1)'
-  },
-  text: {
-    fontSize: 0.05 * width
-    // marginLeft: 10,
-    // padding: 10,
-    // height: 50,
-  },
-  languageOption: {
-    color: 'grey',
-    fontSize: 0.025 * width
-  },
-  version: {
-    color: 'grey',
-    alignItems: 'flex-end',
-    fontSize: 0.05 * width
-  }
-});
-
-export default More;
+export default connect(mapStateToProps)(More);

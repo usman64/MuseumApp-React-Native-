@@ -11,10 +11,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 
 const logger = createLogger();
 
-const store = createStore(
-  rootReducer,
-  applyMiddleware(thunkMiddleware, logger)
-);
+const store = createStore(rootReducer, applyMiddleware(thunkMiddleware));
 
 import { Provider } from 'react-redux';
 
@@ -33,7 +30,6 @@ import PuppetsScreen from './containers/PuppetsScreen';
 import SearchScreen from './containers/SearchScreen';
 import SinglePuppetScreen from './components/Explore/puppets/SinglePuppetScreen';
 import QrCodeScreen from './containers/QrCodeScreen';
-
 
 const ExploreStack = createStackNavigator({
   Explore: {
@@ -198,19 +194,19 @@ const MoreStack = createStackNavigator(
     ReportProblem: {
       screen: ReportProblem,
       navigationOptions: {
-      title: 'Report',
-      headerStyle: {
-        backgroundColor: 'maroon'
-      },
+        title: 'Report',
+        headerStyle: {
+          backgroundColor: 'maroon'
+        },
 
-      headerTitleStyle: {
-        fontWeight: '700',
-        fontSize: 25,
-        color: 'white'
-      },
-      headerTintColor: 'white'
+        headerTitleStyle: {
+          fontWeight: '700',
+          fontSize: 25,
+          color: 'white'
+        },
+        headerTintColor: 'white'
+      }
     }
-  },
     //More screen here
   },
   {

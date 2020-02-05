@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
-import { updateCounter } from './countReducers';
+import { requestAllPuppets } from './puppetReducers';
+import { changeFont } from './fontScaleReducer';
 
-const rootReducer = updateCounter;
-// combineReducers({});
+const rootReducer = combineReducers({ requestAllPuppets, changeFont });
 
 export default rootReducer;
