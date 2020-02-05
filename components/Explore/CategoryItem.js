@@ -20,15 +20,18 @@ class CategoryItem extends Component {
               filterType: type
             });
           } else {
-            this.props.navigation.navigate('SingleEvent',
-                {name: this.props.name, image: this.props.ImageUri, 
-                 date: this.props.date, description: this.props.description,
-                 time: this.props.time});
+            this.props.navigation.navigate('SingleEvent', {
+              name: this.props.name,
+              image: this.props.ImageUri,
+              date: this.props.date,
+              description: this.props.description,
+              time: this.props.time
+            });
           }
         }}
         style={{
-          height: 150,
-          width: 200,
+          height: 125,
+          width: 150,
           marginLeft: 20,
           backgroundColor: 'white',
           shadowColor: 'black',
@@ -52,7 +55,11 @@ class CategoryItem extends Component {
               resizeMode: 'cover'
             }}
             imageStyle={{ borderRadius: 22 }}
-            source={ typeof(this.props.ImageUri)==='number' ? this.props.ImageUri: {uri: this.props.ImageUri}}
+            source={
+              typeof this.props.ImageUri === 'number'
+                ? this.props.ImageUri
+                : { uri: this.props.ImageUri }
+            }
           >
             <View
               style={{
@@ -71,7 +78,7 @@ class CategoryItem extends Component {
                 style={{
                   fontWeight: 'bold',
                   color: 'white',
-                  fontSize: 26,
+                  fontSize: 20,
                   paddingLeft: 15,
                   paddingBottom: 15
                 }}

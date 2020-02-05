@@ -1,5 +1,11 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet, Button } from 'react-native';
+import {
+  Text,
+  View,
+  StyleSheet,
+  Button,
+  ActivityIndicator
+} from 'react-native';
 import * as Permissions from 'expo-permissions';
 import { BarCodeScanner } from 'expo-barcode-scanner';
 
@@ -39,7 +45,7 @@ export default class QrCodeScanner extends Component {
     const { hasCameraPermission, scanned } = this.state;
 
     if (hasCameraPermission === null) {
-      return <Text>Requesting for camera permission</Text>;
+      return <ActivityIndicator size='large' color='#ddd' />;
     }
     if (hasCameraPermission === false) {
       return <Text>No access to camera</Text>;

@@ -23,6 +23,7 @@ import { requestAllPuppets } from '../Actions/puppetActions';
 import axios from 'axios';
 
 const mapStateToProps = (state) => {
+  console.log(state.requestAllPuppets.puppets.length);
   return {
     puppets: state.requestAllPuppets.puppets,
     isPending: state.requestAllPuppets.isPending,
@@ -106,22 +107,8 @@ const Regions = [
 ];
 
 const { height, width } = Dimensions.get('window');
-class Explore extends Component {
-  componentDidMount() {
-    // try {
-    // axios
-    //   .get('https://glacial-beyond-08798.herokuapp.com/allpuppets')
-    //   .then((resp) => console.log(resp.data))
-    //   .catch((err) => console.log(err));
-    // const resp = await axios.get(
-    //   'https://glacial-beyond-08798.herokuapp.com/allpuppets'
-    // );
-    // console.warn(resp.data);
-    // } catch (err) {
-    // console.error(err.message);
-    // }
-  }
 
+class Explore extends Component {
   componentWillMount() {
     this.props.onRequestPuppets();
     this.startHeaderHeight = 80;
@@ -129,6 +116,8 @@ class Explore extends Component {
       this.startHeaderHeight = 100 + StatusBar.currentHeight;
     }
   }
+
+  componentDidMount() {}
 
   render() {
     return (
