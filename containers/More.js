@@ -13,6 +13,10 @@ import {
 import SafeAreaView from 'react-native-safe-area-view';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { changeFontScale } from '../Actions/changeFontScale';
+
+import { Notifications } from 'expo';
+import * as Permissions from 'expo-permissions';
+
 const { height, width } = Dimensions.get('window');
 import { connect } from 'react-redux';
 

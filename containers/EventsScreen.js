@@ -17,6 +17,7 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 import CategoryList1 from '../components/Explore/events/CategoryList1'
 import CategoryList3 from '../components/Explore/events/CategoryList3'
 import axios from 'axios'
+import { AsyncStorage } from 'react-native'
 
 
 const { height, width } = Dimensions.get('window');
@@ -30,6 +31,7 @@ export class EventsScreen extends Component {
       Upcoming: []
     }
   }
+
 
   handleData = (data) => {
     let Weekly = []
@@ -54,11 +56,45 @@ export class EventsScreen extends Component {
       this.startHeaderHeight = 100 + StatusBar.currentHeight;
     }
 
-    const data = await axios.get(
-      `https://glacial-beyond-08798.herokuapp.com/allevents`
-      )
+    // try {
+    //   await AsyncStorage.removeItem("puppets");
+    // }
+    // catch(exception) {
+    //     return false;
+    // }
 
-    this.handleData(data.data);
+    try{
+      let data = await AsyncStorage.getItem('puppets');
+      console.log('local')
+      console.log(JSON.parse(data));
+
+      if(data != null) 
+        this.handleData(JSON.parse(data)); 
+      else {
+        try {
+          data = await axios.get(
+            `https://glacial-beyond-08798.herokuapp.com/allevents`
+          )
+          
+          console.log('fetched');
+          console.log(data);
+          await AsyncStorage.setItem("puppets", JSON.stringify(data.data))
+          this.handleData(data.data);
+
+        }
+
+        catch(err) {
+          console.log(err);
+        }
+      }
+
+    }
+
+    catch(err) {
+      console.log(err);
+    }
+    
+    
   }
 
   render() {
