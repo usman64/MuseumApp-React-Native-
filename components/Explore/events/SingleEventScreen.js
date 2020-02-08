@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { View, Text, StyleSheet, Image } from 'react-native'
 import axios from 'axios';
+import { connect } from 'react-redux';
+
 
 export class SingleEventScreen extends Component {
     constructor(props) {
@@ -19,7 +21,8 @@ export class SingleEventScreen extends Component {
             <View>
                 <Text style ={{
                     textAlign:'center',
-                    fontSize: 30,
+                    // fontSize: 30,//fontScaling here
+                    fontSize: 30 * this.props.fontSizeScale,
                     fontWeight: '700',
                     paddingHorizontal: 20,
                     color: 'grey',
@@ -46,16 +49,25 @@ export class SingleEventScreen extends Component {
                 }}>
                     
                     <View style={{flexDirection: 'row', paddingTop:20}}>
-                        <Text style={{fontSize: 16}}>
+                        <Text style={{
+                            // fontSize: 16//fontScaling here
+                            fontSize: 16 * this.props.fontSizeScale,
+                            }}>
                             <Text style={{fontWeight: 'bold'}}>Time: </Text>{this.state.time}
                         </Text>
-                        <Text style={{fontSize: 16, paddingLeft: 80}}>
+                        <Text style={{
+                            // fontSize: 16, //fontScaling here
+                            fontSize: 16 * this.props.fontSizeScale,
+                            paddingLeft: 80}}>
                             <Text style={{fontWeight: 'bold'}}>Date: </Text>{this.state.date}{'\n\n'}
                         </Text>
                     </View>
                 </View>
 
-                <Text style={{fontSize: 16, paddingLeft: 27}}>
+                <Text style={{
+                    // fontSize: 16,//fontScaling here
+                    fontSize: 16 * this.props.fontSizeScale, 
+                    paddingLeft: 27}}>
                     <Text style={{fontWeight: 'bold'}}>Description: {'\n'}</Text>{this.state.description}
                 </Text>
             </View>
@@ -63,4 +75,12 @@ export class SingleEventScreen extends Component {
     }
 }
 
-export default SingleEventScreen
+// export default SingleEventScreen
+const mapStateToProps = (state) => {
+    return {
+        fontSizeScale: state.changeFont
+    };
+};
+
+export default connect(mapStateToProps, null)(SingleEventScreen);
+

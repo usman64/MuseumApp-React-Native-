@@ -12,13 +12,14 @@ import {
 } from 'react-native';
 import SafeAreaView from 'react-native-safe-area-view';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import { changeFontScale } from '../Actions/changeFontScale';
 
 import { Notifications } from 'expo';
 import * as Permissions from 'expo-permissions';
 
 const { height, width } = Dimensions.get('window');
+
 import { connect } from 'react-redux';
+import { changeFontScale } from '../Actions/changeFontScale';
 
 export class More extends Component {
   constructor() {
@@ -31,8 +32,9 @@ export class More extends Component {
     };
   }
   fontchanger(value) {
-    this.props.dispatch(changeFontScale(value));
-    console.log(this.props.fontSizeScale);
+    // this.props.dispatch(changeFontScale(value));
+    this.props.changeFontScale(value)
+    // console.log(this.props.fontSizeScale);
   }
   greyScaler(temp) {}
   // navigator(where) {
@@ -188,7 +190,7 @@ export class More extends Component {
             <Text style={styles.text}>Font Size</Text>
             <Slider
               value={this.props.fontSizeScale}
-              style={{ width: 150 }}
+              style={{ width: 250 }}
               minimumValue={0.8}
               maximumValue={1.5}
               minimumTrackTintColor='#adad85'
@@ -255,4 +257,9 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(More);
+const mapDispatchToProps = dispatch => {
+  return {
+    changeFontScale: value => dispatch(changeFontScale(value))
+  }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(More);

@@ -8,6 +8,8 @@ import {
   Dimensions
 } from 'react-native';
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
+import { connect } from 'react-redux';
+
 
 const ITEM_WIDTH = Dimensions.get('window').width;
 export class Category3 extends Component {
@@ -76,10 +78,18 @@ export class Category3 extends Component {
                     paddingTop: 3
                   }}
                 >
-                  <Text style={{ color: 'red', fontSize: 15 }}>
+                  <Text style={{ 
+                    color: 'red', 
+                    // fontSize: 15//fontScaling here
+                    fontSize:15*this.props.fontSizeScale,
+                     }}>
                     {this.props.month}
                   </Text>
-                  <Text style={{ color: 'black', fontSize: 20 }}>
+                  <Text style={{ 
+                    color: 'black', 
+                    // fontSize: 20,//fontScaling here
+                    fontSize: 20 * this.props.fontSizeScale,
+                     }}>
                     {this.props.day}
                   </Text>
                 </View>
@@ -88,7 +98,8 @@ export class Category3 extends Component {
                     style={{
                       fontWeight: 'bold',
                       color: 'black',
-                      fontSize: 22
+                      //fontSize: 22//fontScaling here
+                      fontSize: 22 * this.props.fontSizeScale,
                     }}
                   >
                     {this.props.name}
@@ -106,4 +117,10 @@ export class Category3 extends Component {
   }
 }
 
-export default Category3;
+const mapStateToProps = (state) => {
+  return {
+    fontSizeScale: state.changeFont
+  };
+};
+
+export default connect(mapStateToProps, null)(Category3);

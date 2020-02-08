@@ -19,6 +19,8 @@ import {
 } from 'react-native-gesture-handler';
 import PuppetGridViewCard from '../components/Explore/puppets/PuppetGridViewCard';
 
+import { connect } from 'react-redux';
+
 const ITEM_WIDTH = Dimensions.get('window').width;
 
 export class PuppetsScreen extends Component {
@@ -327,7 +329,8 @@ export class PuppetsScreen extends Component {
             > */}
           <TextInput
             style={{
-              fontSize: 15,
+              // fontSize: 15,//fontscaling here
+              fontSize: 15*this.props.fontSizeScale,
               flex: 1,
               fontWeight: '700',
               backgroundColor: 'white'
@@ -387,11 +390,18 @@ export class PuppetsScreen extends Component {
                   />
                 </View>
                 <View style={{ flex: 1, paddingLeft: 10, paddingTop: 10 }}>
-                  <Text style={{ fontSize: 17, fontWeight: 'bold' }}>
+                  <Text style={{ 
+                    // fontSize: 17,//fontScaling here
+                    fontSize: 17 * this.props.fontSizeScale,
+                    fontWeight: 'bold' 
+                    }}>
                     {item.puppetname}
                   </Text>
                   <View style={{ flexDirection: 'row' }}>
-                    <Text style={{ fontSize: 12, color: 'grey' }}>
+                    <Text style={{ 
+                      //fontSize: 12,//fontScaling here
+                      fontSize: 12 * this.props.fontSizeScale, 
+                      color: 'grey' }}>
                       {this.props.navigation.getParam('filterType') ===
                       'CategorizedPuppets'
                         ? item.region
@@ -401,7 +411,8 @@ export class PuppetsScreen extends Component {
                       style={{
                         marginLeft: 'auto',
                         marginRight: 10,
-                        fontSize: 12,
+                        //fontSize: 12,//fontScaling here
+                        fontSize: 12 * this.props.fontSizeScale,
                         color: 'grey'
                       }}
                     >
@@ -419,4 +430,17 @@ export class PuppetsScreen extends Component {
   }
 }
 
-export default PuppetsScreen;
+// export default PuppetsScreen;
+
+const mapStateToProps = (state) => {
+  return {
+    fontSizeScale: state.changeFont
+  };
+};
+
+// const mapDispatchToProps = dispatch => {
+//   return {
+//     changeFontScale: value => dispatch(changeFontScale(value))
+//   }
+// }
+export default connect(mapStateToProps, null)(PuppetsScreen);

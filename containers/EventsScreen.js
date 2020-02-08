@@ -19,6 +19,7 @@ import CategoryList3 from '../components/Explore/events/CategoryList3'
 import axios from 'axios'
 import { AsyncStorage } from 'react-native'
 
+import { connect } from 'react-redux';
 
 const { height, width } = Dimensions.get('window');
 
@@ -106,7 +107,8 @@ export class EventsScreen extends Component {
             <View style={{ flex: 1, backgroundColor: 'white', paddingTop: 30 }}>
               <Text
                 style={{
-                  fontSize: 24,
+                    //fontSize: 24,//fontscaling here
+                    fontSize: 24 * this.props.fontSizeScale,
                   fontWeight: '700',
                   paddingHorizontal: 20,
                   color: 'grey'
@@ -134,7 +136,8 @@ export class EventsScreen extends Component {
             >
               <Text
                 style={{
-                  fontSize: 24,
+                  //fontSize: 24,//fontscaling here
+                  fontSize: 24 * this.props.fontSizeScale,
                   fontWeight: '700',
                   paddingHorizontal: 20,
                   color: 'grey',
@@ -161,4 +164,13 @@ export class EventsScreen extends Component {
   }
 }
 
-export default EventsScreen;
+
+
+const mapStateToProps = (state) => {
+  return {
+    fontSizeScale: state.changeFont
+  };
+};
+
+
+export default connect(mapStateToProps, null)(EventsScreen);

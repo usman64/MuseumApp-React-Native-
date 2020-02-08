@@ -3,7 +3,9 @@ import { View, Text, StyleSheet, Slider, Switch, Image, Dimensions } from 'react
 import { ScrollView } from 'react-native-gesture-handler';
 import FindUs from './FindUs'
 const { height, width } = Dimensions.get('window');
-export default class ContactUs extends Component {
+import { connect } from 'react-redux';
+
+class ContactUs extends Component {
     constructor() {
         super();
         this.state = {
@@ -12,6 +14,32 @@ export default class ContactUs extends Component {
     render() {
         const { greyScale } = this.state;
         const { pushNotification } = this.state;
+      const styles = StyleSheet.create({
+        container: {
+          flex: 1,
+          padding: 20
+        },
+        item: {
+          // fontSize: 20,//fontScaling here
+          fontSize: 20 * this.props.fontSizeScale,
+          textAlign: 'center',
+          lineHeight: 35
+          // letterSpacing: 1
+        },
+        listitem: {
+          borderStyle: 'dashed',
+          borderBottomWidth: 3,
+          opacity: 1,
+          borderBottomColor: '#800000'
+        },
+        text: {
+          // fontSize: 24,//fontScaling here
+          fontSize: 24 * this.props.fontSizeScale,
+          marginLeft: 10,
+          padding: 10,
+          height: 50,
+        },
+      });
         return (
           <ScrollView>
             <View style={{ flex: 1 }}>
@@ -60,27 +88,13 @@ export default class ContactUs extends Component {
         );
     }
 }
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        padding: 20
-    },
-    item: {
-        fontSize: 20,
-        textAlign: 'center',
-        lineHeight: 35
-        // letterSpacing: 1
-    },
-    listitem: {
-        borderStyle: 'dashed',
-        borderBottomWidth: 3,
-        opacity: 1,
-        borderBottomColor: '#800000'
-    },
-    text: {
-        fontSize: 24,
-        marginLeft: 10,
-        padding: 10,
-        height: 50,
-    },
-});
+
+
+const mapStateToProps = (state) => {
+  return {
+    fontSizeScale: state.changeFont
+  };
+};
+
+export default connect(mapStateToProps, null)(ContactUs);
+

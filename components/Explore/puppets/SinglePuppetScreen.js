@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import { SliderBox } from 'react-native-image-slider-box';
 import axios from 'axios';
+import { connect } from 'react-redux';
 
 const { height } = Dimensions.get('window');
 
@@ -84,8 +85,14 @@ class SinglePuppetScreen extends Component {
         />
 
         <View style={{ flexDirection: 'row', paddingTop: 20, padding: 20 }}>
-          <Text style={{ fontSize: 20, fontWeight: 'bold' }}>Year: </Text>
-          <Text style={{ fontSize: 18, color: 'grey' }}>
+          <Text style={{ 
+            // fontSize: 20, //fontScaling here
+            fontSize: 20 * this.props.fontSizeScale, 
+            fontWeight: 'bold' }}>Year: </Text>
+          <Text style={{ 
+            // fontSize: 18, //fontScaling here
+            fontSize: 18 * this.props.fontSizeScale, 
+            color: 'grey' }}>
             {this.state.puppetyear}
           </Text>
 
@@ -96,19 +103,31 @@ class SinglePuppetScreen extends Component {
               marginRight: 20
             }}
           >
-            <Text style={{ fontSize: 20, fontWeight: 'bold' }}>Region: </Text>
-            <Text style={{ fontSize: 18, color: 'grey' }}>
+            <Text style={{ 
+              // fontSize: 20, //fontScaling here
+              fontSize: 20 * this.props.fontSizeScale, 
+              fontWeight: 'bold' }}>Region: </Text>
+            <Text style={{ 
+              // fontSize: 18, //fontScaling here
+              fontSize: 18 * this.props.fontSizeScale, 
+              color: 'grey' }}>
               {this.state.region}
             </Text>
           </View>
         </View>
         <View style={{ paddingLeft: 20, paddingRight: 20 }}>
-          <Text style={{ fontSize: 20, fontWeight: 'bold' }}>Description:</Text>
+          <Text style={{ 
+            // fontSize: 20, //fontScaling here
+            fontSize: 20 * this.props.fontSizeScale, 
+            fontWeight: 'bold' }}>Description:</Text>
 
           {this.state.description === '' ? (
             <ActivityIndicator size='large' color='#ddd' />
           ) : (
-            <Text style={{ fontSize: 18, color: 'grey' }}>
+            <Text style={{ 
+                // fontSize: 18, //fontScaling here
+                fontSize: 18 * this.props.fontSizeScale, 
+              color: 'grey' }}>
               {this.state.description}
             </Text>
           )}
@@ -124,4 +143,13 @@ const styles = StyleSheet.create({
   }
 });
 
-export default SinglePuppetScreen;
+// export default SinglePuppetScreen;
+
+const mapStateToProps = (state) => {
+  return {
+    fontSizeScale: state.changeFont
+  };
+};
+
+export default connect(mapStateToProps, null)(SinglePuppetScreen);
+

@@ -31,6 +31,9 @@ import SearchScreen from './containers/SearchScreen';
 import SinglePuppetScreen from './components/Explore/puppets/SinglePuppetScreen';
 import QrCodeScreen from './containers/QrCodeScreen';
 
+import { connect } from 'react-redux';
+import { changeFontScale } from './Actions/changeFontScale';
+
 const ExploreStack = createStackNavigator({
   Explore: {
     screen: Explore,
@@ -303,3 +306,16 @@ export default class App extends Component {
     );
   }
 }
+
+// const mapStateToProps = (state) => {
+//   return {
+//     fontSizeScale: state.changeFont
+//   };
+// };
+
+// const mapDispatchToProps = dispatch => {
+//   return {
+//     changeFontScale: value => dispatch(changeFontScale(value))
+//   }
+// }
+// export default connect(mapStateToProps, mapDispatchToProps)(App);

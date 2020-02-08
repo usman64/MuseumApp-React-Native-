@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Text, View, Image } from 'react-native';
+import { connect } from 'react-redux';
 
 export class MuseumMap extends Component {
   render() {
@@ -7,7 +8,8 @@ export class MuseumMap extends Component {
       <View style={{ flex: 1, justifyContent: 'center' }}>
         <Text
           style={{
-            fontSize: 20,
+            // fontSize: 20//fontScaleing here
+            fontSize: 20*this.props.fontSizeScale,
             fontWeight: '900',
             marginLeft: 'auto',
             marginRight: 'auto'
@@ -29,4 +31,13 @@ export class MuseumMap extends Component {
   }
 }
 
-export default MuseumMap;
+// export default MuseumMap;
+
+
+const mapStateToProps = (state) => {
+  return {
+    fontSizeScale: state.changeFont
+  };
+};
+
+export default connect(mapStateToProps, null)(MuseumMap);

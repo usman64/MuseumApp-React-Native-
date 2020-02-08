@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Text, View, ScrollView, Alert, ImageBackground } from 'react-native';
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
+import { connect } from 'react-redux';
+
 
 class Category1 extends Component {
   render() {
@@ -59,7 +61,8 @@ class Category1 extends Component {
                 style={{
                   fontWeight: 'bold',
                   color: 'white',
-                  fontSize: 26,
+                  //fontSize: 26,//fontScaling here
+                  fontSize: 26*this.props.fontSizeScale,
                   paddingLeft: 15,
                   paddingBottom: 15
                 }}
@@ -76,4 +79,10 @@ class Category1 extends Component {
   }
 }
 
-export default Category1;
+const mapStateToProps = (state) => {
+  return {
+    fontSizeScale: state.changeFont
+  };
+};
+
+export default connect(mapStateToProps, null)(Category1);

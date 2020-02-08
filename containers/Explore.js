@@ -11,7 +11,6 @@ import {
   Alert
 } from 'react-native';
 import { TextInput, TouchableOpacity } from 'react-native-gesture-handler';
-
 import SafeAreaView from 'react-native-safe-area-view';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import SubHeader from '../components/layout/SubHeader';
@@ -22,18 +21,20 @@ import { requestAllPuppets } from '../Actions/puppetActions';
 
 import axios from 'axios';
 
+
 const mapStateToProps = (state) => {
   console.log(state.requestAllPuppets.puppets.length);
   return {
     puppets: state.requestAllPuppets.puppets,
     isPending: state.requestAllPuppets.isPending,
-    error: state.requestAllPuppets.error
+    error: state.requestAllPuppets.error,
+    fontSizeScale: state.changeFont
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onRequestPuppets: () => dispatch(requestAllPuppets())
+    onRequestPuppets: () => dispatch(requestAllPuppets()),
   };
 };
 
@@ -120,6 +121,17 @@ class Explore extends Component {
   componentDidMount() {}
 
   render() {
+    const styles = StyleSheet.create({
+      horizontallyCenter: {
+        marginLeft: 'auto',
+        marginRight: 'auto'
+      },
+      headings: {
+        // fontSize: 30,//fontscaling here
+        fontSize: 30 * this.props.fontSizeScale,
+        fontWeight: 'bold'
+      }
+    });
     return (
       <SafeAreaView style={{ flex: 1 }}>
         <View style={{ flex: 1 }}>
@@ -138,6 +150,7 @@ class Explore extends Component {
                 color='white'
                 size={30}
               /> */}
+              {/* RAFI PEER Image at top */}
               <Image
                 source={require('../assets/RF_logo.png')}
                 style={{
@@ -150,10 +163,12 @@ class Explore extends Component {
                   borderRadius: 10
                 }}
               />
+              {/* RAFI PEER Heading at Top */}
               <Text
                 style={{
                   marginTop: 22,
-                  fontSize: 25,
+                  // fontSize: 25,// font scaling here
+                  fontSize: 25 * this.props.fontSizeScale,
                   fontWeight: '700',
                   marginLeft: 10,
                   color: 'white'
@@ -161,7 +176,8 @@ class Explore extends Component {
               >
                 Rafi Peer
               </Text>
-              <View
+              {/* QR Code */}
+              <View 
                 style={{ marginLeft: 'auto', marginRight: 20, marginTop: 25 }}
               >
                 <TouchableOpacity
@@ -174,7 +190,8 @@ class Explore extends Component {
                   <Text
                     style={{
                       color: 'white',
-                      fontSize: 10,
+                      //fontSize: 10,//fontScaling here
+                      fontSize:10*this.props.fontSizeScale,
                       marginLeft: 'auto',
                       marginRight: 'auto'
                     }}
@@ -230,6 +247,7 @@ class Explore extends Component {
             scrollEventThrottle={16}
             showsVerticalScrollIndicator={false}
           >
+            {/* EXPLORE BY TYPE */}
             <View style={{ flex: 1, backgroundColor: 'white', paddingTop: 20 }}>
               <SubHeader headerName={'Explore By Type'} type={' '} />
               <CategoryList
@@ -239,6 +257,7 @@ class Explore extends Component {
               />
             </View>
 
+            {/* EXPLORE BY REGION */}
             <View
               style={{
                 flex: 1,
@@ -278,7 +297,7 @@ class Explore extends Component {
                 navigation={this.props.navigation}
               />
             </View>
-
+            {/* UPCOMING EVENTS */}
             <View style={{ flex: 1, backgroundColor: 'white', paddingTop: 20 }}>
               <SubHeader
                 headerName={'Upcoming Events'}
@@ -300,11 +319,3 @@ class Explore extends Component {
 
 export default connect(mapStateToProps, mapDispatchToProps)(Explore);
 // export default Explore;
-
-const styles = StyleSheet.create({
-  horizontallyCenter: {
-    marginLeft: 'auto',
-    marginRight: 'auto'
-  },
-  headings: { fontSize: 30, fontWeight: 'bold' }
-});

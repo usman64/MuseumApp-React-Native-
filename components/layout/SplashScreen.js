@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Text, View, Image } from 'react-native';
+import { connect } from 'react-redux';
+
 
 export class SplashScreen extends Component {
   componentDidMount() {
@@ -29,7 +31,8 @@ export class SplashScreen extends Component {
         <Text
           style={{
             marginTop: 22,
-            fontSize: 25,
+            // fontSize: 25,//fontScaling here
+            fontSize: 25 * this.props.fontSizeScale, 
             fontWeight: '700',
             marginLeft: 10,
             color: 'white',
@@ -44,4 +47,13 @@ export class SplashScreen extends Component {
   }
 }
 
-export default SplashScreen;
+// export default SplashScreen;
+
+const mapStateToProps = (state) => {
+  return {
+    fontSizeScale: state.changeFont
+  };
+};
+
+export default connect(mapStateToProps, null)(SplashScreen);
+
