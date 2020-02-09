@@ -20,6 +20,8 @@ const { height, width } = Dimensions.get('window');
 
 import { connect } from 'react-redux';
 import { changeFontScale } from '../Actions/changeFontScale';
+import { toggleTranslationAction } from '../Actions/toggleTranslation';
+
 
 export class More extends Component {
   constructor() {
@@ -48,14 +50,28 @@ export class More extends Component {
   //     this.props.navigation.navigate('ContactUs');
   //   }
   // }
-  urdusize(value) {
-    console.log(value);
+  languageChange(value) {
+    console.log("value", value);
+    this.props.toggleTranslationAction();
+    console.log(this.props.language);
   }
 
   render() {
     const { greyScale } = this.state;
     const { pushNotification } = this.state;
     const { langUrdu } = this.state;
+    const generalText = (this.props.language) ?"عام":"GENERAL"
+    const fontSizeText = (this.props.language) ? "حرف کا سائز": "Font Size";
+    const langText = (this.props.language) ? "زبان":"Language";
+    const settingText = (this.props.language) ? "ترتیبات اور رسائی":"SETTINGS AND ACCESSIBILITY"
+    const contactText = (this.props.language) ? "ہم سے رابطہ کریں":"Contact Us"
+    const aboutText = (this.props.language) ? "ھمارے بارے میں": "About"
+    const notificationsText = (this.props.language) ? "اطلاعات":"Push Notification"
+    const appVersionText = (this.props.language) ? "ورژن":"App Version"
+    const reportText=(this.props.language)?"مسئلے کے بارے میں بتائیے":"Report a Problem"
+    const helpAndSupportText = (this.props.language) ?"مدد اور حمایت":"HELP AND SUPPORT"
+    const rateUsText = (this.props.language) ?"درجہ بندی":"Rate Us"
+    const termsOfService = (this.props.language) ?"سروس کی شرائط":"Terms of Service"
     const styles = StyleSheet.create({
       topmostcontainer: {
         flex: 1,
@@ -132,7 +148,7 @@ export class More extends Component {
         <View style={styles.topmostcontainer}>
           {/* GENERAL */}
           <View style={styles.headingItem}>
-            <Text style={styles.headingText}>GENERAL</Text>
+            <Text style={styles.headingText}>{generalText}</Text>
           </View>
           <TouchableOpacity
             style={styles.item}
@@ -144,7 +160,7 @@ export class More extends Component {
                 name={'info-circle'}
                 size={25}
               /> */}
-            <Text style={styles.text}>About</Text>
+            <Text style={styles.text}>{aboutText}</Text>
             {/* </View> */}
           </TouchableOpacity>
           <View style={styles.line}></View>
@@ -154,30 +170,32 @@ export class More extends Component {
             style={styles.item}
             onPress={() => this.props.navigation.navigate('ContactUs')}
           >
-            <Text style={styles.text}>Contact Us</Text>
+            <Text style={styles.text}>{contactText}</Text>
           </TouchableOpacity>
 
           {/*SETTINGS & ACCESSIBILITY*/}
           <View style={styles.headingItem}>
-            <Text style={styles.headingText}>SETTINGS & ACCESSIBILITY</Text>
+            <Text style={styles.headingText}>{settingText}</Text>
           </View>
 
           {/* Language */}
           <View style={styles.item}>
             <View>
-              <Text style={styles.text}>Language</Text>
+              <Text style={styles.text}>{langText}</Text>
             </View>
             <View style={{ flexDirection: 'row', alignItems: 'center' }}>
               <Text style={styles.languageOption}>EN </Text>
               <Switch
-                value={langUrdu}
-                onValueChange={() => {
-                  this.setState({ langUrdu: !langUrdu });
-                }}
+                value={this.props.language}
+                // onValueChange={() => {
+                //   this.setState({ langUrdu: !langUrdu });
+                // }}
+                onValueChange={(value) => this.languageChange(value)}
+
               />
               <Text
                 style={styles.languageOption}
-                onLayout={(value) => this.urdusize(value)}
+                onLayout={(value) => this.languageChange(value)}
               >
                 اردو
               </Text>
@@ -187,7 +205,9 @@ export class More extends Component {
           {/* Font Size */}
           <View style={styles.line}></View>
           <View style={styles.item}>
-            <Text style={styles.text}>Font Size</Text>
+            <Text style={styles.text}>
+              {fontSizeText}
+            </Text>
             <Slider
               value={this.props.fontSizeScale}
               style={{ width: 250 }}
@@ -202,7 +222,7 @@ export class More extends Component {
 
           {/* Push Notifications */}
           <View style={styles.item}>
-            <Text style={styles.text}>Push Notifications</Text>
+            <Text style={styles.text}>{notificationsText}</Text>
             <Switch
               // style={{ paddingRight: '14'}}
 
@@ -215,12 +235,12 @@ export class More extends Component {
 
           {/* HELP AND SUPPORT */}
           <View style={styles.headingItem}>
-            <Text style={styles.headingText}>HELP AND SUPPORT</Text>
+            <Text style={styles.headingText}>{helpAndSupportText}</Text>
           </View>
 
           {/* App Version */}
           <View style={styles.item}>
-            <Text style={styles.text}>App Version</Text>
+            <Text style={styles.text}>{appVersionText}</Text>
             <Text style={styles.version}>0.1.6</Text>
           </View>
           <View style={styles.line}></View>
@@ -230,20 +250,20 @@ export class More extends Component {
             style={styles.item}
             onPress={() => this.props.navigation.navigate('ReportProblem')}
           >
-            <Text style={styles.text}>Report a Problem</Text>
+            <Text style={styles.text}>{reportText}</Text>
           </TouchableOpacity>
           <View style={styles.line}></View>
 
           {/* Terms Of Service */}
           <View style={styles.item}>
-            <Text style={styles.text}>Terms of Service</Text>
+            <Text style={styles.text}>{termsOfService}</Text>
           </View>
           {/* data providers software liscences */}
           <View style={styles.line}></View>
 
           {/* Rate Us */}
           <View style={styles.item}>
-            <Text style={styles.text}>Rate Us</Text>
+            <Text style={styles.text}>{rateUsText}</Text>
           </View>
         </View>
       </SafeAreaView>
@@ -253,13 +273,15 @@ export class More extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    fontSizeScale: state.changeFont
+    fontSizeScale: state.changeFont,
+    language: state.toggleTranslation,
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    changeFontScale: value => dispatch(changeFontScale(value))
+    changeFontScale: value => dispatch(changeFontScale(value)),
+    toggleTranslationAction: () => dispatch(toggleTranslationAction()),
   }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(More);

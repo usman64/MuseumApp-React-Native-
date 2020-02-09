@@ -249,9 +249,6 @@ class ReportProblem extends Component {
   }
 }
 
-
-
-
 const mapStateToProps = (state) => {
     return {
         fontSizeScale: state.changeFont
@@ -259,4 +256,3 @@ const mapStateToProps = (state) => {
 };
 
 export default connect(mapStateToProps, null)(ReportProblem);
-

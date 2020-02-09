@@ -5,7 +5,6 @@ export const changeFont = (state = 1, action) => {
     case 'CHANGE_FONT_SCALE':
       return action.factor;
     default:
-      console.log('in default');
       return state;
   }
 };
