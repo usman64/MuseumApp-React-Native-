@@ -210,12 +210,12 @@ export class More extends Component {
             </Text>
             <Slider
               value={this.props.fontSizeScale}
-              style={{ width: 250 }}
+              style={{ width: 150 }}
               minimumValue={0.8}
               maximumValue={1.5}
               minimumTrackTintColor='#adad85'
               maximumTrackTintColor='#000000'
-              onSlidingComplete={(value) => this.fontchanger(value)}
+              onValueChange={(value) => this.fontchanger(value)}
             />
           </View>
           <View style={styles.line}></View>
