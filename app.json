@@ -11,7 +11,11 @@
     ],
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/appicon.png",
+    "android": {
+      "package": "com.museum.rafipeer",
+      "versionCode": 1
+    },
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
