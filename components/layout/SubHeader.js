@@ -6,16 +6,20 @@ import { connect } from 'react-redux';
 
 class SubHeader extends Component {
   render() {
+    const moreEventsText = (this.props.language) ? "<< مزید واقعات" : "more >>"
+
     if (this.props.type === 'Event') {
       return (
         <View
           style={{
-            flexDirection: 'row'
+            flexDirection: 'row',
+            justifyContent: 'space-between'
           }}
         >
           <Text
             style={{
               // fontSize: 17,//fontScaling here
+              // paddingRight: 60,
               fontSize: 17 * this.props.fontSizeScale, 
             fontWeight: '700',
             paddingHorizontal: 20,
@@ -26,13 +30,13 @@ class SubHeader extends Component {
           </Text>
           <View
             style={{
-              marginLeft: 120
+              paddingRight: 20
             }}
           >
             <TouchableOpacity onPress={this.props.onPress}>
               <Text style={{ color: 'maroon', fontWeight: '700' }}>
                 {' '}
-                more >>
+                {moreEventsText}
               </Text>
             </TouchableOpacity>
           </View>
@@ -59,9 +63,12 @@ class SubHeader extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    fontSizeScale: state.changeFont
+    fontSizeScale: state.changeFont,
+    language: state.toggleTranslation,
   };
 };
+
+
 
 export default connect(mapStateToProps, null)(SubHeader);
 

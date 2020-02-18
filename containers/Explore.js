@@ -18,6 +18,8 @@ import CategoryList from '../components/Explore/CategoryList';
 
 import { connect } from 'react-redux';
 import { requestAllPuppets } from '../Actions/puppetActions';
+import { toggleTranslationAction } from '../Actions/toggleTranslation';
+
 
 import axios from 'axios';
 
@@ -28,7 +30,8 @@ const mapStateToProps = (state) => {
     puppets: state.requestAllPuppets.puppets,
     isPending: state.requestAllPuppets.isPending,
     error: state.requestAllPuppets.error,
-    fontSizeScale: state.changeFont
+    fontSizeScale: state.changeFont,
+    language: state.toggleTranslation,
   };
 };
 
@@ -121,6 +124,11 @@ class Explore extends Component {
   componentDidMount() {}
 
   render() {
+    const rafiPeerText = (this.props.language) ? "رفی پیر" : "Rafi Peer";
+    const exploreByTypeText = (this.props.language) ? "قسم سے دریافت کریں" : "Explore By Type"
+    const exploreByRegionText = (this.props.language) ? "خطے کے لحاظ سے دریافت کریں" : "Explore By Region"
+    const upcomingEventsText = (this.props.language) ? "انے والی تقریبات" : "Upcoming Events"
+    const scanText = (this.props.language) ? "اسکین":"scan"
     const styles = StyleSheet.create({
       horizontallyCenter: {
         marginLeft: 'auto',
@@ -174,7 +182,7 @@ class Explore extends Component {
                   color: 'white'
                 }}
               >
-                Rafi Peer
+                {rafiPeerText}
               </Text>
               {/* QR Code */}
               <View 
@@ -196,7 +204,7 @@ class Explore extends Component {
                       marginRight: 'auto'
                     }}
                   >
-                    Scan
+                    {scanText}
                   </Text>
                 </TouchableOpacity>
               </View>
@@ -249,7 +257,7 @@ class Explore extends Component {
           >
             {/* EXPLORE BY TYPE */}
             <View style={{ flex: 1, backgroundColor: 'white', paddingTop: 20 }}>
-              <SubHeader headerName={'Explore By Type'} type={' '} />
+              <SubHeader headerName={exploreByTypeText} type={' '} />
               <CategoryList
                 data={typesOfPuppets}
                 type={'CategorizedPuppets'}
@@ -266,7 +274,7 @@ class Explore extends Component {
                 // paddingHorizontal: 20
               }}
             >
-              <SubHeader headerName={'Explore By Region'} type={' '} />
+              <SubHeader headerName={exploreByRegionText} type={' '} />
 
               {/* <View
                   style={{
@@ -300,7 +308,7 @@ class Explore extends Component {
             {/* UPCOMING EVENTS */}
             <View style={{ flex: 1, backgroundColor: 'white', paddingTop: 20 }}>
               <SubHeader
-                headerName={'Upcoming Events'}
+                headerName={upcomingEventsText}
                 type={'Event'}
                 onPress={() => this.props.navigation.navigate('Event')}
               />
