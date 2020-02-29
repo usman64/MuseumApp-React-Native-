@@ -44,7 +44,7 @@ export class More extends Component {
   greyScaler(temp) {}
   emailSender(){
     sendEmail(
-      'obaidurrehmanashfaq@gmail.com',
+      'SRPdocumentclassification@gmail.com',
       'App Error!',
       'error'
     ).then(() => {
