@@ -7,6 +7,24 @@ const { height, width } = Dimensions.get('window');
 // const AboutContent = () => 
 class AboutContent extends Component {
   render(){
+    const aboutText1 = (this.props.language) ? `رفیع پیر ثقافتی مرکز یہاں کے سب سے زیادہ ثقافتی لحاظ سے امیر مقام ہے
+            پاکستان۔ اس کے آغاز کے بعد سے ہی اس مرکز میں بہت سے قومی اور
+            براعظم ایونٹس ، جیسے ایشیاء پپیٹ فیسٹیول اور دی لٹریری
+            میلہ۔`:` Rafi Peer Cultural Centre is one of the most culturally rich places in
+            Pakistan. Since it's inception the centre has hosted many national and
+            continental events, such as The Asia Puppet Festival and The Literary
+            Festival.`
+    const aboutText2 = (this.props.language) ? `
+            اس مرکز میں رافیر پیر سمیت متعدد پرکشش مقامات ہیں
+            تھیٹر اور پیرو کا کیفے لیکن سب سے زیادہ پسند کی جانے والی توجہ ہے
+            پپیٹری کا میوزیم جسے ایشیاء کا سب سے بڑا مقام ہونے کا اعزاز حاصل ہے
+            کٹھ پتلی میوزیم اور 40 سے زیادہ مختلف کٹھ پتلیوں کا گھر ہے
+            ممالک.`:` The centre also has a multitude of attractions including the Rafi Peer
+            Theatre and the Peeru's Cafe but arguably the most liked attraction is
+            the Museum of Puppetry, which has the honor of being Asia's largest
+            puppet museum and is home to puppets from more than 40 different
+            countries.`
+
     const styles = StyleSheet.create({
       container: {
         flex: 1,
@@ -59,16 +77,9 @@ class AboutContent extends Component {
             >
 
           <Text style={styles.item}>
-            Rafi Peer Cultural Centre is one of the most culturally rich places in
-            Pakistan. Since it's inception the centre has hosted many national and
-            continental events, such as The Asia Puppet Festival and The Literary
-            Festival.
+           {aboutText1}
             {'\n\n'}
-            The centre also has a multitude of attractions including the Rafi Peer
-            Theatre and the Peeru's Cafe but arguably the most liked attraction is
-            the Museum of Puppetry, which has the honor of being Asia's largest
-            puppet museum and is home to puppets from more than 40 different
-            countries.
+           {aboutText2}
           </Text>
           </View>
         </View>
@@ -78,7 +89,8 @@ class AboutContent extends Component {
 };
 const mapStateToProps = (state) => {
   return {
-    fontSizeScale: state.changeFont
+    fontSizeScale: state.changeFont,
+    language: state.toggleTranslation
   };
 };
 

@@ -33,7 +33,12 @@ import QrCodeScreen from './containers/QrCodeScreen';
 
 import { connect } from 'react-redux';
 import { changeFontScale } from './Actions/changeFontScale';
+// const languageoptions = {
+//   urdu: (this.props.language)?"helo":"urdu"
+// }
+// connect(mapStateToProps, null)(langauageoptions);
 
+// const eventsTitle = (this.language) ? "تقریبات": "Events"
 const ExploreStack = createStackNavigator({
   Explore: {
     screen: Explore,
@@ -181,7 +186,7 @@ const MoreStack = createStackNavigator(
     ContactUs: {
       screen: ContactUs,
       navigationOptions: {
-        title: 'ContactUs',
+        title: 'Contact Us',
         headerStyle: {
           backgroundColor: 'maroon'
         },
@@ -291,7 +296,12 @@ const AppNavigator = createSwitchNavigator(
     // }
   }
 );
-
+const mapStateToProps = (state) => {
+  return {
+    fontSizeScale: state.changeFont,
+    language: state.toggleTranslation,
+  };
+};
 const AppContainer = createAppContainer(AppNavigator);
 
 export default class App extends Component {
@@ -307,15 +317,9 @@ export default class App extends Component {
   }
 }
 
-// const mapStateToProps = (state) => {
-//   return {
-//     fontSizeScale: state.changeFont
-//   };
-// };
-
 // const mapDispatchToProps = dispatch => {
 //   return {
 //     changeFontScale: value => dispatch(changeFontScale(value))
 //   }
 // }
-// export default connect(mapStateToProps, mapDispatchToProps)(App);
+// export default connect(mapStateToProps, null)(App);

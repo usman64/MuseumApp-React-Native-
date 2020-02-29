@@ -13,6 +13,9 @@ import {
 import SafeAreaView from 'react-native-safe-area-view';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 
+import { sendEmail } from './send-email';
+import { Linking } from 'expo';
+
 import { Notifications } from 'expo';
 import * as Permissions from 'expo-permissions';
 
@@ -39,17 +42,15 @@ export class More extends Component {
     // console.log(this.props.fontSizeScale);
   }
   greyScaler(temp) {}
-  // navigator(where) {
-  //   if (where === 'About') {
-  //     this.props.navigation.navigate('About');
-  //   }
-  //   if (where === 'Settings') {
-  //     this.props.navigation.navigate('Settings');
-  //   }
-  //   if (where === 'Contact Us') {
-  //     this.props.navigation.navigate('ContactUs');
-  //   }
-  // }
+  emailSender(){
+    sendEmail(
+      'obaidurrehmanashfaq@gmail.com',
+      'App Error!',
+      'error'
+    ).then(() => {
+      console.log('Our email successful provided to device mail ');
+    });
+  }
   languageChange(value) {
     console.log("value", value);
     this.props.toggleTranslationAction();
@@ -248,7 +249,8 @@ export class More extends Component {
           {/* Report a Problem */}
           <TouchableOpacity
             style={styles.item}
-            onPress={() => this.props.navigation.navigate('ReportProblem')}
+            // onPress={() => this.props.navigation.navigate('ReportProblem')}
+            onPress={() => this.emailSender()}
           >
             <Text style={styles.text}>{reportText}</Text>
           </TouchableOpacity>
@@ -262,9 +264,13 @@ export class More extends Component {
           <View style={styles.line}></View>
 
           {/* Rate Us */}
-          <View style={styles.item}>
+          <TouchableOpacity 
+            style={styles.item}
+            onPress={() => {
+              Linking.openURL("https://play.google.com/store/apps/topic?id=editors_choice");
+            }}>
             <Text style={styles.text}>{rateUsText}</Text>
-          </View>
+          </TouchableOpacity>
         </View>
       </SafeAreaView>
     );
