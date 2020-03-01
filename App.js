@@ -67,16 +67,7 @@ const ExploreStack = createStackNavigator({
   SinglePuppet: {
     screen: SinglePuppetScreen,
     navigationOptions: {
-      headerStyle: {
-        backgroundColor: 'maroon'
-      },
-
-      headerTitleStyle: {
-        fontWeight: '700',
-        fontSize: 25,
-        color: 'white'
-      },
-      headerTintColor: 'white'
+      header: null,
     }
   },
   CategorizedPuppets: {
@@ -128,18 +119,8 @@ const ExploreStack = createStackNavigator({
 
   SingleEvent: {
     screen: SingleEventScreen,
-    navigationOptions: {
-      headerStyle: {
-        backgroundColor: 'maroon'
-      },
-
-      headerTitleStyle: {
-        fontWeight: '700',
-        fontSize: 25,
-        color: 'white'
-      },
-      headerTintColor: 'white'
-    }
+    // navigationOptions: {
+    // }
   }
 });
 
