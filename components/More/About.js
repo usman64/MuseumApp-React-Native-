@@ -12,14 +12,13 @@ class About extends Component {
     return (
       //     <Header
       //   centerComponent={{ text: 'MY TITLE', style: { color: '#fff' } }}
-    // />
-    <View style={{ flex: 1 }}>
-   
-        <View style={{ flex: 7 }}>
-        <AboutContent />
+      // />
+      <View style={{ flex: 1 }}>
+        <View style={{ flex: 7, backgroundColor: "#352D46" }}>
+          <AboutContent />
+        </View>
       </View>
-    </View>
-  );
+    );
 }}
 
 

@@ -139,13 +139,13 @@ export class FindUs extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center'
+    backgroundColor: "#352D46",
+    alignItems: "center",
+    justifyContent: "center"
   },
   mapStyle: {
-    width: Dimensions.get('window').width,
-    height: Dimensions.get('window').height / 2
+    width: Dimensions.get("window").width,
+    height: Dimensions.get("window").height / 2
     // width: 50,
     // height: 500,
   }

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import * as Font from 'expo-font';
 import {
   Text,
   View,
@@ -33,15 +34,25 @@ export class More extends Component {
       greyScale: false,
       font: 1,
       pushNotification: false,
-      langUrdu: false
+      langUrdu: false,
+      fontLoaded: false,
     };
   }
-  fontchanger(value) {
-    // this.props.dispatch(changeFontScale(value));
-    this.props.changeFontScale(value)
-    // console.log(this.props.fontSizeScale);
+  async componentDidMount() {
+    await Font.loadAsync({
+      "Montserrat-Bold": require("../assets/fonts/Montserrat-Bold.ttf"),
+      "Montserrat-Medium": require("../assets/fonts/Montserrat-Medium.ttf")
+    });
+    this.setState({ fontLoaded: true });
+    console.log("set ")
   }
+ 
+  fontchanger(value) {
+    this.props.changeFontScale(value)
+  }
+ 
   greyScaler(temp) {}
+ 
   emailSender(){
     sendEmail(
       'SRPdocumentclassification@gmail.com',
@@ -76,202 +87,185 @@ export class More extends Component {
     const styles = StyleSheet.create({
       topmostcontainer: {
         flex: 1,
-        flexDirection: 'column',
-        justifyContent: 'space-between',
+        flexDirection: "column",
+        justifyContent: "space-between",
         paddingTop: 0.05 * height,
-
         paddingBottom: 0.07 * width
       },
       container: {
         flex: 1
-        // paddingTop: 20
       },
       headingText: {
-        fontSize: this.props.fontSizeScale * 20,
-        color: 'maroon',
-        fontWeight: '500',
+        fontFamily: "Montserrat-Bold",
+        fontSize: this.props.fontSizeScale * 22,
+        color: "#07B5AE",
         marginLeft: 0.04 * width,
         marginRight: 0.04 * width
-        // borderBottomWidth: 1,
-        // borderBottomColor: 'rgba(64, 64, 64, 0.1)',
-        //  alignItems: 'center',
       },
       headingItem: {
-        flexDirection: 'column',
-        justifyContent: 'center',
-        // alignItems: 'center',
-
+        flexDirection: "column",
+        justifyContent: "center",
         flexGrow: 4
-        // borderTopWidth: 1,
-        // borderTopColor: 'maroon',
-        // borderBottomWidth: 3,
-
-        // borderBottomColor: 'maroon',
       },
       item: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        // justifyContent: 'center',
+        flexDirection: "row",
+        justifyContent: "space-between",
+        alignItems: "center",
         flexGrow: 3,
         marginLeft: 0.06 * width,
         marginRight: 0.06 * width
-        // borderTopWidth: 1,
-        // borderTopColor: 'rgba(64, 64, 64, 0.1)',
-
-        // height = 10,
       },
       line: {
         flex: 0,
         borderTopWidth: 1,
         marginLeft: 0.06 * width,
         marginRight: 0.06 * width,
-        borderTopColor: 'rgba(64, 64, 64, 0.1)'
+        borderTopColor: "#251F35",
+        opacity: 0.8
       },
       text: {
-        fontSize: this.props.fontSizeScale * 20
-        // marginLeft: 10,
-        // padding: 10,
-        // height: 50,
+        fontFamily: "Montserrat-Medium",
+        fontSize: this.props.fontSizeScale * 20,
+        color: "white"
       },
       languageOption: {
-        color: 'grey',
+        fontFamily: "Montserrat-Medium",
+        color: "white",
         fontSize: 0.025 * width
       },
       version: {
-        color: 'grey',
-        alignItems: 'flex-end',
+        fontFamily: "Montserrat-Medium",
+        color: "white",
+        alignItems: "flex-end",
         fontSize: 0.05 * width
       }
     });
     return (
-      <SafeAreaView style={{ flex: 1 }}>
-        <View style={styles.topmostcontainer}>
-          {/* GENERAL */}
-          <View style={styles.headingItem}>
-            <Text style={styles.headingText}>{generalText}</Text>
-          </View>
-          <TouchableOpacity
-            style={styles.item}
-            onPress={() => this.props.navigation.navigate('About')}
-          >
-            {/* <View style={{ flexDirection: 'row' }}> */}
-            {/* <Icon
-                style={{ marginRight: 10 }}
-                name={'info-circle'}
-                size={25}
-              /> */}
-            <Text style={styles.text}>{aboutText}</Text>
-            {/* </View> */}
-          </TouchableOpacity>
-          <View style={styles.line}></View>
-
-          {/* Contact Us */}
-          <TouchableOpacity
-            style={styles.item}
-            onPress={() => this.props.navigation.navigate('ContactUs')}
-          >
-            <Text style={styles.text}>{contactText}</Text>
-          </TouchableOpacity>
-
-          {/*SETTINGS & ACCESSIBILITY*/}
-          <View style={styles.headingItem}>
-            <Text style={styles.headingText}>{settingText}</Text>
-          </View>
-
-          {/* Language */}
-          <View style={styles.item}>
-            <View>
-              <Text style={styles.text}>{langText}</Text>
+      <SafeAreaView style={{ flex: 1, backgroundColor: "#352D46" }}>
+        {this.state.fontLoaded ? (
+          <View style={styles.topmostcontainer}>
+            {/* GENERAL */}
+            <View style={styles.headingItem}>
+              <Text style={styles.headingText}>{generalText}</Text>
             </View>
-            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-              <Text style={styles.languageOption}>EN </Text>
-              <Switch
-                value={this.props.language}
-                // onValueChange={() => {
-                //   this.setState({ langUrdu: !langUrdu });
-                // }}
-                onValueChange={(value) => this.languageChange(value)}
+            <TouchableOpacity
+              style={styles.item}
+              onPress={() => this.props.navigation.navigate("About")}
+            >
+              <Text style={styles.text}>{aboutText}</Text>
+              {/* </View> */}
+            </TouchableOpacity>
+            <View style={styles.line}></View>
 
+            {/* Contact Us */}
+            <TouchableOpacity
+              style={styles.item}
+              onPress={() => this.props.navigation.navigate("ContactUs")}
+            >
+              <Text style={styles.text}>{contactText}</Text>
+            </TouchableOpacity>
+
+            {/*SETTINGS & ACCESSIBILITY*/}
+            <View style={styles.headingItem}>
+              <Text style={styles.headingText}>{settingText}</Text>
+            </View>
+
+            {/* Language */}
+            <View style={styles.item}>
+              <View>
+                <Text style={styles.text}>{langText}</Text>
+              </View>
+              <View style={{ flexDirection: "row", alignItems: "center" }}>
+                <Text style={styles.languageOption}>EN </Text>
+                <Switch
+                  value={this.props.language}
+                  // onValueChange={() => {
+                  //   this.setState({ langUrdu: !langUrdu });
+                  // }}
+                  thumbColor="#07B5AE"
+                  onValueChange={value => this.languageChange(value)}
+                />
+                <Text
+                  style={styles.languageOption}
+                  onLayout={value => this.languageChange(value)}
+                >
+                  اردو
+                </Text>
+              </View>
+            </View>
+
+            {/* Font Size */}
+            <View style={styles.line}></View>
+            <View style={styles.item}>
+              <Text style={styles.text}>{fontSizeText}</Text>
+              <Slider
+                value={this.props.fontSizeScale}
+                style={{ width: 150 }}
+                minimumValue={0.8}
+                maximumValue={1.5}
+                thumbTintColor="#07B5AE"
+                minimumTrackTintColor="#251F35"
+                maximumTrackTintColor="white"
+                onValueChange={value => this.fontchanger(value)}
               />
-              <Text
-                style={styles.languageOption}
-                onLayout={(value) => this.languageChange(value)}
-              >
-                اردو
-              </Text>
             </View>
-          </View>
+            <View style={styles.line}></View>
 
-          {/* Font Size */}
-          <View style={styles.line}></View>
-          <View style={styles.item}>
-            <Text style={styles.text}>
-              {fontSizeText}
-            </Text>
-            <Slider
-              value={this.props.fontSizeScale}
-              style={{ width: 150 }}
-              minimumValue={0.8}
-              maximumValue={1.5}
-              minimumTrackTintColor='#adad85'
-              maximumTrackTintColor='#000000'
-              onValueChange={(value) => this.fontchanger(value)}
-            />
-          </View>
-          <View style={styles.line}></View>
+            {/* Push Notifications */}
+            <View style={styles.item}>
+              <Text style={styles.text}>{notificationsText}</Text>
+              <Switch
+                // style={{ paddingRight: '14'}}
+                thumbColor="#07B5AE"
+                onValueChange={() => {
+                  this.setState({ pushNotification: !pushNotification });
+                }}
+                value={this.state.pushNotification}
+              />
+            </View>
 
-          {/* Push Notifications */}
-          <View style={styles.item}>
-            <Text style={styles.text}>{notificationsText}</Text>
-            <Switch
-              // style={{ paddingRight: '14'}}
+            {/* HELP AND SUPPORT */}
+            <View style={styles.headingItem}>
+              <Text style={styles.headingText}>{helpAndSupportText}</Text>
+            </View>
 
-              onValueChange={() => {
-                this.setState({ pushNotification: !pushNotification });
+            {/* App Version */}
+            <View style={styles.item}>
+              <Text style={styles.text}>{appVersionText}</Text>
+              <Text style={styles.version}>0.1.6</Text>
+            </View>
+            <View style={styles.line}></View>
+
+            {/* Report a Problem */}
+            <TouchableOpacity
+              style={styles.item}
+              // onPress={() => this.props.navigation.navigate('ReportProblem')}
+              onPress={() => this.emailSender()}
+            >
+              <Text style={styles.text}>{reportText}</Text>
+            </TouchableOpacity>
+            <View style={styles.line}></View>
+
+            {/* Terms Of Service */}
+            <View style={styles.item}>
+              <Text style={styles.text}>{termsOfService}</Text>
+            </View>
+            {/* data providers software liscences */}
+            <View style={styles.line}></View>
+
+            {/* Rate Us */}
+            <TouchableOpacity
+              style={styles.item}
+              onPress={() => {
+                Linking.openURL(
+                  "https://play.google.com/store/apps/topic?id=editors_choice"
+                );
               }}
-              value={this.state.pushNotification}
-            />
+            >
+              <Text style={styles.text}>{rateUsText}</Text>
+            </TouchableOpacity>
           </View>
-
-          {/* HELP AND SUPPORT */}
-          <View style={styles.headingItem}>
-            <Text style={styles.headingText}>{helpAndSupportText}</Text>
-          </View>
-
-          {/* App Version */}
-          <View style={styles.item}>
-            <Text style={styles.text}>{appVersionText}</Text>
-            <Text style={styles.version}>0.1.6</Text>
-          </View>
-          <View style={styles.line}></View>
-
-          {/* Report a Problem */}
-          <TouchableOpacity
-            style={styles.item}
-            // onPress={() => this.props.navigation.navigate('ReportProblem')}
-            onPress={() => this.emailSender()}
-          >
-            <Text style={styles.text}>{reportText}</Text>
-          </TouchableOpacity>
-          <View style={styles.line}></View>
-
-          {/* Terms Of Service */}
-          <View style={styles.item}>
-            <Text style={styles.text}>{termsOfService}</Text>
-          </View>
-          {/* data providers software liscences */}
-          <View style={styles.line}></View>
-
-          {/* Rate Us */}
-          <TouchableOpacity 
-            style={styles.item}
-            onPress={() => {
-              Linking.openURL("https://play.google.com/store/apps/topic?id=editors_choice");
-            }}>
-            <Text style={styles.text}>{rateUsText}</Text>
-          </TouchableOpacity>
-        </View>
+        ) : null}
       </SafeAreaView>
     );
   }

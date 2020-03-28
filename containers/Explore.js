@@ -128,6 +128,7 @@ class Explore extends Component {
     const exploreByTypeText = (this.props.language) ? "قسم سے دریافت کریں" : "Explore By Type"
     const exploreByRegionText = (this.props.language) ? "خطے کے لحاظ سے دریافت کریں" : "Explore By Region"
     const upcomingEventsText = (this.props.language) ? "انے والی تقریبات" : "Upcoming Events"
+    const exploerByText = "Explore By"
     const scanText = (this.props.language) ? "اسکین":"scan"
     const styles = StyleSheet.create({
       horizontallyCenter: {
@@ -141,17 +142,17 @@ class Explore extends Component {
       }
     });
     return (
-      <SafeAreaView style={{ flex: 1 }}>
-        <View style={{ flex: 1 }}>
+      <SafeAreaView style={{ flex: 1, backgroundColor: "#352D46" }}>
+        <View style={{ flex: 1, backgroundColor: "#352D46" }}>
           <View
             style={{
               height: 75,
-              backgroundColor: 'maroon',
+              backgroundColor: "maroon",
               borderBottomWidth: 1,
-              borderBottomColor: '#ddd'
+              borderBottomColor: "#ddd"
             }}
           >
-            <View style={{ flexDirection: 'row' }}>
+            <View style={{ flexDirection: "row" }}>
               {/* <Icon
                 name='square'
                 style={{ paddingTop: 25, marginLeft: 20 }}
@@ -160,7 +161,7 @@ class Explore extends Component {
               /> */}
               {/* RAFI PEER Image at top */}
               <Image
-                source={require('../assets/RF_logo.png')}
+                source={require("../assets/RF_logo.png")}
                 style={{
                   height: 35,
                   width: 35,
@@ -177,31 +178,31 @@ class Explore extends Component {
                   marginTop: 22,
                   // fontSize: 25,// font scaling here
                   fontSize: 25 * this.props.fontSizeScale,
-                  fontWeight: '700',
+                  fontWeight: "700",
                   marginLeft: 10,
-                  color: 'white'
+                  color: "white"
                 }}
               >
                 {rafiPeerText}
               </Text>
               {/* QR Code */}
-              <View 
-                style={{ marginLeft: 'auto', marginRight: 20, marginTop: 25 }}
+              <View
+                style={{ marginLeft: "auto", marginRight: 20, marginTop: 25 }}
               >
                 <TouchableOpacity
-                  onPress={() => this.props.navigation.navigate('QrScan')}
+                  onPress={() => this.props.navigation.navigate("QrScan")}
                 >
                   <Image
-                    source={require('../assets/scan.png')}
-                    style={{ height: 26, width: 26, tintColor: 'white' }}
+                    source={require("../assets/scan.png")}
+                    style={{ height: 26, width: 26, tintColor: "white" }}
                   />
                   <Text
                     style={{
-                      color: 'white',
+                      color: "white",
                       //fontSize: 10,//fontScaling here
-                      fontSize:10*this.props.fontSizeScale,
-                      marginLeft: 'auto',
-                      marginRight: 'auto'
+                      fontSize: 10 * this.props.fontSizeScale,
+                      marginLeft: "auto",
+                      marginRight: "auto"
                     }}
                   >
                     {scanText}
@@ -252,15 +253,20 @@ class Explore extends Component {
           </View> */}
 
           <ScrollView
+            style={{
+              backgroundColor: "#352D46"
+            }}
             scrollEventThrottle={16}
             showsVerticalScrollIndicator={false}
           >
             {/* EXPLORE BY TYPE */}
-            <View style={{ flex: 1, backgroundColor: 'white', paddingTop: 20 }}>
-              <SubHeader headerName={exploreByTypeText} type={' '} />
+            <View
+              style={{ flex: 1, backgroundColor: "#352D46", paddingTop: 20 }}
+            >
+              <SubHeader headerName={exploerByText} type={"Type"} />
               <CategoryList
                 data={typesOfPuppets}
-                type={'CategorizedPuppets'}
+                type={"CategorizedPuppets"}
                 navigation={this.props.navigation}
               />
             </View>
@@ -269,12 +275,12 @@ class Explore extends Component {
             <View
               style={{
                 flex: 1,
-                backgroundColor: 'white',
+                backgroundColor: "#352D46",
                 paddingTop: 20
                 // paddingHorizontal: 20
               }}
             >
-              <SubHeader headerName={exploreByRegionText} type={' '} />
+              <SubHeader headerName={exploerByText} type={"Region"} />
 
               {/* <View
                   style={{
@@ -301,20 +307,22 @@ class Explore extends Component {
               <View> */}
               <CategoryList
                 data={Regions}
-                type={'RegionalPuppets'}
+                type={"RegionalPuppets"}
                 navigation={this.props.navigation}
               />
             </View>
             {/* UPCOMING EVENTS */}
-            <View style={{ flex: 1, backgroundColor: 'white', paddingTop: 20 }}>
+            <View
+              style={{ flex: 1, backgroundColor: "#352D46", paddingTop: 20 }}
+            >
               <SubHeader
                 headerName={upcomingEventsText}
-                type={'Event'}
-                onPress={() => this.props.navigation.navigate('Event')}
+                type={"Event"}
+                onPress={() => this.props.navigation.navigate("Event")}
               />
               <CategoryList
                 data={upEvents}
-                type={'Event'}
+                type={"Event"}
                 navigation={this.props.navigation}
               />
             </View>

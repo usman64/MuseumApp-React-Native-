@@ -4,13 +4,23 @@ import { ScrollView } from 'react-native-gesture-handler';
 import FindUs from './FindUs'
 const { height, width } = Dimensions.get('window');
 import { connect } from 'react-redux';
+import * as Font from "expo-font";
 
 class ContactUs extends Component {
     constructor() {
-        super();
-        this.state = {
-        }
+      super();
+      this.state = {
+        fontLoaded: false
+      };
     }
+  async componentDidMount() {
+    await Font.loadAsync({ 
+      // "Montserrat-Bold": require("../../assets/fonts/Montserrat-Bold.ttf"),
+      "Montserrat-Medium": require("../../assets/fonts/Montserrat-Medium.ttf")
+    });
+    this.setState({ fontLoaded: true });
+  }
+
     render() {
         const { greyScale } = this.state;
         const { pushNotification } = this.state;
@@ -41,13 +51,16 @@ class ContactUs extends Component {
         },
       });
         return (
-          <ScrollView>
-            <View style={{ flex: 1 }}>
+          <ScrollView style={{ backgroundColor: "#352D46" }}>
+            <View style={{ flex: 1, backgroundColor: "#352D46" }}>
               <FindUs />
 
-              <View style={{ 
+              <View
+                style={{
                   flexDirection: "row",
-               marginLeft: 20, }}>
+                  marginLeft: 20
+                }}
+              >
                 {/* <View style={{ padding: 10, width: 100, height: 100 }}>
                   <Image
                     source={require("../../assets/facebook.png")}
@@ -68,18 +81,32 @@ class ContactUs extends Component {
                   }}
                 >
                   <Text
-                  //   style={{ fontSize: 20 }}
+                    style={{
+                      fontSize: this.props.fontSizeScale * 18,
+                      fontFamily: "Montserrat-Medium",
+                      color: "white"
+                    }}
                   >
                     Email: rafipeer@gmail.com
                   </Text>
                   <Text
-                  //    style={{ fontSize: 20 }}
+                    style={{
+                      fontSize: this.props.fontSizeScale * 18,
+                      fontFamily: "Montserrat-Medium",
+                      color: "white"
+                    }}
                   >
                     Phone: +92 333 4797423
                   </Text>
-                  <Text>
-                  Address: 1 Green Acres Main Rd, 
-                  Green Acres Housing Society, Lahore, Punjab
+                  <Text
+                    style={{
+                      fontSize: this.props.fontSizeScale * 18,
+                      fontFamily: "Montserrat-Medium",
+                      color: "white"
+                    }}
+                  >
+                    Address: 1 Green Acres Main Rd, Green Acres Housing Society,
+                    Lahore, Punjab
                   </Text>
                 </View>
               </View>
