@@ -5,7 +5,7 @@ import CategoryItem from './CategoryItem';
 class CategoryList extends Component {
   render() {
     return (
-      <View style={{ height: 130, marginTop: 20, backgroundColor: "#352D46" }}>
+      <View style={{ height: 200, marginTop: 20, backgroundColor: "#251F35" }}>
         <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
           {this.props.data.map((item, key) => (
             <CategoryItem

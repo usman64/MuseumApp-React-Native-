@@ -21,7 +21,7 @@ class SubHeader extends Component {
   }
 
   render() {
-    const moreEventsText = this.props.language ? "<< مزید واقعات" : "more >>";
+    const moreEventsText = this.props.language ? "< مزید واقعات" : "More >";
    
     if (this.props.type === "Event") {
       return (
@@ -38,7 +38,7 @@ class SubHeader extends Component {
                   // fontSize: 17,//fontScaling here
                   // paddingRight: 60,
                   fontFamily: "Montserrat-Bold",
-                  fontSize: 20 * this.props.fontSizeScale,
+                  fontSize: 24 * this.props.fontSizeScale,
                   // fontWeight: "700",
                   paddingHorizontal: 20,
                   color: "grey"
@@ -52,7 +52,13 @@ class SubHeader extends Component {
                 }}
               >
                 <TouchableOpacity onPress={this.props.onPress}>
-                  <Text style={{ color: "#07B5AE" }}>
+                  <Text
+                    style={{
+                      color: "#07B5AE",
+                      fontFamily: "Montserrat-Medium",
+                      fontSize: 20 * this.props.fontSizeScale
+                    }}
+                  >
                     {" "}
                     {moreEventsText}
                   </Text>
@@ -69,28 +75,33 @@ class SubHeader extends Component {
         {this.state.fontLoaded ? (
           <View
             style={{
-              backgroundColor: "#352D46"
+              backgroundColor: "#251F35",
+              flexDirection: "row",
+              justifyContent: "flex-start",
+              alignItems: "flex-start"
             }}
           >
             <Text
               style={{
                 fontFamily: "Montserrat-Bold",
-                fontSize: 20 * this.props.fontSizeScale,
+                fontSize: 24 * this.props.fontSizeScale,
                 paddingHorizontal: 20,
                 color: "grey"
               }}
             >
-              {this.props.headerName}{" "}
-              <Text
-                style={{
-                  // fontFamily: "Montserrat-Bold",
-                  // fontSize: 20 * this.props.fontSizeScale,
-                  // paddingHorizontal: 20,
-                  color: "#07B5AE"
-                }}
-              >
-                {this.props.type}
-              </Text>
+              {this.props.headerName}
+            </Text>
+            <Text
+              style={{
+                fontFamily: "Montserrat-Medium",
+                fontSize: 24 * this.props.fontSizeScale,
+                marginLeft: -10,
+
+                // paddingHorizontal: 20,
+                color: "#07B5AE"
+              }}
+            >
+              {this.props.type}
             </Text>
           </View>
         ) : null}

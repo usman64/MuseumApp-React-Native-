@@ -63,9 +63,7 @@ export class More extends Component {
     });
   }
   languageChange(value) {
-    console.log("value", value);
     this.props.toggleTranslationAction();
-    console.log(this.props.language);
   }
 
   render() {
@@ -120,7 +118,7 @@ export class More extends Component {
         borderTopWidth: 1,
         marginLeft: 0.06 * width,
         marginRight: 0.06 * width,
-        borderTopColor: "#251F35",
+        borderTopColor: "#352D46",
         opacity: 0.8
       },
       text: {
@@ -131,17 +129,17 @@ export class More extends Component {
       languageOption: {
         fontFamily: "Montserrat-Medium",
         color: "white",
-        fontSize: 0.025 * width
+        fontSize: this.props.fontSizeScale * 15
       },
       version: {
         fontFamily: "Montserrat-Medium",
         color: "white",
         alignItems: "flex-end",
-        fontSize: 0.05 * width
+        fontSize: this.props.fontSizeScale * 20
       }
     });
     return (
-      <SafeAreaView style={{ flex: 1, backgroundColor: "#352D46" }}>
+      <SafeAreaView style={{ flex: 1, backgroundColor: "#251F35" }}>
         {this.state.fontLoaded ? (
           <View style={styles.topmostcontainer}>
             {/* GENERAL */}
@@ -204,7 +202,7 @@ export class More extends Component {
                 minimumValue={0.8}
                 maximumValue={1.5}
                 thumbTintColor="#07B5AE"
-                minimumTrackTintColor="#251F35"
+                minimumTrackTintColor="white"
                 maximumTrackTintColor="white"
                 onValueChange={value => this.fontchanger(value)}
               />
