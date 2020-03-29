@@ -106,7 +106,7 @@ const ExploreStack = createStackNavigator({
     navigationOptions: {
       title: 'Events',
       headerStyle: {
-        backgroundColor: 'maroon'
+        backgroundColor: '#251F35'
       },
 
       headerTitleStyle: {

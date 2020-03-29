@@ -88,14 +88,15 @@ export class EventsScreen extends Component {
     return (
       <ScrollView
         contentContainerStyle={{
-          paddingBottom: this.state.Upcoming.length * 280
+          paddingBottom: this.state.Upcoming.length * 280,
+          backgroundColor: '#251F35'
         }}
       >
         <View>
           <View>
             <View>
               <View
-                style={{ flex: 1, backgroundColor: 'white', paddingTop: 30 }}
+                style={{ flex: 1, paddingTop: 30 }}
               >
                 <Text
                   style={{

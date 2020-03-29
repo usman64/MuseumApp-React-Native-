@@ -2,12 +2,32 @@ import React, { Component } from 'react';
 import { Text, View, ScrollView, Alert, ImageBackground } from 'react-native';
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import { connect } from 'react-redux';
+import * as Font from 'expo-font';
+import { AuthSession } from 'expo';
+import theme from '../../../assets/theme'
 
 class Category1 extends Component {
+
+  constructor() {
+    super();
+    this.state = {
+      fontLoaded: false
+    };
+  }
+
+  async componentDidMount() {
+    await Font.loadAsync({
+      'Montserrat-Bold': require('../../../assets/fonts/Montserrat-Bold.ttf'),
+      'Montserrat-Medium': require('../../../assets/fonts/Montserrat-Medium.ttf')
+    });
+    this.setState({ fontLoaded: true });
+  }
+
   render() {
-    const { type } = this.props;
     return (
-      <TouchableWithoutFeedback
+      <View>
+       {this.state.fontLoaded ? 
+        <TouchableWithoutFeedback
         onPress={() => {
           this.props.navigation.navigate('SingleEvent', {
             name: this.props.name,
@@ -18,16 +38,14 @@ class Category1 extends Component {
           });
         }}
         style={{
-          height: 150,
-          width: 200,
+          height: 220,
+          width: 180,
           marginLeft: 20,
-          backgroundColor: 'white',
+          backgroundColor: theme.primaryColor_var2,
           shadowColor: 'black',
           shadowOffset: { width: 5, height: 5 },
           shadowOpacity: 0.8,
-          shadowRadius: 5,
           elevation: 10,
-          borderRadius: 22
         }}
       >
         <View
@@ -38,11 +56,10 @@ class Category1 extends Component {
           <ImageBackground
             style={{
               flex: 1,
-              width: null,
-              height: null,
+              width: 180,
+              height: 160,
               resizeMode: 'cover'
             }}
-            imageStyle={{ borderRadius: 22 }}
             source={{ uri: this.props.ImageUri }}
           >
             <View
@@ -55,15 +72,16 @@ class Category1 extends Component {
                 justifyContent: 'flex-end',
                 alignItems: 'flex-start',
                 backgroundColor: 'rgba(0, 0, 0, 0.5)',
-                borderRadius: 22
+                // borderRadius: 22
               }}
             >
               <Text
                 style={{
-                  fontWeight: 'bold',
+                  fontFamily: 'Montserrat-Bold',
+                  textTransform: 'uppercase',
                   color: 'white',
                   //fontSize: 26,//fontScaling here
-                  fontSize: 26 * this.props.fontSizeScale,
+                  fontSize: 15 * this.props.fontSizeScale,
                   paddingLeft: 15,
                   paddingBottom: 15
                 }}
@@ -76,7 +94,10 @@ class Category1 extends Component {
         {/* <View style={{ flex: 1, paddingLeft: 10, paddingTop: 10 }}>
         </View> */}
       </TouchableWithoutFeedback>
-    );
+     : null  
+      } 
+      </View>
+    )
   }
 }
 

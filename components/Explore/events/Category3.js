@@ -9,6 +9,8 @@ import {
 } from 'react-native';
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import { connect } from 'react-redux';
+import theme from '../../../assets/theme'
+
 
 const ITEM_WIDTH = Dimensions.get('window').width;
 export class Category3 extends Component {
@@ -28,7 +30,7 @@ export class Category3 extends Component {
           height: 270,
           width: ITEM_WIDTH - 40,
           marginLeft: 20,
-          backgroundColor: 'white',
+          backgroundColor: theme.primaryColor_var2,
           shadowColor: 'black',
           shadowOffset: { width: 5, height: 5 },
           shadowOpacity: 0.8,
