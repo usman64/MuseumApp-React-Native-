@@ -30,6 +30,7 @@ import PuppetsScreen from './containers/PuppetsScreen';
 import SearchScreen from './containers/SearchScreen';
 import SinglePuppetScreen from './components/Explore/puppets/SinglePuppetScreen';
 import QrCodeScreen from './containers/QrCodeScreen';
+import theme from './assets/theme';
 
 import { connect } from 'react-redux';
 import { changeFontScale } from './Actions/changeFontScale';
@@ -67,7 +68,7 @@ const ExploreStack = createStackNavigator({
   SinglePuppet: {
     screen: SinglePuppetScreen,
     navigationOptions: {
-      header: null,
+      header: null
     }
   },
   CategorizedPuppets: {
@@ -118,7 +119,7 @@ const ExploreStack = createStackNavigator({
   },
 
   SingleEvent: {
-    screen: SingleEventScreen,
+    screen: SingleEventScreen
     // navigationOptions: {
     // }
   }
@@ -247,10 +248,10 @@ const AppTabNavigator = createBottomTabNavigator(
     //   };
     // }
     tabBarOptions: {
-      activeTintColor: 'maroon',
+      activeTintColor: theme.tertiaryColor,
       inactiveTintColor: 'grey',
       style: {
-        backgroundColor: 'white',
+        backgroundColor: theme.primaryColor_var1,
         borderTopWidth: 0,
         shadowOffset: { width: 5, height: 3 },
         shadowColor: 'black',
@@ -280,7 +281,7 @@ const AppNavigator = createSwitchNavigator(
 const mapStateToProps = (state) => {
   return {
     fontSizeScale: state.changeFont,
-    language: state.toggleTranslation,
+    language: state.toggleTranslation
   };
 };
 const AppContainer = createAppContainer(AppNavigator);
