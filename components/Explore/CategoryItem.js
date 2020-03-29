@@ -11,6 +11,7 @@ import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import { connect } from 'react-redux';
 import * as Font from 'expo-font';
 import { AuthSession } from 'expo';
+import theme from '../../assets/theme';
 
 class CategoryItem extends Component {
   constructor() {
@@ -137,7 +138,7 @@ class CategoryItem extends Component {
             </TouchableWithoutFeedback>
             <View
               style={{
-                backgroundColor: '#352D46',
+                backgroundColor: theme.primaryColor_var2,
                 width: 190,
                 marginLeft: 20,
                 flexDirection: 'column',

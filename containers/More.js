@@ -209,7 +209,7 @@ class More extends Component {
                 value={this.props.fontSizeScale}
                 style={{ width: 150 }}
                 minimumValue={0.8}
-                maximumValue={1.5}
+                maximumValue={1.3}
                 thumbTintColor='#07B5AE'
                 minimumTrackTintColor='white'
                 maximumTrackTintColor='white'

@@ -3,6 +3,8 @@ import { Text, View } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { connect } from 'react-redux';
 import * as Font from 'expo-font';
+import theme from '../../assets/theme';
+
 
 class SubHeader extends Component {
   constructor() {
@@ -74,7 +76,7 @@ class SubHeader extends Component {
         {this.state.fontLoaded ? (
           <View
             style={{
-              backgroundColor: '#251F35',
+              backgroundColor: theme.primaryColor_var1,
               flexDirection: 'row',
               justifyContent: 'flex-start',
               alignItems: 'flex-start'

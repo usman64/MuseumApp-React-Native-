@@ -37,7 +37,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     onRequestPuppets: () => dispatch(requestAllPuppets()),
-    toggleTranslationAction: () => dispatch(toggleTranslationAction())
+    // toggleTranslationAction: () => dispatch(toggleTranslationAction())
   };
 };
 
@@ -166,13 +166,13 @@ class Explore extends Component {
       // }
     });
     return (
-      <SafeAreaView style={{ flex: 1, backgroundColor: '#352D46' }}>
+      <SafeAreaView style={{ flex: 1, backgroundColor: '#251F35' }}>
         {this.state.fontLoaded ? (
-          <View style={{ flex: 1, backgroundColor: '#352D46' }}>
+          <View style={{ flex: 1, backgroundColor: '#251F35' }}>
             <View
               style={{
                 height: 75,
-                backgroundColor: '#352D46'
+                backgroundColor: '#251F35'
                 // borderBottomWidth: 1,
                 // borderBottomColor: "#ddd"
               }}
@@ -285,14 +285,14 @@ class Explore extends Component {
 
             <ScrollView
               style={{
-                backgroundColor: '#352D46'
+                backgroundColor: '#251F35'
               }}
               scrollEventThrottle={16}
               showsVerticalScrollIndicator={false}
             >
               {/* EXPLORE BY TYPE */}
               <View
-                style={{ flex: 1, backgroundColor: '#352D46', paddingTop: 20 }}
+                style={{ flex: 1, backgroundColor: '#251F35', paddingTop: 20 }}
               >
                 <SubHeader headerName={exploreByText} type={typeText} />
                 <CategoryList
@@ -306,7 +306,7 @@ class Explore extends Component {
               <View
                 style={{
                   flex: 1,
-                  backgroundColor: '#352D46',
+                  backgroundColor: '#251F35',
                   paddingTop: 20
                   // paddingHorizontal: 20
                 }}
@@ -344,7 +344,7 @@ class Explore extends Component {
               </View>
               {/* UPCOMING EVENTS */}
               <View
-                style={{ flex: 1, backgroundColor: '#352D46', paddingTop: 20 }}
+                style={{ flex: 1, backgroundColor: '#251F35', paddingTop: 20 }}
               >
                 <SubHeader
                   headerName={upcomingEventsText}
