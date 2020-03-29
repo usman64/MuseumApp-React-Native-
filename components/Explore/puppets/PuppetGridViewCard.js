@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Text, View, Image, TouchableWithoutFeedback } from 'react-native';
 import { connect } from 'react-redux';
 
-
 class PuppetGridViewCard extends Component {
   render() {
     const { ITEM_WIDTH, item } = this.props;
@@ -37,17 +36,23 @@ class PuppetGridViewCard extends Component {
           />
         </View>
         <View style={{ flex: 1, paddingLeft: 10, paddingTop: 10 }}>
-          <Text style={{ 
-            // fontSize: 17, //fontScaling here
-            fontSize: 17 * this.props.fontSizeScale, 
-            fontWeight: 'bold' }}>
+          <Text
+            style={{
+              // fontSize: 17, //fontScaling here
+              fontSize: 17 * this.props.fontSizeScale,
+              fontWeight: 'bold'
+            }}
+          >
             {item.puppetname}
           </Text>
           <View style={{ flexDirection: 'row' }}>
-            <Text style={{ 
-              // fontSize: 12, //fontScaling here
-              fontSize: 12 * this.props.fontSizeScale, 
-              color: 'grey' }}>
+            <Text
+              style={{
+                // fontSize: 12, //fontScaling here
+                fontSize: 12 * this.props.fontSizeScale,
+                color: 'grey'
+              }}
+            >
               {this.props.navigation.getParam('filterType') ===
               'CategorizedPuppets'
                 ? item.region
@@ -58,7 +63,7 @@ class PuppetGridViewCard extends Component {
                 marginLeft: 'auto',
                 marginRight: 10,
                 // fontSize: 12,//fontScaling here
-                fontSize: 12 * this.props.fontSizeScale, 
+                fontSize: 12 * this.props.fontSizeScale,
                 color: 'grey'
               }}
             >
@@ -74,9 +79,8 @@ class PuppetGridViewCard extends Component {
 // export default SingleEventScreen
 const mapStateToProps = (state) => {
   return {
-    fontSizeScale: state.changeFont
+    fontSizeScale: state.changeFont.fontScalefactor
   };
 };
 
 export default connect(mapStateToProps, null)(PuppetGridViewCard);
-

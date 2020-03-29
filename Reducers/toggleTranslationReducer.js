@@ -1,11 +1,15 @@
 import { TOGGLE_TRANSLATION } from '../Actions/types';
 
-export const toggleTranslation = (state = 1, action) => {
-    switch (action.type) {
-        case 'TOGGLE_TRANSLATION':
-            console.log("state",state)
-            return !state;
-        default:
-            return state;
-    }
+//lang1 = English
+const initialTranslationState = {
+  lang1_toggle: false
+};
+
+export const toggleTranslation = (state = initialTranslationState, action) => {
+  switch (action.type) {
+    case 'TOGGLE_TRANSLATION':
+      return Object.assign({}, state, { lang1_toggle: !state.lang1_toggle });
+    default:
+      return state;
+  }
 };

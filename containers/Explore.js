@@ -15,15 +15,13 @@ import SafeAreaView from 'react-native-safe-area-view';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import SubHeader from '../components/layout/SubHeader';
 import CategoryList from '../components/Explore/CategoryList';
-import * as Font from "expo-font";
+import * as Font from 'expo-font';
 
 import { connect } from 'react-redux';
 import { requestAllPuppets } from '../Actions/puppetActions';
 import { toggleTranslationAction } from '../Actions/toggleTranslation';
 
-
 import axios from 'axios';
-
 
 const mapStateToProps = (state) => {
   console.log(state.requestAllPuppets.puppets.length);
@@ -31,8 +29,8 @@ const mapStateToProps = (state) => {
     puppets: state.requestAllPuppets.puppets,
     isPending: state.requestAllPuppets.isPending,
     error: state.requestAllPuppets.error,
-    fontSizeScale: state.changeFont,
-    language: state.toggleTranslation,
+    fontSizeScale: state.changeFont.fontScalefactor,
+    language: state.toggleTranslation.lang1_toggle
   };
 };
 
@@ -124,40 +122,42 @@ class Explore extends Component {
   componentWillMount() {
     this.props.onRequestPuppets();
     this.startHeaderHeight = 80;
-    if (Platform.OS === "android") {
+    if (Platform.OS === 'android') {
       this.startHeaderHeight = 100 + StatusBar.currentHeight;
     }
   }
 
   async componentDidMount() {
     await Font.loadAsync({
-      "Montserrat-Bold": require("../assets/fonts/Montserrat-Bold.ttf"),
-      "Montserrat-Medium": require("../assets/fonts/Montserrat-Medium.ttf")
+      'Montserrat-Bold': require('../assets/fonts/Montserrat-Bold.ttf'),
+      'Montserrat-Medium': require('../assets/fonts/Montserrat-Medium.ttf')
     });
     this.setState({ fontLoaded: true });
-    console.log("set ");
+    console.log('set ');
   }
 
   render() {
-    const rafiPeerText = this.props.language ? "رفی پیر" : "Rafi Peer";
+    const rafiPeerText = this.props.language ? 'رفی پیر' : 'Rafi Peer';
     const exploreByTypeText = this.props.language
-      ? "قسم سے دریافت کریں"
-      : "Explore By Type";
+      ? 'قسم سے دریافت کریں'
+      : 'Explore By Type';
     const exploreByRegionText = this.props.language
-      ? "خطے کے لحاظ سے دریافت کریں"
-      : "Explore By Region";
+      ? 'خطے کے لحاظ سے دریافت کریں'
+      : 'Explore By Region';
     const upcomingEventsText = this.props.language
-      ? "انے والی تقریبات"
-      : "Upcoming Events";
-    const exploreByText = this.props.language ? "کے ذریعے دریافت کریں":"Explore By";
-    const exploreText = this.props.language?"دریافت کریں":"Explore";
-    const scanText = this.props.language ? "اسکین" : "scan";
-    const typeText = this.props.language ? "قسم":"Type";
-    const regionText = this.props.language ? "خطہ" : "Region";
+      ? 'انے والی تقریبات'
+      : 'Upcoming Events';
+    const exploreByText = this.props.language
+      ? 'کے ذریعے دریافت کریں'
+      : 'Explore By';
+    const exploreText = this.props.language ? 'دریافت کریں' : 'Explore';
+    const scanText = this.props.language ? 'اسکین' : 'scan';
+    const typeText = this.props.language ? 'قسم' : 'Type';
+    const regionText = this.props.language ? 'خطہ' : 'Region';
     const styles = StyleSheet.create({
       horizontallyCenter: {
-        marginLeft: "auto",
-        marginRight: "auto"
+        marginLeft: 'auto',
+        marginRight: 'auto'
       }
       // headings: {
       //   // fontSize: 30,//fontscaling here
@@ -166,18 +166,18 @@ class Explore extends Component {
       // }
     });
     return (
-      <SafeAreaView style={{ flex: 1, backgroundColor: "#251F35" }}>
+      <SafeAreaView style={{ flex: 1, backgroundColor: '#251F35' }}>
         {this.state.fontLoaded ? (
-          <View style={{ flex: 1, backgroundColor: "#251F35" }}>
+          <View style={{ flex: 1, backgroundColor: '#251F35' }}>
             <View
               style={{
                 height: 75,
-                backgroundColor: "#251F35",
+                backgroundColor: '#251F35'
                 // borderBottomWidth: 1,
                 // borderBottomColor: "#ddd"
               }}
             >
-              <View style={{ flexDirection: "row" }}>
+              <View style={{ flexDirection: 'row' }}>
                 {/* <Icon
                 name='square'
                 style={{ paddingTop: 25, marginLeft: 20 }}
@@ -202,14 +202,14 @@ class Explore extends Component {
                   style={{
                     marginTop: 22,
                     // fontSize: 25,// font scaling here
-                    fontFamily: "Montserrat-Bold",
+                    fontFamily: 'Montserrat-Bold',
                     // fontWeight: "bold",
-                    textAlign: "center",
-                    textTransform: "uppercase",
+                    textAlign: 'center',
+                    textTransform: 'uppercase',
                     fontSize: 35 * this.props.fontSizeScale,
                     // fontWeight: "700",
                     marginLeft: 30,
-                    color: "white"
+                    color: 'white'
                   }}
                 >
                   {/* {rafiPeerText}
@@ -218,14 +218,14 @@ class Explore extends Component {
                 </Text>
                 {/* QR Code */}
                 <View
-                  style={{ marginLeft: "auto", marginRight: 20, marginTop: 25 }}
+                  style={{ marginLeft: 'auto', marginRight: 20, marginTop: 25 }}
                 >
                   <TouchableOpacity
-                    onPress={() => this.props.navigation.navigate("QrScan")}
+                    onPress={() => this.props.navigation.navigate('QrScan')}
                   >
                     <Image
-                      source={require("../assets/scanicon.png")}
-                      style={{ height: 50, width: 50, tintColor: "white" }}
+                      source={require('../assets/scanicon.png')}
+                      style={{ height: 50, width: 50, tintColor: 'white' }}
                     />
                     {/* <Text
                       style={{
@@ -285,19 +285,19 @@ class Explore extends Component {
 
             <ScrollView
               style={{
-                backgroundColor: "#251F35"
+                backgroundColor: '#251F35'
               }}
               scrollEventThrottle={16}
               showsVerticalScrollIndicator={false}
             >
               {/* EXPLORE BY TYPE */}
               <View
-                style={{ flex: 1, backgroundColor: "#251F35", paddingTop: 20 }}
+                style={{ flex: 1, backgroundColor: '#251F35', paddingTop: 20 }}
               >
                 <SubHeader headerName={exploreByText} type={typeText} />
                 <CategoryList
                   data={typesOfPuppets}
-                  type={"CategorizedPuppets"}
+                  type={'CategorizedPuppets'}
                   navigation={this.props.navigation}
                 />
               </View>
@@ -306,7 +306,7 @@ class Explore extends Component {
               <View
                 style={{
                   flex: 1,
-                  backgroundColor: "#251F35",
+                  backgroundColor: '#251F35',
                   paddingTop: 20
                   // paddingHorizontal: 20
                 }}
@@ -338,28 +338,30 @@ class Explore extends Component {
               <View> */}
                 <CategoryList
                   data={Regions}
-                  type={"RegionalPuppets"}
+                  type={'RegionalPuppets'}
                   navigation={this.props.navigation}
                 />
               </View>
               {/* UPCOMING EVENTS */}
               <View
-                style={{ flex: 1, backgroundColor: "#251F35", paddingTop: 20 }}
+                style={{ flex: 1, backgroundColor: '#251F35', paddingTop: 20 }}
               >
                 <SubHeader
                   headerName={upcomingEventsText}
-                  type={"Event"}
-                  onPress={() => this.props.navigation.navigate("Event")}
+                  type={'Event'}
+                  onPress={() => this.props.navigation.navigate('Event')}
                 />
                 <CategoryList
                   data={upEvents}
-                  type={"Event"}
+                  type={'Event'}
                   navigation={this.props.navigation}
                 />
               </View>
             </ScrollView>
           </View>
-        ) : null}
+        ) : (
+          <View></View>
+        )}
       </SafeAreaView>
     );
   }

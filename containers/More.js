@@ -26,8 +26,7 @@ import { connect } from 'react-redux';
 import { changeFontScale } from '../Actions/changeFontScale';
 import { toggleTranslationAction } from '../Actions/toggleTranslation';
 
-
-export class More extends Component {
+class More extends Component {
   constructor() {
     super();
     this.state = {
@@ -35,25 +34,25 @@ export class More extends Component {
       font: 1,
       pushNotification: false,
       langUrdu: false,
-      fontLoaded: false,
+      fontLoaded: false
     };
   }
   async componentDidMount() {
     await Font.loadAsync({
-      "Montserrat-Bold": require("../assets/fonts/Montserrat-Bold.ttf"),
-      "Montserrat-Medium": require("../assets/fonts/Montserrat-Medium.ttf")
+      'Montserrat-Bold': require('../assets/fonts/Montserrat-Bold.ttf'),
+      'Montserrat-Medium': require('../assets/fonts/Montserrat-Medium.ttf')
     });
     this.setState({ fontLoaded: true });
-    console.log("set ")
+    console.log('set ');
   }
- 
+
   fontchanger(value) {
-    this.props.changeFontScale(value)
+    this.props.changeFontScale(value);
   }
- 
+
   greyScaler(temp) {}
- 
-  emailSender(){
+
+  emailSender() {
     sendEmail(
       'SRPdocumentclassification@gmail.com',
       'App Error!',
@@ -70,23 +69,33 @@ export class More extends Component {
     const { greyScale } = this.state;
     const { pushNotification } = this.state;
     const { langUrdu } = this.state;
-    const generalText = (this.props.language) ?"عام":"GENERAL"
-    const fontSizeText = (this.props.language) ? "حرف کا سائز": "Font Size";
-    const langText = (this.props.language) ? "زبان":"Language";
-    const settingText = (this.props.language) ? "ترتیبات اور رسائی":"SETTINGS AND ACCESSIBILITY"
-    const contactText = (this.props.language) ? "ہم سے رابطہ کریں":"Contact Us"
-    const aboutText = (this.props.language) ? "ھمارے بارے میں": "About"
-    const notificationsText = (this.props.language) ? "اطلاعات":"Push Notification"
-    const appVersionText = (this.props.language) ? "ورژن":"App Version"
-    const reportText=(this.props.language)?"مسئلے کے بارے میں بتائیے":"Report a Problem"
-    const helpAndSupportText = (this.props.language) ?"مدد اور حمایت":"HELP AND SUPPORT"
-    const rateUsText = (this.props.language) ?"درجہ بندی":"Rate Us"
-    const termsOfService = (this.props.language) ?"سروس کی شرائط":"Terms of Service"
+    const generalText = this.props.language ? 'عام' : 'GENERAL';
+    const fontSizeText = this.props.language ? 'حرف کا سائز' : 'Font Size';
+    const langText = this.props.language ? 'زبان' : 'Language';
+    const settingText = this.props.language
+      ? 'ترتیبات اور رسائی'
+      : 'SETTINGS AND ACCESSIBILITY';
+    const contactText = this.props.language ? 'ہم سے رابطہ کریں' : 'Contact Us';
+    const aboutText = this.props.language ? 'ھمارے بارے میں' : 'About';
+    const notificationsText = this.props.language
+      ? 'اطلاعات'
+      : 'Push Notification';
+    const appVersionText = this.props.language ? 'ورژن' : 'App Version';
+    const reportText = this.props.language
+      ? 'مسئلے کے بارے میں بتائیے'
+      : 'Report a Problem';
+    const helpAndSupportText = this.props.language
+      ? 'مدد اور حمایت'
+      : 'HELP AND SUPPORT';
+    const rateUsText = this.props.language ? 'درجہ بندی' : 'Rate Us';
+    const termsOfService = this.props.language
+      ? 'سروس کی شرائط'
+      : 'Terms of Service';
     const styles = StyleSheet.create({
       topmostcontainer: {
         flex: 1,
-        flexDirection: "column",
-        justifyContent: "space-between",
+        flexDirection: 'column',
+        justifyContent: 'space-between',
         paddingTop: 0.05 * height,
         paddingBottom: 0.07 * width
       },
@@ -94,21 +103,21 @@ export class More extends Component {
         flex: 1
       },
       headingText: {
-        fontFamily: "Montserrat-Bold",
+        fontFamily: 'Montserrat-Bold',
         fontSize: this.props.fontSizeScale * 22,
-        color: "#07B5AE",
+        color: '#07B5AE',
         marginLeft: 0.04 * width,
         marginRight: 0.04 * width
       },
       headingItem: {
-        flexDirection: "column",
-        justifyContent: "center",
+        flexDirection: 'column',
+        justifyContent: 'center',
         flexGrow: 4
       },
       item: {
-        flexDirection: "row",
-        justifyContent: "space-between",
-        alignItems: "center",
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
         flexGrow: 3,
         marginLeft: 0.06 * width,
         marginRight: 0.06 * width
@@ -118,28 +127,28 @@ export class More extends Component {
         borderTopWidth: 1,
         marginLeft: 0.06 * width,
         marginRight: 0.06 * width,
-        borderTopColor: "#352D46",
+        borderTopColor: '#352D46',
         opacity: 0.8
       },
       text: {
-        fontFamily: "Montserrat-Medium",
+        fontFamily: 'Montserrat-Medium',
         fontSize: this.props.fontSizeScale * 20,
-        color: "white"
+        color: 'white'
       },
       languageOption: {
-        fontFamily: "Montserrat-Medium",
-        color: "white",
+        fontFamily: 'Montserrat-Medium',
+        color: 'white',
         fontSize: this.props.fontSizeScale * 15
       },
       version: {
-        fontFamily: "Montserrat-Medium",
-        color: "white",
-        alignItems: "flex-end",
+        fontFamily: 'Montserrat-Medium',
+        color: 'white',
+        alignItems: 'flex-end',
         fontSize: this.props.fontSizeScale * 20
       }
     });
     return (
-      <SafeAreaView style={{ flex: 1, backgroundColor: "#251F35" }}>
+      <SafeAreaView style={{ flex: 1, backgroundColor: '#251F35' }}>
         {this.state.fontLoaded ? (
           <View style={styles.topmostcontainer}>
             {/* GENERAL */}
@@ -148,7 +157,7 @@ export class More extends Component {
             </View>
             <TouchableOpacity
               style={styles.item}
-              onPress={() => this.props.navigation.navigate("About")}
+              onPress={() => this.props.navigation.navigate('About')}
             >
               <Text style={styles.text}>{aboutText}</Text>
               {/* </View> */}
@@ -158,7 +167,7 @@ export class More extends Component {
             {/* Contact Us */}
             <TouchableOpacity
               style={styles.item}
-              onPress={() => this.props.navigation.navigate("ContactUs")}
+              onPress={() => this.props.navigation.navigate('ContactUs')}
             >
               <Text style={styles.text}>{contactText}</Text>
             </TouchableOpacity>
@@ -173,19 +182,19 @@ export class More extends Component {
               <View>
                 <Text style={styles.text}>{langText}</Text>
               </View>
-              <View style={{ flexDirection: "row", alignItems: "center" }}>
+              <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                 <Text style={styles.languageOption}>EN </Text>
                 <Switch
                   value={this.props.language}
                   // onValueChange={() => {
                   //   this.setState({ langUrdu: !langUrdu });
                   // }}
-                  thumbColor="#07B5AE"
-                  onValueChange={value => this.languageChange(value)}
+                  thumbColor='#07B5AE'
+                  onValueChange={(value) => this.languageChange(value)}
                 />
                 <Text
                   style={styles.languageOption}
-                  onLayout={value => this.languageChange(value)}
+                  // onLayout={(value) => this.languageChange(value)}
                 >
                   اردو
                 </Text>
@@ -201,10 +210,10 @@ export class More extends Component {
                 style={{ width: 150 }}
                 minimumValue={0.8}
                 maximumValue={1.5}
-                thumbTintColor="#07B5AE"
-                minimumTrackTintColor="white"
-                maximumTrackTintColor="white"
-                onValueChange={value => this.fontchanger(value)}
+                thumbTintColor='#07B5AE'
+                minimumTrackTintColor='white'
+                maximumTrackTintColor='white'
+                onValueChange={(value) => this.fontchanger(value)}
               />
             </View>
             <View style={styles.line}></View>
@@ -214,7 +223,7 @@ export class More extends Component {
               <Text style={styles.text}>{notificationsText}</Text>
               <Switch
                 // style={{ paddingRight: '14'}}
-                thumbColor="#07B5AE"
+                thumbColor='#07B5AE'
                 onValueChange={() => {
                   this.setState({ pushNotification: !pushNotification });
                 }}
@@ -256,7 +265,7 @@ export class More extends Component {
               style={styles.item}
               onPress={() => {
                 Linking.openURL(
-                  "https://play.google.com/store/apps/topic?id=editors_choice"
+                  'https://play.google.com/store/apps/topic?id=editors_choice'
                 );
               }}
             >
@@ -271,15 +280,15 @@ export class More extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    fontSizeScale: state.changeFont,
-    language: state.toggleTranslation,
+    fontSizeScale: state.changeFont.fontScalefactor,
+    language: state.toggleTranslation.lang1_toggle
   };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    changeFontScale: value => dispatch(changeFontScale(value)),
-    toggleTranslationAction: () => dispatch(toggleTranslationAction()),
-  }
-}
+    changeFontScale: (value) => dispatch(changeFontScale(value)),
+    toggleTranslationAction: () => dispatch(toggleTranslationAction())
+  };
+};
 export default connect(mapStateToProps, mapDispatchToProps)(More);

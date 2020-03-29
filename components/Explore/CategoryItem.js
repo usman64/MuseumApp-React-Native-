@@ -1,8 +1,15 @@
 import React, { Component } from 'react';
-import { Text, View, ScrollView, Alert, ImageBackground,Image } from 'react-native';
+import {
+  Text,
+  View,
+  ScrollView,
+  Alert,
+  ImageBackground,
+  Image
+} from 'react-native';
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import { connect } from 'react-redux';
-import * as Font from "expo-font";
+import * as Font from 'expo-font';
 import { AuthSession } from 'expo';
 
 class CategoryItem extends Component {
@@ -14,8 +21,8 @@ class CategoryItem extends Component {
   }
   async componentDidMount() {
     await Font.loadAsync({
-      "Montserrat-Bold": require("../../assets/fonts/Montserrat-Bold.ttf"),
-      "Montserrat-Medium": require("../../assets/fonts/Montserrat-Medium.ttf")
+      'Montserrat-Bold': require('../../assets/fonts/Montserrat-Bold.ttf'),
+      'Montserrat-Medium': require('../../assets/fonts/Montserrat-Medium.ttf')
     });
     this.setState({ fontLoaded: true });
   }
@@ -25,21 +32,21 @@ class CategoryItem extends Component {
     return (
       <View>
         {this.state.fontLoaded ? (
-          <View style={{ flex: 1, flexDirection: "column" }}>
+          <View style={{ flex: 1, flexDirection: 'column' }}>
             <TouchableWithoutFeedback
               onPress={() => {
-                if (type === "CategorizedPuppets") {
-                  this.props.navigation.navigate("CategorizedPuppets", {
+                if (type === 'CategorizedPuppets') {
+                  this.props.navigation.navigate('CategorizedPuppets', {
                     filterOn: this.props.name,
                     filterType: type
                   });
-                } else if (type === "RegionalPuppets") {
-                  this.props.navigation.navigate("RegionalPuppets", {
+                } else if (type === 'RegionalPuppets') {
+                  this.props.navigation.navigate('RegionalPuppets', {
                     filterOn: this.props.name,
                     filterType: type
                   });
                 } else {
-                  this.props.navigation.navigate("SingleEvent", {
+                  this.props.navigation.navigate('SingleEvent', {
                     name: this.props.name,
                     image: this.props.ImageUri,
                     date: this.props.date,
@@ -52,7 +59,7 @@ class CategoryItem extends Component {
                 height: 140,
                 width: 190,
                 marginLeft: 20,
-                backgroundColor: "white",
+                backgroundColor: 'white',
                 // shadowColor: "black",
                 // shadowOffset: { width: 5, height: 5 },
                 // shadowOpacity: 0.8,
@@ -72,25 +79,25 @@ class CategoryItem extends Component {
                     flex: 1,
                     width: null,
                     height: null,
-                    resizeMode: "cover"
+                    resizeMode: 'cover'
                   }}
                   // imageStyle={{ borderRadius: 22 }}
                   source={
-                    typeof this.props.ImageUri === "number"
+                    typeof this.props.ImageUri === 'number'
                       ? this.props.ImageUri
                       : { uri: this.props.ImageUri }
                   }
                 ></Image>
                 <View
                   style={{
-                    position: "absolute",
+                    position: 'absolute',
                     top: 0,
                     left: 0,
                     right: 0,
                     bottom: 0,
                     // justifyContent: "flex-end",
                     // alignContent: "center",
-                    backgroundColor: "rgba(0, 0, 0, 0.5)"
+                    backgroundColor: 'rgba(0, 0, 0, 0.5)'
                     // borderRadius: 22
                   }}
                 >
@@ -130,26 +137,26 @@ class CategoryItem extends Component {
             </TouchableWithoutFeedback>
             <View
               style={{
-                backgroundColor: "#352D46",
+                backgroundColor: '#352D46',
                 width: 190,
                 marginLeft: 20,
-                flexDirection: "column",
+                flexDirection: 'column',
                 // alignItems: "center",
-                alignSelf: "center",
+                alignSelf: 'center'
                 // justifyContent: "space-around"
               }}
             >
               <Text
                 style={{
-                  fontFamily: "Montserrat-Bold",
+                  fontFamily: 'Montserrat-Bold',
                   // fontWeight: "bold",
-                  textAlign: "center",
-                  textTransform: "uppercase",
-                  color: "white",
-                  alignSelf: "center",
+                  textAlign: 'center',
+                  textTransform: 'uppercase',
+                  color: 'white',
+                  alignSelf: 'center',
                   // fontSize: 20,//fontScaling here
                   fontSize: 20 * this.props.fontSizeScale,
-                  marginTop:10,
+                  marginTop: 10,
                   paddingLeft: 15,
                   paddingBottom: 15
                 }}
@@ -168,9 +175,8 @@ class CategoryItem extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    fontSizeScale: state.changeFont
+    fontSizeScale: state.changeFont.fontScalefactor
   };
 };
 
 export default connect(mapStateToProps, null)(CategoryItem);
-

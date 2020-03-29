@@ -9,7 +9,7 @@ export class MuseumMap extends Component {
         <Text
           style={{
             // fontSize: 20//fontScaleing here
-            fontSize: 20*this.props.fontSizeScale,
+            fontSize: 20 * this.props.fontSizeScale,
             fontWeight: '900',
             marginLeft: 'auto',
             marginRight: 'auto'
@@ -33,10 +33,9 @@ export class MuseumMap extends Component {
 
 // export default MuseumMap;
 
-
 const mapStateToProps = (state) => {
   return {
-    fontSizeScale: state.changeFont
+    fontSizeScale: state.changeFont.fontScalefactor
   };
 };
 

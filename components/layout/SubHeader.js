@@ -4,7 +4,6 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import { connect } from 'react-redux';
 import * as Font from 'expo-font';
 
-
 class SubHeader extends Component {
   constructor() {
     super();
@@ -14,34 +13,34 @@ class SubHeader extends Component {
   }
   async componentDidMount() {
     await Font.loadAsync({
-      "Montserrat-Bold": require("../../assets/fonts/Montserrat-Bold.ttf"),
-      "Montserrat-Medium": require("../../assets/fonts/Montserrat-Medium.ttf")
+      'Montserrat-Bold': require('../../assets/fonts/Montserrat-Bold.ttf'),
+      'Montserrat-Medium': require('../../assets/fonts/Montserrat-Medium.ttf')
     });
     this.setState({ fontLoaded: true });
   }
 
   render() {
-    const moreEventsText = this.props.language ? "< مزید واقعات" : "More >";
-   
-    if (this.props.type === "Event") {
+    const moreEventsText = this.props.language ? '< مزید واقعات' : 'More >';
+
+    if (this.props.type === 'Event') {
       return (
         <View>
           {this.state.fontLoaded ? (
             <View
               style={{
-                flexDirection: "row",
-                justifyContent: "space-between"
+                flexDirection: 'row',
+                justifyContent: 'space-between'
               }}
             >
               <Text
                 style={{
                   // fontSize: 17,//fontScaling here
                   // paddingRight: 60,
-                  fontFamily: "Montserrat-Bold",
+                  fontFamily: 'Montserrat-Bold',
                   fontSize: 24 * this.props.fontSizeScale,
                   // fontWeight: "700",
                   paddingHorizontal: 20,
-                  color: "grey"
+                  color: 'grey'
                 }}
               >
                 {this.props.headerName}
@@ -54,12 +53,12 @@ class SubHeader extends Component {
                 <TouchableOpacity onPress={this.props.onPress}>
                   <Text
                     style={{
-                      color: "#07B5AE",
-                      fontFamily: "Montserrat-Medium",
+                      color: '#07B5AE',
+                      fontFamily: 'Montserrat-Medium',
                       fontSize: 20 * this.props.fontSizeScale
                     }}
                   >
-                    {" "}
+                    {' '}
                     {moreEventsText}
                   </Text>
                 </TouchableOpacity>
@@ -75,30 +74,30 @@ class SubHeader extends Component {
         {this.state.fontLoaded ? (
           <View
             style={{
-              backgroundColor: "#251F35",
-              flexDirection: "row",
-              justifyContent: "flex-start",
-              alignItems: "flex-start"
+              backgroundColor: '#251F35',
+              flexDirection: 'row',
+              justifyContent: 'flex-start',
+              alignItems: 'flex-start'
             }}
           >
             <Text
               style={{
-                fontFamily: "Montserrat-Bold",
+                fontFamily: 'Montserrat-Bold',
                 fontSize: 24 * this.props.fontSizeScale,
                 paddingHorizontal: 20,
-                color: "grey"
+                color: 'grey'
               }}
             >
               {this.props.headerName}
             </Text>
             <Text
               style={{
-                fontFamily: "Montserrat-Medium",
+                fontFamily: 'Montserrat-Medium',
                 fontSize: 24 * this.props.fontSizeScale,
                 marginLeft: -10,
 
                 // paddingHorizontal: 20,
-                color: "#07B5AE"
+                color: '#07B5AE'
               }}
             >
               {this.props.type}
@@ -114,13 +113,9 @@ class SubHeader extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    fontSizeScale: state.changeFont,
-    language: state.toggleTranslation,
+    fontSizeScale: state.changeFont.fontScalefactor,
+    language: state.toggleTranslation.lang1_toggle
   };
 };
 
-
-
 export default connect(mapStateToProps, null)(SubHeader);
-
-

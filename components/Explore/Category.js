@@ -3,13 +3,16 @@ import { Text, View, ScrollView, Alert, ImageBackground } from 'react-native';
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import { connect } from 'react-redux';
 
-
 export class CategoryItem extends Component {
   render() {
     return (
       <TouchableWithoutFeedback
-        onPress={() => this.props.navigation.navigate('SingleEvent',
-                        {name: this.props.name, image: this.props.ImageUri})}
+        onPress={() =>
+          this.props.navigation.navigate('SingleEvent', {
+            name: this.props.name,
+            image: this.props.ImageUri
+          })
+        }
         style={{
           height: 150,
           width: 200,
@@ -56,7 +59,7 @@ export class CategoryItem extends Component {
                   fontWeight: 'bold',
                   color: 'white',
                   // fontSize: 20,//fontScaling here
-                  fontSize: 20 * this.props.fontSizeScale, 
+                  fontSize: 20 * this.props.fontSizeScale,
                   paddingLeft: 15,
                   paddingBottom: 15
                 }}
@@ -77,9 +80,8 @@ export class CategoryItem extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    fontSizeScale: state.changeFont
+    fontSizeScale: state.changeFont.fontScalefactor
   };
 };
 
 export default connect(mapStateToProps, null)(CategoryItem);
-

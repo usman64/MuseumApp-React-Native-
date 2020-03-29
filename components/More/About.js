@@ -1,11 +1,17 @@
-import React, { Component }from 'react';
-import { View, Text, StyleSheet, Header, Dimensions, Image } from 'react-native';
+import React, { Component } from 'react';
+import {
+  View,
+  Text,
+  StyleSheet,
+  Header,
+  Dimensions,
+  Image
+} from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import { connect } from 'react-redux';
-import AboutContent from './AboutContent'
+import AboutContent from './AboutContent';
 
 const { height, width } = Dimensions.get('window');
-
 
 class About extends Component {
   render() {
@@ -14,26 +20,22 @@ class About extends Component {
       //   centerComponent={{ text: 'MY TITLE', style: { color: '#fff' } }}
       // />
       <View style={{ flex: 1 }}>
-        <View style={{ flex: 7, backgroundColor: "#352D46" }}>
+        <View style={{ flex: 7, backgroundColor: '#352D46' }}>
           <AboutContent />
         </View>
       </View>
     );
-}}
-
+  }
+}
 
 const mapStateToProps = (state) => {
   return {
-    fontSizeScale: state.changeFont
+    fontSizeScale: state.changeFont.fontScalefactor
   };
 };
 
 // export default About;
 export default connect(mapStateToProps, null)(About);
-
-
-
-
 
 // import React, { Component } from 'react'
 
@@ -41,7 +43,7 @@ export default connect(mapStateToProps, null)(About);
 //   render() {
 //     return (
 //       <div>
-        
+
 //       </div>
 //     )
 //   }

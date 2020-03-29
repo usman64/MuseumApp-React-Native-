@@ -14,42 +14,37 @@ import { TextInput } from 'react-native-gesture-handler';
 
 import SafeAreaView from 'react-native-safe-area-view';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import CategoryList1 from '../components/Explore/events/CategoryList1'
-import CategoryList3 from '../components/Explore/events/CategoryList3'
-import axios from 'axios'
-import { AsyncStorage } from 'react-native'
+import CategoryList1 from '../components/Explore/events/CategoryList1';
+import CategoryList3 from '../components/Explore/events/CategoryList3';
+import axios from 'axios';
+import { AsyncStorage } from 'react-native';
 
 import { connect } from 'react-redux';
 
 const { height, width } = Dimensions.get('window');
 
 export class EventsScreen extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
       Weekly: [],
       Upcoming: []
-    }
+    };
   }
 
-
   handleData = (data) => {
-    let Weekly = []
-    let Upcoming = []
-    data.forEach(item => {
-      if(item.eventcategory === "regular") {
+    let Weekly = [];
+    let Upcoming = [];
+    data.forEach((item) => {
+      if (item.eventcategory === 'regular') {
         Weekly.push(item);
-      }
-
-      else if(item.eventcategory === "special") {
-        Upcoming.push(item)
+      } else if (item.eventcategory === 'special') {
+        Upcoming.push(item);
       }
     });
 
     this.setState({ Weekly, Upcoming });
-
-  }
+  };
 
   async componentWillMount() {
     this.startHeaderHeight = 80;
@@ -64,113 +59,108 @@ export class EventsScreen extends Component {
     //     return false;
     // }
 
-    try{
+    try {
       let data = await AsyncStorage.getItem('puppets');
-      console.log('local')
+      console.log('local');
       console.log(JSON.parse(data));
 
-      if(data != null) 
-        this.handleData(JSON.parse(data)); 
+      if (data != null) this.handleData(JSON.parse(data));
       else {
         try {
           data = await axios.get(
             `https://glacial-beyond-08798.herokuapp.com/allevents`
-          )
-          
+          );
+
           console.log('fetched');
           console.log(data);
-          await AsyncStorage.setItem("puppets", JSON.stringify(data.data))
+          await AsyncStorage.setItem('puppets', JSON.stringify(data.data));
           this.handleData(data.data);
-
-        }
-
-        catch(err) {
+        } catch (err) {
           console.log(err);
         }
       }
-
-    }
-
-    catch(err) {
+    } catch (err) {
       console.log(err);
     }
-    
-    
   }
 
   render() {
     return (
-      <ScrollView contentContainerStyle={{ paddingBottom: this.state.Upcoming.length * 280 }}> 
-      <View>
+      <ScrollView
+        contentContainerStyle={{
+          paddingBottom: this.state.Upcoming.length * 280
+        }}
+      >
         <View>
           <View>
-            <View style={{ flex: 1, backgroundColor: 'white', paddingTop: 30 }}>
-              <Text
-                style={{
+            <View>
+              <View
+                style={{ flex: 1, backgroundColor: 'white', paddingTop: 30 }}
+              >
+                <Text
+                  style={{
                     //fontSize: 24,//fontscaling here
                     fontSize: 24 * this.props.fontSizeScale,
-                  fontWeight: '700',
-                  paddingHorizontal: 20,
-                  color: 'grey'
-                }}
-              >
-                Weekly Events
-              </Text>
-              {this.state.Weekly.length ? (
-                <CategoryList1
-                data={this.state.Weekly}
-                type={''}
-                navigation={this.props.navigation}
-              />
-              ) : (<ActivityIndicator size='large' color='#ddd' />)}
-              
-            </View>
+                    fontWeight: '700',
+                    paddingHorizontal: 20,
+                    color: 'grey'
+                  }}
+                >
+                  Weekly Events
+                </Text>
+                {this.state.Weekly.length ? (
+                  <CategoryList1
+                    data={this.state.Weekly}
+                    type={''}
+                    navigation={this.props.navigation}
+                  />
+                ) : (
+                  <ActivityIndicator size='large' color='#ddd' />
+                )}
+              </View>
 
-            <View
-              style={{
-                flex: 1,
-                backgroundColor: 'white',
-                paddingTop: 30
-                // paddingHorizontal: 20
-              }}
-            >
-              <Text
+              <View
                 style={{
-                  //fontSize: 24,//fontscaling here
-                  fontSize: 24 * this.props.fontSizeScale,
-                  fontWeight: '700',
-                  paddingHorizontal: 20,
-                  color: 'grey',
-                  paddingTop
-                  : 20,
+                  flex: 1,
+                  backgroundColor: 'white',
+                  paddingTop: 30
+                  // paddingHorizontal: 20
                 }}
               >
-                Upcoming Events
-              </Text>
+                <Text
+                  style={{
+                    //fontSize: 24,//fontscaling here
+                    fontSize: 24 * this.props.fontSizeScale,
+                    fontWeight: '700',
+                    paddingHorizontal: 20,
+                    color: 'grey',
+                    paddingTop: 20
+                  }}
+                >
+                  Upcoming Events
+                </Text>
                 {this.state.Weekly.length ? (
                   <CategoryList3
                     data={this.state.Upcoming}
                     type={''}
                     navigation={this.props.navigation}
-                />
-                ) : (<ActivityIndicator size='large' color='#ddd' />)}
-
+                  />
+                ) : (
+                  <ActivityIndicator size='large' color='#ddd' />
+                )}
+              </View>
             </View>
           </View>
         </View>
-        </View>  
       </ScrollView>
     );
   }
 }
 
-
-
 const mapStateToProps = (state) => {
   return {
-    fontSizeScale: state.changeFont
+    fontSizeScale: state.changeFont.fontScalefactor
   };
 };
-
 
 export default connect(mapStateToProps, null)(EventsScreen);

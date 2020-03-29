@@ -3,17 +3,19 @@ import { Text, View, ScrollView, Alert, ImageBackground } from 'react-native';
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import { connect } from 'react-redux';
 
-
 class Category1 extends Component {
   render() {
     const { type } = this.props;
     return (
       <TouchableWithoutFeedback
         onPress={() => {
-            this.props.navigation.navigate('SingleEvent',
-                {name: this.props.name, image: this.props.ImageUri, 
-                 date: this.props.date, description: this.props.description,
-                 time: this.props.time});
+          this.props.navigation.navigate('SingleEvent', {
+            name: this.props.name,
+            image: this.props.ImageUri,
+            date: this.props.date,
+            description: this.props.description,
+            time: this.props.time
+          });
         }}
         style={{
           height: 150,
@@ -41,7 +43,7 @@ class Category1 extends Component {
               resizeMode: 'cover'
             }}
             imageStyle={{ borderRadius: 22 }}
-            source={{uri: this.props.ImageUri}}
+            source={{ uri: this.props.ImageUri }}
           >
             <View
               style={{
@@ -56,13 +58,12 @@ class Category1 extends Component {
                 borderRadius: 22
               }}
             >
-              
               <Text
                 style={{
                   fontWeight: 'bold',
                   color: 'white',
                   //fontSize: 26,//fontScaling here
-                  fontSize: 26*this.props.fontSizeScale,
+                  fontSize: 26 * this.props.fontSizeScale,
                   paddingLeft: 15,
                   paddingBottom: 15
                 }}
@@ -81,7 +82,7 @@ class Category1 extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    fontSizeScale: state.changeFont
+    fontSizeScale: state.changeFont.fontScalefactor
   };
 };
 

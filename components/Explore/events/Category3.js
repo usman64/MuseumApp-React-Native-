@@ -10,7 +10,6 @@ import {
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import { connect } from 'react-redux';
 
-
 const ITEM_WIDTH = Dimensions.get('window').width;
 export class Category3 extends Component {
   render() {
@@ -18,9 +17,11 @@ export class Category3 extends Component {
       <TouchableWithoutFeedback
         onPress={() =>
           this.props.navigation.navigate('SingleEvent', {
-                 name: this.props.name, image: this.props.ImageUri, 
-                 date: this.props.date, description: this.props.description,
-                 time: this.props.time
+            name: this.props.name,
+            image: this.props.ImageUri,
+            date: this.props.date,
+            description: this.props.description,
+            time: this.props.time
           })
         }
         style={{
@@ -49,7 +50,7 @@ export class Category3 extends Component {
               resizeMode: 'cover'
             }}
             // imageStyle={{ borderRadius: 22 }}
-            source={{uri: this.props.ImageUri}}
+            source={{ uri: this.props.ImageUri }}
           >
             <View
               style={{
@@ -78,18 +79,22 @@ export class Category3 extends Component {
                     paddingTop: 3
                   }}
                 >
-                  <Text style={{ 
-                    color: 'red', 
-                    // fontSize: 15//fontScaling here
-                    fontSize:15*this.props.fontSizeScale,
-                     }}>
+                  <Text
+                    style={{
+                      color: 'red',
+                      // fontSize: 15//fontScaling here
+                      fontSize: 15 * this.props.fontSizeScale
+                    }}
+                  >
                     {this.props.month}
                   </Text>
-                  <Text style={{ 
-                    color: 'black', 
-                    // fontSize: 20,//fontScaling here
-                    fontSize: 20 * this.props.fontSizeScale,
-                     }}>
+                  <Text
+                    style={{
+                      color: 'black',
+                      // fontSize: 20,//fontScaling here
+                      fontSize: 20 * this.props.fontSizeScale
+                    }}
+                  >
                     {this.props.day}
                   </Text>
                 </View>
@@ -99,7 +104,7 @@ export class Category3 extends Component {
                       fontWeight: 'bold',
                       color: 'black',
                       //fontSize: 22//fontScaling here
-                      fontSize: 22 * this.props.fontSizeScale,
+                      fontSize: 22 * this.props.fontSizeScale
                     }}
                   >
                     {this.props.name}
@@ -119,7 +124,7 @@ export class Category3 extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    fontSizeScale: state.changeFont
+    fontSizeScale: state.changeFont.fontScalefactor
   };
 };
 
