@@ -1,6 +1,8 @@
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { HeaderBackButton } from 'react-navigation-stack';
+import {Dimensions } from "react-native";
+
 
 import React, { Component } from 'react';
 import {
@@ -11,18 +13,27 @@ import {
   Text,
   View,
   RefreshControl,
-  Image
+  Image,
+  ImageBackground
 } from 'react-native';
 
 const HEADER_MAX_HEIGHT = 300;
 const HEADER_MIN_HEIGHT = Platform.OS === 'ios' ? 60 : 73;
 const HEADER_SCROLL_DISTANCE = HEADER_MAX_HEIGHT - HEADER_MIN_HEIGHT;
 
+const width = Dimensions.get('window').width
+
 export class SingleEventScreen extends Component {
-  static navigationOptions = {
-    headerStyle: { backgroundColor: 'transparent', height: 0 },
-    headerLeft: <HeaderBackButton onPress={() => navigation.goBack()} />
-  };
+  static navigationOptions = ({ navigation }) => ({
+    headerTitle: navigation.getParam('name').toUpperCase(),
+    headerStyle: {backgroundColor: '#251F35'},
+    headerTitleStyle: {
+      fontWeight: '700',
+      fontSize: 25,
+      color: 'white'
+    },
+    headerTintColor:'white'
+  });
 
   // static navigationOptions = ({ navigation }) => ({
 
@@ -31,128 +42,31 @@ export class SingleEventScreen extends Component {
     super(props);
 
     this.state = {
-      scrollY: new Animated.Value(
-        Platform.OS === 'ios' ? -HEADER_MAX_HEIGHT : 0
-      ),
       refreshing: false,
       time: this.props.navigation.getParam('time'),
       date: this.props.navigation.getParam('date'),
       description: this.props.navigation.getParam('description'),
+      image:this.props.navigation.getParam('image'),
       relatedImages: []
     };
   }
-
-  _renderScrollViewContent() {
-    const data = Array.from({ length: 30 });
-    return (
-      <View style={styles.scrollViewContent}>
-        {data.map((_, i) => (
-          <View key={i} style={styles.row}>
-            <Text>{i}</Text>
-          </View>
-        ))}
-      </View>
-    );
-  }
-
   render() {
-    // Because of content inset the scroll value will be negative on iOS so bring
-    // it back to 0.
-    const scrollY = Animated.add(
-      this.state.scrollY,
-      Platform.OS === 'ios' ? HEADER_MAX_HEIGHT : 0
-    );
-    const headerTranslate = scrollY.interpolate({
-      inputRange: [0, HEADER_SCROLL_DISTANCE],
-      outputRange: [0, -HEADER_SCROLL_DISTANCE],
-      extrapolate: 'clamp'
-    });
-
-    const imageOpacity = scrollY.interpolate({
-      inputRange: [0, HEADER_SCROLL_DISTANCE / 2, HEADER_SCROLL_DISTANCE],
-      outputRange: [1, 1, 0],
-      extrapolate: 'clamp'
-    });
-    const imageTranslate = scrollY.interpolate({
-      inputRange: [0, HEADER_SCROLL_DISTANCE],
-      outputRange: [0, 100],
-      extrapolate: 'clamp'
-    });
-
-    const titleScale = scrollY.interpolate({
-      inputRange: [0, HEADER_SCROLL_DISTANCE / 2, HEADER_SCROLL_DISTANCE],
-      outputRange: [1, 1, 0.8],
-      extrapolate: 'clamp'
-    });
-    const titleTranslate = scrollY.interpolate({
-      inputRange: [0, HEADER_SCROLL_DISTANCE / 2, HEADER_SCROLL_DISTANCE],
-      outputRange: [0, 0, -8],
-      extrapolate: 'clamp'
-    });
+  
 
     return (
-      <View style={styles.fill}>
-        <StatusBar
-          translucent
-          barStyle='light-content'
-          backgroundColor='rgba(0, 0, 0, 0.251)'
-        />
-        <Animated.ScrollView
-          style={styles.fill}
-          scrollEventThrottle={1}
-          onScroll={Animated.event(
-            [{ nativeEvent: { contentOffset: { y: this.state.scrollY } } }],
-            { useNativeDriver: true }
-          )}
-          refreshControl={
-            <RefreshControl
-              refreshing={this.state.refreshing}
-              onRefresh={() => {
-                this.setState({ refreshing: true });
-                setTimeout(() => this.setState({ refreshing: false }), 1000);
-              }}
-              // Android offset for RefreshControl
-              progressViewOffset={HEADER_MAX_HEIGHT}
-            />
-          }
-          // iOS offset for RefreshControl
-          contentInset={{
-            top: HEADER_MAX_HEIGHT
-          }}
-          contentOffset={{
-            y: -HEADER_MAX_HEIGHT
-          }}
+      <View style={{backgroundColor: '#251F35', flex:1}}>
+        <ImageBackground 
+            style = {{
+              height: 280,
+              width: width,
+              resizeMode: 'cover',
+
+            }}
+
+            source = {{uri: this.state.image}}
         >
-          {this._renderScrollViewContent()}
-        </Animated.ScrollView>
-        <Animated.View
-          pointerEvents='none'
-          style={[
-            styles.header,
-            { transform: [{ translateY: headerTranslate }] }
-          ]}
-        >
-          <Animated.Image
-            style={[
-              styles.backgroundImage,
-              {
-                opacity: imageOpacity,
-                transform: [{ translateY: imageTranslate }]
-              }
-            ]}
-            source={{ uri: this.props.navigation.getParam('image') }}
-          />
-        </Animated.View>
-        <Animated.View
-          style={[
-            styles.bar,
-            {
-              transform: [{ scale: titleScale }, { translateY: titleTranslate }]
-            }
-          ]}
-        >
-          <Text style={styles.title}>Title</Text>
-        </Animated.View>
+
+        </ImageBackground>
       </View>
     );
   }

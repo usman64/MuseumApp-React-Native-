@@ -67,9 +67,6 @@ const ExploreStack = createStackNavigator({
   },
   SinglePuppet: {
     screen: SinglePuppetScreen,
-    navigationOptions: {
-      header: null
-    }
   },
   CategorizedPuppets: {
     screen: PuppetsScreen,
@@ -120,8 +117,6 @@ const ExploreStack = createStackNavigator({
 
   SingleEvent: {
     screen: SingleEventScreen
-    // navigationOptions: {
-    // }
   }
 });
 

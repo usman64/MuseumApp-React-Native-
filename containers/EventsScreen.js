@@ -89,7 +89,7 @@ export class EventsScreen extends Component {
       <ScrollView
         contentContainerStyle={{
           paddingBottom: this.state.Upcoming.length * 280,
-          backgroundColor: '#251F35'
+          backgroundColor: '#251F35',
         }}
       >
         <View>
@@ -123,7 +123,7 @@ export class EventsScreen extends Component {
               <View
                 style={{
                   flex: 1,
-                  backgroundColor: 'white',
+                  backgroundColor: '#251F35',
                   paddingTop: 30
                   // paddingHorizontal: 20
                 }}
@@ -147,7 +147,9 @@ export class EventsScreen extends Component {
                     navigation={this.props.navigation}
                   />
                 ) : (
-                  <ActivityIndicator size='large' color='#ddd' />
+                  <View style={{flex: 1,backgroundColor:'#251F35'}}>
+                    <ActivityIndicator size='large' color='#ddd' />
+                  </View>  
                 )}
               </View>
             </View>
