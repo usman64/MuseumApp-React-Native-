@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Text, View, ScrollView } from 'react-native';
 import Category3 from './Category3';
-
+import theme from '../../../assets/theme';
 class CategoryList3 extends Component {
 
   checkmonth = month => {
@@ -38,7 +38,7 @@ class CategoryList3 extends Component {
 
   render() {
     return (
-      <View style={{ height: 240, marginTop: 20 }}>
+      <View style={{ height: 240, marginTop: 20, backgroundColor:theme.primaryColor_var1 }}>
         <View>
           {this.props.data.map((item, key) => {
             let month = item.eventdate.substring(5,7);

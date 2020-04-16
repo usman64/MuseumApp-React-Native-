@@ -43,7 +43,6 @@ class More extends Component {
       'Montserrat-Medium': require('../assets/fonts/Montserrat-Medium.ttf')
     });
     this.setState({ fontLoaded: true });
-    console.log('set ');
   }
 
   fontchanger(value) {

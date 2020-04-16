@@ -8,6 +8,7 @@ import { createLogger } from 'redux-logger';
 import rootReducer from './Reducers/index';
 import thunkMiddleware from 'redux-thunk';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import * as Font from 'expo-font';
 
 const logger = createLogger();
 
@@ -54,7 +55,7 @@ const ExploreStack = createStackNavigator({
     screen: PuppetsScreen,
     navigationOptions: {
       headerStyle: {
-        backgroundColor: 'maroon'
+        backgroundColor: theme.primaryColor_var1
       },
 
       headerTitleStyle: {
@@ -67,15 +68,18 @@ const ExploreStack = createStackNavigator({
   },
   SinglePuppet: {
     screen: SinglePuppetScreen,
+    
   },
   CategorizedPuppets: {
     screen: PuppetsScreen,
     navigationOptions: {
       headerStyle: {
-        backgroundColor: 'maroon'
+        backgroundColor: theme.primaryColor_var1,
+
       },
 
       headerTitleStyle: {
+      //   fontFamily: 'Montserrat-Bold',
         fontWeight: '700',
         fontSize: 25,
         color: 'white'
@@ -87,10 +91,11 @@ const ExploreStack = createStackNavigator({
     screen: PuppetsScreen,
     navigationOptions: {
       headerStyle: {
-        backgroundColor: 'maroon'
+        backgroundColor: theme.primaryColor_var1
       },
 
       headerTitleStyle: {
+        //   fontFamily: 'Montserrat-Bold',
         fontWeight: '700',
         fontSize: 25,
         color: 'white'
@@ -133,7 +138,7 @@ const MoreStack = createStackNavigator(
       navigationOptions: {
         title: 'About Us',
         headerStyle: {
-          backgroundColor: 'maroon'
+          backgroundColor: theme.primaryColor_var1
         },
 
         headerTitleStyle: {
@@ -149,7 +154,7 @@ const MoreStack = createStackNavigator(
       navigationOptions: {
         title: 'Settings',
         headerStyle: {
-          backgroundColor: 'maroon'
+          backgroundColor: theme.primaryColor_var1
         },
 
         headerTitleStyle: {
@@ -165,7 +170,7 @@ const MoreStack = createStackNavigator(
       navigationOptions: {
         title: 'Contact Us',
         headerStyle: {
-          backgroundColor: 'maroon'
+          backgroundColor: theme.primaryColor_var1
         },
 
         headerTitleStyle: {
@@ -181,7 +186,7 @@ const MoreStack = createStackNavigator(
       navigationOptions: {
         title: 'Report',
         headerStyle: {
-          backgroundColor: 'maroon'
+          backgroundColor: theme.primaryColor_var1
         },
 
         headerTitleStyle: {

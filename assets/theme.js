@@ -6,4 +6,5 @@ let theme = {
     tertiaryColor : '#FDB717',
 }
 
+
 export default theme;

@@ -60,7 +60,7 @@ class CategoryItem extends Component {
                 height: 140,
                 width: 190,
                 marginLeft: 20,
-                backgroundColor: 'white',
+                // backgroundColor: 'white',
                 // shadowColor: "black",
                 // shadowOffset: { width: 5, height: 5 },
                 // shadowOpacity: 0.8,

@@ -11,6 +11,7 @@ import {
   ActivityIndicator
 } from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
+import * as Font from 'expo-font';
 
 import SafeAreaView from 'react-native-safe-area-view';
 import Icon from 'react-native-vector-icons/FontAwesome5';
@@ -45,6 +46,15 @@ export class EventsScreen extends Component {
 
     this.setState({ Weekly, Upcoming });
   };
+
+
+  async componentDidMount() {
+    await Font.loadAsync({
+      'Montserrat-Bold': require('../assets/fonts/Montserrat-Bold.ttf'),
+      'Montserrat-Medium': require('../assets/fonts/Montserrat-Medium.ttf')
+    });
+    this.setState({ fontLoaded: true });
+  }
 
   async componentWillMount() {
     this.startHeaderHeight = 80;
@@ -86,23 +96,25 @@ export class EventsScreen extends Component {
 
   render() {
     return (
+     
       <ScrollView
         contentContainerStyle={{
           paddingBottom: this.state.Upcoming.length * 280,
           backgroundColor: '#251F35',
         }}
       >
-        <View>
+        {this.state.fontLoaded ? (
+        <View
+        >
           <View>
             <View>
               <View
-                style={{ flex: 1, paddingTop: 30 }}
+                  style={{ flex: 1, paddingTop: 30 }}
               >
                 <Text
                   style={{
-                    //fontSize: 24,//fontscaling here
+                    fontFamily: 'Montserrat-Bold',
                     fontSize: 24 * this.props.fontSizeScale,
-                    fontWeight: '700',
                     paddingHorizontal: 20,
                     color: 'grey'
                   }}
@@ -130,9 +142,8 @@ export class EventsScreen extends Component {
               >
                 <Text
                   style={{
-                    //fontSize: 24,//fontscaling here
+                    fontFamily: 'Montserrat-Bold',
                     fontSize: 24 * this.props.fontSizeScale,
-                    fontWeight: '700',
                     paddingHorizontal: 20,
                     color: 'grey',
                     paddingTop: 20
@@ -154,8 +165,8 @@ export class EventsScreen extends Component {
               </View>
             </View>
           </View>
-        </View>
-      </ScrollView>
+          </View>) : (<View></View>)}
+          </ScrollView>
     );
   }
 }

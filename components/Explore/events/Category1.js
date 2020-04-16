@@ -41,16 +41,17 @@ class Category1 extends Component {
           height: 220,
           width: 180,
           marginLeft: 20,
-          backgroundColor: theme.primaryColor_var2,
-          shadowColor: 'black',
-          shadowOffset: { width: 5, height: 5 },
-          shadowOpacity: 0.8,
-          elevation: 10,
+          backgroundColor: 'grey',
+          // shadowColor: 'black',
+          // shadowOffset: { width: 5, height: 5 },
+          // shadowOpacity: 0.8,
+          // elevation: 10,
         }}
       >
         <View
           style={{
-            flex: 1
+            flex: 1,
+                backgroundColor: theme.primaryColor_var2,
           }}
         >
           <ImageBackground
@@ -71,7 +72,7 @@ class Category1 extends Component {
                 bottom: 0,
                 justifyContent: 'flex-end',
                 alignItems: 'flex-start',
-                backgroundColor: 'rgba(0, 0, 0, 0.5)',
+                    // backgroundColor: theme.primaryColor_var2,
                 // borderRadius: 22
               }}
             >
