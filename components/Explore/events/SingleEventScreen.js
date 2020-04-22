@@ -55,6 +55,7 @@ export class SingleEventScreen extends Component {
 
     return (
       <View style={{backgroundColor: '#251F35', flex:1}}>
+        <View style={{paddingTop: 20}}></View>
         <ImageBackground 
             style = {{
               height: 280,
@@ -67,6 +68,29 @@ export class SingleEventScreen extends Component {
         >
 
         </ImageBackground>
+
+        <View style={{paddingTop: 10}}></View>
+        <View style={{flexDirection: 'row', backgroundColor: '#352D46', padding: 10}}>
+          <Text style={{
+              color: '#07B5AE',
+              fontWeight: 'bold',
+              fontSize:20,
+
+          }}>
+            {this.state.date}
+          </Text>
+          <Text style={{
+              paddingLeft:10,
+              color: 'white',
+              fontWeight: 'bold',
+              fontSize:20
+          }}>
+            {this.state.time}
+          </Text>
+        </View>
+        <View style={{paddingTop: 5}}>
+          <Text style={{color: 'white', fontSize: 20}}>{this.state.description}</Text>
+        </View>
       </View>
     );
   }
