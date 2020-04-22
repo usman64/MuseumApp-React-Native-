@@ -7,7 +7,7 @@
     "platforms": ["ios", "android", "web"],
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/appicon.png",
+    "icon": "./assets/appicon.jpeg",
     "android": {
       "package": "com.museum.rafipeer",
       "versionCode": 1
@@ -15,7 +15,8 @@
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "cover",
-      "backgroundColor": "#ffffff"
+
+      "backgroundColor": "#251F35"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
