@@ -45,84 +45,82 @@ const ExploreStack = createStackNavigator({
   Explore: {
     screen: Explore,
     navigationOptions: {
-      header: null
-    }
+      header: null,
+    },
   },
   QrScan: {
-    screen: QrCodeScreen
+    screen: QrCodeScreen,
   },
   Search: {
     screen: PuppetsScreen,
     navigationOptions: {
       headerStyle: {
-        backgroundColor: theme.primaryColor_var1
+        backgroundColor: theme.primaryColor_var1,
       },
 
       headerTitleStyle: {
         fontWeight: '700',
         fontSize: 25,
-        color: 'white'
+        color: 'white',
       },
-      headerTintColor: 'white'
-    }
+      headerTintColor: 'white',
+    },
   },
   SinglePuppet: {
     screen: SinglePuppetScreen,
-    
   },
   CategorizedPuppets: {
     screen: PuppetsScreen,
     navigationOptions: {
       headerStyle: {
         backgroundColor: theme.primaryColor_var1,
-
-      },
-
-      headerTitleStyle: {
-      //   fontFamily: 'Montserrat-Bold',
-        fontWeight: '700',
-        fontSize: 25,
-        color: 'white'
-      },
-      headerTintColor: 'white'
-    }
-  },
-  RegionalPuppets: {
-    screen: PuppetsScreen,
-    navigationOptions: {
-      headerStyle: {
-        backgroundColor: theme.primaryColor_var1
       },
 
       headerTitleStyle: {
         //   fontFamily: 'Montserrat-Bold',
         fontWeight: '700',
         fontSize: 25,
-        color: 'white'
+        color: 'white',
       },
-      headerTintColor: 'white'
-    }
+      headerTintColor: 'white',
+    },
+  },
+  RegionalPuppets: {
+    screen: PuppetsScreen,
+    navigationOptions: {
+      headerStyle: {
+        backgroundColor: theme.primaryColor_var1,
+      },
+
+      headerTitleStyle: {
+        //   fontFamily: 'Montserrat-Bold',
+        fontWeight: '700',
+        fontSize: 25,
+        color: 'white',
+      },
+      headerTintColor: 'white',
+    },
   },
   Event: {
     screen: EventsScreen,
     navigationOptions: {
       title: 'Events',
       headerStyle: {
-        backgroundColor: '#251F35'
+        backgroundColor: '#251F35',
       },
 
       headerTitleStyle: {
         fontWeight: '700',
         fontSize: 25,
-        color: 'white'
+        color: 'white',
       },
-      headerTintColor: 'white'
-    }
+      headerTintColor: 'white',
+    },
   },
 
   SingleEvent: {
-    screen: SingleEventScreen
-  }
+    screen: SingleEventScreen,
+  },
 });
 
 const MoreStack = createStackNavigator(
@@ -130,73 +128,73 @@ const MoreStack = createStackNavigator(
     More: {
       screen: More,
       navigationOptions: {
-        header: null
-      }
+        header: null,
+      },
     },
     About: {
       screen: About,
       navigationOptions: {
         title: 'About Us',
         headerStyle: {
-          backgroundColor: theme.primaryColor_var1
+          backgroundColor: theme.primaryColor_var1,
         },
 
         headerTitleStyle: {
           fontWeight: '700',
           fontSize: 25,
-          color: 'white'
+          color: 'white',
         },
-        headerTintColor: 'white'
-      }
+        headerTintColor: 'white',
+      },
     },
     Settings: {
       screen: Settings,
       navigationOptions: {
         title: 'Settings',
         headerStyle: {
-          backgroundColor: theme.primaryColor_var1
+          backgroundColor: theme.primaryColor_var1,
         },
 
         headerTitleStyle: {
           fontWeight: '700',
           fontSize: 25,
-          color: 'white'
+          color: 'white',
         },
-        headerTintColor: 'white'
-      }
+        headerTintColor: 'white',
+      },
     },
     ContactUs: {
       screen: ContactUs,
       navigationOptions: {
         title: 'Contact Us',
         headerStyle: {
-          backgroundColor: theme.primaryColor_var1
+          backgroundColor: theme.primaryColor_var1,
         },
 
         headerTitleStyle: {
           fontWeight: '700',
           fontSize: 25,
-          color: 'white'
+          color: 'white',
         },
-        headerTintColor: 'white'
-      }
+        headerTintColor: 'white',
+      },
     },
     ReportProblem: {
       screen: ReportProblem,
       navigationOptions: {
         title: 'Report',
         headerStyle: {
-          backgroundColor: theme.primaryColor_var1
+          backgroundColor: theme.primaryColor_var1,
         },
 
         headerTitleStyle: {
           fontWeight: '700',
           fontSize: 25,
-          color: 'white'
+          color: 'white',
         },
-        headerTintColor: 'white'
-      }
-    }
+        headerTintColor: 'white',
+      },
+    },
     //More screen here
   },
   {
@@ -204,9 +202,9 @@ const MoreStack = createStackNavigator(
       const { routeName } = navigation.state.routes[navigation.state.index];
       return {
         header: null,
-        headerTitle: routeName
+        headerTitle: routeName,
       };
-    }
+    },
   }
 );
 
@@ -218,8 +216,8 @@ const AppTabNavigator = createBottomTabNavigator(
         tabBarLabel: 'EXPLORE',
         tabBarIcon: ({ tintColor }) => (
           <Icon name='search' color={tintColor} size={24} />
-        )
-      }
+        ),
+      },
     },
     Map: {
       screen: MuseumMap,
@@ -227,8 +225,18 @@ const AppTabNavigator = createBottomTabNavigator(
         tabBarLabel: 'MAP',
         tabBarIcon: ({ tintColor }) => (
           <Icon name='map' color={tintColor} size={24} />
-        )
-      }
+        ),
+        headerStyle: {
+          backgroundColor: theme.primaryColor_var1,
+        },
+        headerTitleStyle: {
+          //   fontFamily: 'Montserrat-Bold',
+          fontWeight: '700',
+          fontSize: 25,
+          color: 'white',
+        },
+        headerTintColor: 'white',
+      },
     },
     More: {
       screen: MoreStack,
@@ -236,9 +244,9 @@ const AppTabNavigator = createBottomTabNavigator(
         tabBarLabel: 'MORE',
         tabBarIcon: ({ tintColor }) => (
           <Icon name='ellipsis-h' color={tintColor} size={24} />
-        )
-      }
-    }
+        ),
+      },
+    },
   },
   {
     // tabBarOptions: ({ navigation }) => {
@@ -256,23 +264,23 @@ const AppTabNavigator = createBottomTabNavigator(
         shadowOffset: { width: 5, height: 3 },
         shadowColor: 'black',
         shadowOpacity: 0.5,
-        elavation: 5
-      }
-    }
+        elavation: 5,
+      },
+    },
   }
 );
 
 const AppNavigator = createSwitchNavigator(
   {
     Main: {
-      screen: AppTabNavigator
-    }
+      screen: AppTabNavigator,
+    },
     // SplashScreen: {
     //   screen: SplashScreen
     // }
   },
   {
-    initialRouteName: 'Main'
+    initialRouteName: 'Main',
     // defaultNavigationOptions: {
     //   header: null
     // }
@@ -281,7 +289,7 @@ const AppNavigator = createSwitchNavigator(
 const mapStateToProps = (state) => {
   return {
     fontSizeScale: state.changeFont,
-    language: state.toggleTranslation
+    language: state.toggleTranslation,
   };
 };
 const AppContainer = createAppContainer(AppNavigator);

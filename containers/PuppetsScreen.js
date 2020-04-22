@@ -8,14 +8,14 @@ import {
   Dimensions,
   Alert,
   Platform,
-  TextInput
+  TextInput,
 } from 'react-native';
 import PuppetList from '../components/Explore/puppets/PuppetList';
 import CategoryItem from '../components/Explore/CategoryItem';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import {
   TouchableOpacity,
-  TouchableWithoutFeedback
+  TouchableWithoutFeedback,
 } from 'react-native-gesture-handler';
 import PuppetGridViewCard from '../components/Explore/puppets/PuppetGridViewCard';
 
@@ -23,13 +23,15 @@ import { connect } from 'react-redux';
 
 const ITEM_WIDTH = Dimensions.get('window').width;
 
+import primaryColor_var2 from '../assets/theme';
+
 export class PuppetsScreen extends Component {
   static navigationOptions = ({ navigation }) => {
     return {
       title:
         navigation.getParam('filterType') === 'CategorizedPuppets'
           ? `${navigation.getParam('filterOn')} Puppets`
-          : `${navigation.getParam('filterOn')}'s Puppets`
+          : `${navigation.getParam('filterOn')}'s Puppets`,
     };
   };
 
@@ -44,7 +46,7 @@ export class PuppetsScreen extends Component {
         puppetyear: 1975,
         region: 'India',
         imagelink:
-          'https://drive.google.com/uc?id=1FbW4zBUELwd7jSIqlVJ-e7IIyvjiMtzK'
+          'https://drive.google.com/uc?id=1FbW4zBUELwd7jSIqlVJ-e7IIyvjiMtzK',
       },
       {
         puppetid: 2,
@@ -53,7 +55,7 @@ export class PuppetsScreen extends Component {
         puppetyear: 1999,
         region: 'Pakistan',
         imagelink:
-          'https://drive.google.com/uc?id=1DIekhwRywvAVyB5vkKsveGtj5Xzk3BxM'
+          'https://drive.google.com/uc?id=1DIekhwRywvAVyB5vkKsveGtj5Xzk3BxM',
       },
       {
         puppetid: 3,
@@ -62,7 +64,7 @@ export class PuppetsScreen extends Component {
         puppetyear: 2003,
         region: 'Pakistan',
         imagelink:
-          'https://drive.google.com/uc?id=1Rdlxol-hX0-uK-6cuUC-KqT0ozWKEHBz'
+          'https://drive.google.com/uc?id=1Rdlxol-hX0-uK-6cuUC-KqT0ozWKEHBz',
       },
       {
         puppetid: 4,
@@ -71,7 +73,7 @@ export class PuppetsScreen extends Component {
         puppetyear: 1975,
         region: 'India',
         imagelink:
-          'https://drive.google.com/uc?id=1rqgEtBPxHUwI7ywzHpFl85_PWjnEXm-b'
+          'https://drive.google.com/uc?id=1rqgEtBPxHUwI7ywzHpFl85_PWjnEXm-b',
       },
       {
         puppetid: 5,
@@ -80,7 +82,7 @@ export class PuppetsScreen extends Component {
         puppetyear: 1999,
         region: 'Pakistan',
         imagelink:
-          'https://drive.google.com/uc?id=1TESD71Io5yA-4nwn8FQXvLLSjkphjvOg'
+          'https://drive.google.com/uc?id=1TESD71Io5yA-4nwn8FQXvLLSjkphjvOg',
       },
       {
         puppetid: 6,
@@ -89,7 +91,7 @@ export class PuppetsScreen extends Component {
         puppetyear: 2003,
         region: 'Pakistan',
         imagelink:
-          'https://drive.google.com/uc?id=1uI1iG2fxtPBa4XPnrw7QibOcjh6vRlaw'
+          'https://drive.google.com/uc?id=1uI1iG2fxtPBa4XPnrw7QibOcjh6vRlaw',
       },
       {
         puppetid: 7,
@@ -98,7 +100,7 @@ export class PuppetsScreen extends Component {
         puppetyear: 2012,
         region: 'Pakistan',
         imagelink:
-          'https://drive.google.com/uc?id=12TYE_kNvS_4wpgiTVWYr1CfpH5KN264E'
+          'https://drive.google.com/uc?id=12TYE_kNvS_4wpgiTVWYr1CfpH5KN264E',
       },
       {
         puppetid: 8,
@@ -107,7 +109,7 @@ export class PuppetsScreen extends Component {
         puppetyear: 2000,
         region: 'Uzbekistan',
         imagelink:
-          'https://drive.google.com/uc?id=1c564nIddr0Axfivh-OfreJjL6tPd2UGY'
+          'https://drive.google.com/uc?id=1c564nIddr0Axfivh-OfreJjL6tPd2UGY',
       },
       {
         puppetid: 9,
@@ -116,7 +118,7 @@ export class PuppetsScreen extends Component {
         puppetyear: 2012,
         region: 'Pakistan',
         imagelink:
-          'https://drive.google.com/uc?id=1hVBNz67k7TF4Wj-S_hr_OCdmCehYt3sM'
+          'https://drive.google.com/uc?id=1hVBNz67k7TF4Wj-S_hr_OCdmCehYt3sM',
       },
       {
         puppetid: 10,
@@ -125,7 +127,7 @@ export class PuppetsScreen extends Component {
         puppetyear: 2000,
         region: 'Uzbekistan',
         imagelink:
-          'https://drive.google.com/uc?id=1iSp62n1dQnlT__mg0e_GyEd4HeEWmqzn'
+          'https://drive.google.com/uc?id=1iSp62n1dQnlT__mg0e_GyEd4HeEWmqzn',
       },
       {
         puppetid: 11,
@@ -134,7 +136,7 @@ export class PuppetsScreen extends Component {
         puppetyear: 2019,
         region: 'China',
         imagelink:
-          'https://drive.google.com/uc?id=14AnvMSuyH0ASejoDLzfTR9giiN_aOea7'
+          'https://drive.google.com/uc?id=14AnvMSuyH0ASejoDLzfTR9giiN_aOea7',
       },
       {
         puppetid: 12,
@@ -143,7 +145,7 @@ export class PuppetsScreen extends Component {
         puppetyear: 2019,
         region: 'China',
         imagelink:
-          'https://drive.google.com/uc?id=1XIBW1LqoU_S83Ciq0ZjozBsBmTm6QCqk'
+          'https://drive.google.com/uc?id=1XIBW1LqoU_S83Ciq0ZjozBsBmTm6QCqk',
       },
       {
         puppetid: 13,
@@ -152,7 +154,7 @@ export class PuppetsScreen extends Component {
         puppetyear: 2010,
         region: 'China',
         imagelink:
-          'https://drive.google.com/uc?id=1CsaRk9QH74dEBhzffmDv_PnbI8MvQpeW'
+          'https://drive.google.com/uc?id=1CsaRk9QH74dEBhzffmDv_PnbI8MvQpeW',
       },
       {
         puppetid: 14,
@@ -161,7 +163,7 @@ export class PuppetsScreen extends Component {
         puppetyear: 2005,
         region: 'Pakistan',
         imagelink:
-          'https://drive.google.com/uc?id=1EINqxrJLWcL4wI4u_zSU9OcbLfyUV7Sy'
+          'https://drive.google.com/uc?id=1EINqxrJLWcL4wI4u_zSU9OcbLfyUV7Sy',
       },
       {
         puppetid: 15,
@@ -170,7 +172,7 @@ export class PuppetsScreen extends Component {
         puppetyear: 2019,
         region: 'China',
         imagelink:
-          'https://drive.google.com/uc?id=1OrOQ5ds88GG75dqRg6_x6fab9wQ-g0Vy'
+          'https://drive.google.com/uc?id=1OrOQ5ds88GG75dqRg6_x6fab9wQ-g0Vy',
       },
       {
         puppetid: 16,
@@ -179,7 +181,7 @@ export class PuppetsScreen extends Component {
         puppetyear: 2010,
         region: 'China',
         imagelink:
-          'https://drive.google.com/uc?id=1OrOQ5ds88GG75dqRg6_x6fab9wQ-g0Vy'
+          'https://drive.google.com/uc?id=1OrOQ5ds88GG75dqRg6_x6fab9wQ-g0Vy',
       },
       {
         puppetid: 17,
@@ -188,7 +190,7 @@ export class PuppetsScreen extends Component {
         puppetyear: 2005,
         region: 'Pakistan',
         imagelink:
-          'https://drive.google.com/uc?id=1TESD71Io5yA-4nwn8FQXvLLSjkphjvOg'
+          'https://drive.google.com/uc?id=1TESD71Io5yA-4nwn8FQXvLLSjkphjvOg',
       },
       {
         puppetid: 18,
@@ -197,7 +199,7 @@ export class PuppetsScreen extends Component {
         puppetyear: 2019,
         region: 'China',
         imagelink:
-          'https://drive.google.com/uc?id=1S3nVoHNRx7gIX8s7gvhoAVi6_Pwv0Q3_'
+          'https://drive.google.com/uc?id=1S3nVoHNRx7gIX8s7gvhoAVi6_Pwv0Q3_',
       },
       {
         puppetid: 19,
@@ -206,7 +208,7 @@ export class PuppetsScreen extends Component {
         puppetyear: 2019,
         region: 'China',
         imagelink:
-          'https://drive.google.com/uc?id=1Kobk6jaCsR_QZAxt3R8c9CqJ6ZldTZtv'
+          'https://drive.google.com/uc?id=1Kobk6jaCsR_QZAxt3R8c9CqJ6ZldTZtv',
       },
       {
         puppetid: 20,
@@ -215,7 +217,7 @@ export class PuppetsScreen extends Component {
         puppetyear: 2019,
         region: 'India',
         imagelink:
-          'https://drive.google.com/uc?id=14AnvMSuyH0ASejoDLzfTR9giiN_aOea7'
+          'https://drive.google.com/uc?id=14AnvMSuyH0ASejoDLzfTR9giiN_aOea7',
       },
       {
         puppetid: 21,
@@ -224,7 +226,7 @@ export class PuppetsScreen extends Component {
         puppetyear: 2019,
         region: 'Pakistan',
         imagelink:
-          'https://drive.google.com/uc?id=1H92IQapruR2Ufv_vmVgWBmDQhDE3Zljz'
+          'https://drive.google.com/uc?id=1H92IQapruR2Ufv_vmVgWBmDQhDE3Zljz',
       },
       {
         puppetid: 22,
@@ -233,7 +235,7 @@ export class PuppetsScreen extends Component {
         puppetyear: 2019,
         region: 'China',
         imagelink:
-          'https://drive.google.com/uc?id=1H1tcXezPxaT-bYaQ-jQgwxmYVtYYeaxF'
+          'https://drive.google.com/uc?id=1H1tcXezPxaT-bYaQ-jQgwxmYVtYYeaxF',
       },
       {
         puppetid: 23,
@@ -242,7 +244,7 @@ export class PuppetsScreen extends Component {
         puppetyear: 2019,
         region: 'India',
         imagelink:
-          'https://drive.google.com/uc?id=1H1tcXezPxaT-bYaQ-jQgwxmYVtYYeaxF'
+          'https://drive.google.com/uc?id=1H1tcXezPxaT-bYaQ-jQgwxmYVtYYeaxF',
       },
       {
         puppetid: 24,
@@ -251,9 +253,9 @@ export class PuppetsScreen extends Component {
         puppetyear: 2019,
         region: 'Pakistan',
         imagelink:
-          'https://drive.google.com/uc?id=1c564nIddr0Axfivh-OfreJjL6tPd2UGY'
-      }
-    ]
+          'https://drive.google.com/uc?id=1c564nIddr0Axfivh-OfreJjL6tPd2UGY',
+      },
+    ],
   };
 
   componentWillMount() {
@@ -292,7 +294,7 @@ export class PuppetsScreen extends Component {
               .toString()
               .toLowerCase()
               .includes(text.toLowerCase())
-        ) || item.region.toLowerCase().includes(text.toLowerCase())
+        ) || item.region.toLowerCase().includes(text.toLowerCase()),
     }));
   };
 
@@ -314,7 +316,7 @@ export class PuppetsScreen extends Component {
             marginTop: Platform.OS === 'android' ? 10 : null,
             borderRadius: 10,
             marginBottom: 5,
-            flex: 0.5
+            flex: 0.5,
           }}
         >
           <Icon
@@ -333,7 +335,7 @@ export class PuppetsScreen extends Component {
               fontSize: 15 * this.props.fontSizeScale,
               flex: 1,
               fontWeight: '700',
-              backgroundColor: 'white'
+              backgroundColor: 'white',
             }}
             underlineColorAndroid='transparent'
             placeholder='Search'
@@ -367,12 +369,12 @@ export class PuppetsScreen extends Component {
                   width: ITEM_WIDTH / 2 - 20,
                   margin: 10,
                   borderWidth: 1,
-                  borderColor: '#ddd'
+                  borderColor: '#ddd',
                   // borderBottomRightRadius: 10
                 }}
                 onPress={() =>
                   this.props.navigation.navigate('SinglePuppet', {
-                    puppetData: item
+                    puppetData: item,
                   })
                 }
               >
@@ -384,7 +386,7 @@ export class PuppetsScreen extends Component {
                       flex: 1,
                       width: null,
                       height: null,
-                      resizeMode: 'cover'
+                      resizeMode: 'cover',
                     }}
                     source={{ uri: item.imagelink }}
                   />
@@ -394,7 +396,7 @@ export class PuppetsScreen extends Component {
                     style={{
                       // fontSize: 17,//fontScaling here
                       fontSize: 17 * this.props.fontSizeScale,
-                      fontWeight: 'bold'
+                      fontWeight: 'bold',
                     }}
                   >
                     {item.puppetname}
@@ -404,7 +406,7 @@ export class PuppetsScreen extends Component {
                       style={{
                         //fontSize: 12,//fontScaling here
                         fontSize: 12 * this.props.fontSizeScale,
-                        color: 'grey'
+                        color: 'grey',
                       }}
                     >
                       {this.props.navigation.getParam('filterType') ===
@@ -418,7 +420,7 @@ export class PuppetsScreen extends Component {
                         marginRight: 10,
                         //fontSize: 12,//fontScaling here
                         fontSize: 12 * this.props.fontSizeScale,
-                        color: 'grey'
+                        color: 'grey',
                       }}
                     >
                       {item.puppetyear}
@@ -439,7 +441,7 @@ export class PuppetsScreen extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    fontSizeScale: state.changeFont.fontScalefactor
+    fontSizeScale: state.changeFont.fontScalefactor,
   };
 };
 
