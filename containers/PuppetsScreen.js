@@ -302,15 +302,15 @@ export class PuppetsScreen extends Component {
     return this.state.data.length === 0 ? (
       <Text> No Puppets Found!</Text>
     ) : (
-      <View style={{ flex: 1 }}>
+      <View style={{ flex: 1 ,backgroundColor: '#251F35',}}>
         <View
           style={{
             flexDirection: 'row',
             padding: 10,
-            backgroundColor: 'white',
             marginHorizontal: 20,
             shadowOffset: { width: 0, height: 0 },
             shadowColor: 'black',
+            backgroundColor:'white',
             shadowOpacity: 0.2,
             elevation: 1,
             marginTop: Platform.OS === 'android' ? 10 : null,
@@ -397,6 +397,10 @@ export class PuppetsScreen extends Component {
                       // fontSize: 17,//fontScaling here
                       fontSize: 17 * this.props.fontSizeScale,
                       fontWeight: 'bold',
+<<<<<<< HEAD
+=======
+                      color:'white',
+>>>>>>> 47102ffd135451e633d16ff35c1d59d616ce5659
                     }}
                   >
                     {item.puppetname}
